@@ -5,7 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Entreprise;
+using UnityEngine.Rendering.Universal;
 
+[System.Serializable]
 public class Entreprise : MonoBehaviour
 {
     [SerializeField] TMP_InputField NameEntry; 
@@ -59,34 +61,29 @@ public class Entreprise : MonoBehaviour
         TechWear,
     }
 
-    public string UserName;
-    public shop job;
-    public int Money;
-    public int TypeChoice;
-    public place lieu;
+    [SerializeField] public string UserName;
+    [SerializeField] public shop job;
+    [SerializeField] public int Money;
+    [SerializeField] public int TypeChoice;
+    [SerializeField] public place lieu;
 
-    public RestauType restauType;
-    public VeloType veloType;
-    public CoachType coachType;
-    public VetementType vetementType;
+    [SerializeField] public RestauType restauType;
+    [SerializeField] public VeloType veloType;
+    [SerializeField] public CoachType coachType;
+    [SerializeField] public VetementType vetementType;
     TMP_Dropdown jobtype;
 
     public SaveData saveData;
-
 
     private void Awake()
     {
         saveData = new SaveData();
     }
 
-    
-
     public void Named()
     {
         UserName = NameEntry.text;
         NameText.text = UserName;
-
-        Debug.Log("name : " + UserName);
     }
     
     public void jobChoice()
@@ -268,18 +265,19 @@ public class Entreprise : MonoBehaviour
     public CoachType GetCoachType() {  return coachType; }
     public VetementType GetVetementType() { return vetementType; }
 
-
-    public void Load()
+    public void RefreshScreen()
     {
-        string savePath = Application.persistentDataPath + "/sauvegarde.json";
 
-        // Vérifiez si le fichier existe avant de le charger
+    }
+
+    public void Load1()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde1.json";
+
         if (File.Exists(savePath))
         {
-            // Lisez le contenu du fichier JSON en tant que chaîne
             string jsonData = File.ReadAllText(savePath);
 
-            // Désérialisez le contenu JSON en un nouvel objet SaveData
             SaveData saveData = new SaveData();
             JsonUtility.FromJsonOverwrite(jsonData, saveData);
 
@@ -292,23 +290,15 @@ public class Entreprise : MonoBehaviour
             veloType = saveData.VeloType;
             coachType = saveData.CoachType;
             vetementType = saveData.VetementType;
-
-            // Mettez à jour les autres membres de la classe Entreprise si nécessaire
-            Debug.Log("save data n: " + UserName);
-            Debug.Log("save data m: " + Money);
-            Debug.Log("save data l: " + lieu);
-            Debug.Log("save data s: " + job);
-
-            Debug.Log("Chargement réussi depuis le fichier JSON.");
+            
+            RefreshScreen();
+            Debug.Log("Chargement réussi depuis le fichier JSON " + savePath);
         }
         else
         {
             Debug.LogError("Le fichier de sauvegarde n'existe pas.");
         }
     }
-
-
-
 }
 
 

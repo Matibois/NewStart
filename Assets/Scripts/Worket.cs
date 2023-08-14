@@ -1,49 +1,139 @@
 using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Entreprise;
 
+[System.Serializable]
 public class Worket : MonoBehaviour
 {
-    [SerializeField] Text textMeshPro;
-    public Marche WhiteMontain;
-    public Marche PalmCoconut;
-    public Marche FenzyFarm;
-    public Marche UrbanCity;
+    [SerializeField] public Marche WhiteMontain;
+    [SerializeField] public Marche PalmCoconut;
+    [SerializeField] public Marche FenzyFarm;
+    [SerializeField] public Marche UrbanCity;
    
-    Entreprise oui ;
+
+    public Worket() {}
+
     void Start()
     {
         WhiteMontain = new Marche();
         PalmCoconut = new Marche();
         FenzyFarm = new Marche();
         UrbanCity = new Marche();
-        textMeshPro.text = "" + WhiteMontain.RestauNBR + " g" + WhiteMontain.VeloNBR+ "g " + WhiteMontain.CoachNBR + "f " + WhiteMontain.Habitants + " z" + WhiteMontain.RPH+"j";
-        
-       
-        //textMeshPro.text = + " " + WhiteMontain.AgeMoyen;
-        //textMeshPro.text = + " " + WhiteMontain.VetementLuxe;
+        Debug.Log( WhiteMontain.Habitants + " wm habitant from Worket start");
+
     }
 
-    private void Update()
+    public Worket initiateWorket(Worket worket)
     {
-        //textMeshPro.text = oui.GetUserName();
+        worket.WhiteMontain = WhiteMontain;
+        worket.PalmCoconut = new Marche();
+        worket.FenzyFarm = new Marche();
+        worket.UrbanCity = new Marche();
+         return worket;
     }
 
-    public Marche GetWhiteMontain()
+    public void Load1()
     {
-        return WhiteMontain;
+        string savePath = Application.persistentDataPath + "/sauvegarde1.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = new Worket();
+            worket = worket.initiateWorket(worket);
+            worket = saveData.worket;
+
+           //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
+
+
+            Debug.Log( saveData.WhiteMontain.Habitants + " WM habitant be like");
+            Debug.Log("Load 1 From Worket Path : " + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
     }
-    public Marche GetFenzyFarm()
+    public void Load2()
     {
-        return FenzyFarm;
+        string savePath = Application.persistentDataPath + "/sauvegarde2.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = new Worket();
+            worket = worket.initiateWorket(worket);
+            worket = saveData.worket;
+
+            //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
+
+
+            Debug.Log(saveData.WhiteMontain.Habitants + " WM habitant be like");
+            Debug.Log("Load 2 From Worket Path : " + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
     }
-    public Marche GetPalmCoconut()
+    public void Load3()
     {
-        return PalmCoconut;
+        string savePath = Application.persistentDataPath + "/sauvegarde3.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = new Worket();
+            worket = worket.initiateWorket(worket);
+            worket = saveData.worket;
+
+            //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
+
+
+            Debug.Log(saveData.WhiteMontain.Habitants + " WM habitant be like");
+            Debug.Log("Load 3 From Worket Path : " + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
     }
-    public Marche GetUrbanCity()
+    public void Load4()
     {
-        return UrbanCity;
+        string savePath = Application.persistentDataPath + "/sauvegarde4.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = new Worket();
+            worket = worket.initiateWorket(worket);
+            worket = saveData.worket;
+
+            //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
+
+
+            Debug.Log(saveData.WhiteMontain.Habitants + " WM habitant be like");
+            Debug.Log("Load 4 From Worket Path : " + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
     }
+
 }

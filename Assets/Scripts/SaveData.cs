@@ -2,10 +2,11 @@ using System.IO;
 using UnityEngine;
 using static Entreprise;
 
+[System.Serializable] 
 public class SaveData : MonoBehaviour
 {
-     public GameObject profil;
-     public GameObject marche;
+    public GameObject profil;
+    public GameObject marche;
 
     private Entreprise entreprise;
     public string UserName;
@@ -17,34 +18,35 @@ public class SaveData : MonoBehaviour
     public CoachType CoachType;
     public VetementType VetementType;
 
-    public Worket worket;
-    public Marche WhiteMontain;
-    public Marche PalmCoconut;
-    public Marche FenzyFarm;
-    public Marche UrbanCity;
+    [SerializeField] public Worket worket;
+    [SerializeField] public Marche WhiteMontain;
+    [SerializeField] public Marche PalmCoconut;
+    [SerializeField] public Marche FenzyFarm;
+    [SerializeField] public Marche UrbanCity;
 
     public SaveData() { }
 
-    private void Start()
+    private void Awake()
     {
-        entreprise = FindObjectOfType<Entreprise>();
-        worket = FindObjectOfType<Worket>();
-
-        if (entreprise != null)
-        {
-            // Appeler la méthode pour récupérer les informations de l'entreprise
-            InitializeSaveData();
-        }
-        else
-        {
-            Debug.LogError("Erreur : Objet Entreprise non trouvé dans la scène.");
-        }
+        
     }
+
+    
 
     public void InitializeSaveData()
     {
         entreprise = FindObjectOfType<Entreprise>();
         worket = FindObjectOfType<Worket>();
+        worket = worket.initiateWorket(worket);
+
+        WhiteMontain = worket.WhiteMontain;
+        PalmCoconut  = worket.PalmCoconut;
+        FenzyFarm = worket.FenzyFarm;
+        UrbanCity = worket.UrbanCity;
+
+        if (worket == null) Debug.LogError("worket null from savedata");
+        Debug.Log(" initiate save" + WhiteMontain.Habitants);
+
 
         UserName = entreprise.GetUserName();
         Money = entreprise.GetMoney();
@@ -54,111 +56,59 @@ public class SaveData : MonoBehaviour
         VeloType = entreprise.GetVeloType();
         CoachType = entreprise.GetCoachType();
         VetementType = entreprise.GetVetementType();
-        Debug.Log("save data n: " + UserName);
-        Debug.Log("save data m: " + Money);
-        Debug.Log("save data l: " + Lieu);
-        Debug.Log("save data s: " + Shop);
 
-        WhiteMontain = worket.GetWhiteMontain();
-        PalmCoconut = worket.GetPalmCoconut();
-        FenzyFarm = worket.GetFenzyFarm();
-        UrbanCity = worket.GetUrbanCity();
-
-        //Debug.Log("save data wm h: " + WhiteMontain.Habitants);
     }
 
-    public SaveData saveObject()
+    public void Save1()
     {
-        SaveData saveData = new SaveData();
-        return saveData;
-    }
-
-    public void Save()
-    {
-        SaveData playerData = saveObject();
-        
-         
+        SaveData playerData = new SaveData();
         playerData.InitializeSaveData();
 
-        // Sérialiser l'objet en JSON
         string jsonData = JsonUtility.ToJson(playerData);
 
-        // Sauvegarder le JSON dans un fichier
-        string filePath = Application.persistentDataPath + "/sauvegarde.json";
+        string filePath = Application.persistentDataPath + "/sauvegarde1.json";
         System.IO.File.WriteAllText(filePath, jsonData);
 
         Debug.Log("JSON data saved to: " + filePath);
-        
+
     }
-
-    
-    
-
-    /*public void Load()
+    public void Save2()
     {
-        string savePath = Application.persistentDataPath + "/data.json";
+        SaveData playerData = new SaveData();
+        playerData.InitializeSaveData();
 
-        // Vérifiez si le fichier existe avant de le charger
-        if (File.Exists(savePath))
-        {
-            // Lisez le contenu du fichier JSON en tant que chaîne
-            string jsonData = File.ReadAllText(savePath);
+        string jsonData = JsonUtility.ToJson(playerData);
 
-            // Désérialisez le contenu JSON en un objet SaveDataObject
-            SaveData saveDataObject = JsonUtility.FromJson<SaveData>(jsonData);
+        string filePath = Application.persistentDataPath + "/sauvegarde2.json";
+        System.IO.File.WriteAllText(filePath, jsonData);
 
-            // Mettez à jour les valeurs de la classe SaveData avec les données désérialisées
-            UserName = saveDataObject.UserName;
-            Money = saveDataObject.Money;
-            Lieu = saveDataObject.Lieu;
-            Shop = saveDataObject.Shop;
-            RestauType = saveDataObject.RestauType;
-            VeloType = saveDataObject.VeloType;
-            CoachType = saveDataObject.CoachType;
-            VetementType = saveDataObject.VetementType;
+        Debug.Log("JSON data saved to: " + filePath);
 
-            WhiteMontain = saveDataObject.WhiteMontain;
-            PalmCoconut = saveDataObject.PalmCoconut;
-            FenzyFarm = saveDataObject.FenzyFarm;
-            UrbanCity = saveDataObject.UrbanCity;
-
-            // Mettez à jour les autres membres de SaveData si nécessaire
-            Debug.Log("save data n: " + UserName);
-            Debug.Log("save data m: " + Money);
-            Debug.Log("save data l: " + Lieu);
-            Debug.Log("save data s: " + Shop);
-
-            Debug.Log("Chargement réussi depuis le fichier JSON.");
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }*/
-
-    /*public SaveData Load()
+    }
+    public void Save3()
     {
-        string savePath = Application.persistentDataPath + "/sauvegarde.json";
+        SaveData playerData = new SaveData();
+        playerData.InitializeSaveData();
 
-        // Vérifiez si le fichier existe avant de le charger
-        if (File.Exists(savePath))
-        {
-            // Lisez le contenu du fichier JSON en tant que chaîne
-            string jsonData = File.ReadAllText(savePath);
+        string jsonData = JsonUtility.ToJson(playerData);
 
-            // Désérialisez le contenu JSON en un nouvel objet SaveData
-            SaveData saveData = JsonUtility.FromJson<SaveData>(jsonData);
+        string filePath = Application.persistentDataPath + "/sauvegarde3.json";
+        System.IO.File.WriteAllText(filePath, jsonData);
 
-            Debug.Log("Chargement réussi depuis le fichier JSON.");
-            return saveData;
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-            return null;
-        }
-    }*/
+        Debug.Log("JSON data saved to: " + filePath);
 
-    
+    }
+    public void Save4()
+    {
+        SaveData playerData = new SaveData();
+        playerData.InitializeSaveData();
 
+        string jsonData = JsonUtility.ToJson(playerData);
+
+        string filePath = Application.persistentDataPath + "/sauvegarde4.json";
+        System.IO.File.WriteAllText(filePath, jsonData);
+
+        Debug.Log("JSON data saved to: " + filePath);
+
+    }
 }
