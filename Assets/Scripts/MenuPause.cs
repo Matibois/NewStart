@@ -7,11 +7,11 @@ public class MenuPause : MonoBehaviour
 {
 
     //private GameObject MenuUI;
-    private bool paused = false;
+    private bool paused = true;
 
     void Start()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         //MenuUI = GetComponent<GameObject>();
     }
 

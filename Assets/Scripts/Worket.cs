@@ -23,16 +23,15 @@ public class Worket : MonoBehaviour
         FenzyFarm = new Marche();
         UrbanCity = new Marche();
         Debug.Log( WhiteMontain.Habitants + " wm habitant from Worket start");
-
     }
 
     public Worket initiateWorket(Worket worket)
     {
         worket.WhiteMontain = WhiteMontain;
-        worket.PalmCoconut = new Marche();
-        worket.FenzyFarm = new Marche();
-        worket.UrbanCity = new Marche();
-         return worket;
+        worket.PalmCoconut = PalmCoconut;
+        worket.FenzyFarm = FenzyFarm;
+        worket.UrbanCity = UrbanCity;
+        return worket;
     }
 
     public void Load1()
@@ -45,14 +44,8 @@ public class Worket : MonoBehaviour
             SaveData saveData = new SaveData();
             JsonUtility.FromJsonOverwrite(jsonData, saveData);
 
-            Worket worket = new Worket();
-            worket = worket.initiateWorket(worket);
-            worket = saveData.worket;
+            Worket worket = saveData.worket;
 
-           //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
-
-
-            Debug.Log( saveData.WhiteMontain.Habitants + " WM habitant be like");
             Debug.Log("Load 1 From Worket Path : " + savePath);
         }
         else
@@ -60,80 +53,6 @@ public class Worket : MonoBehaviour
             Debug.LogError("Le fichier de sauvegarde n'existe pas.");
         }
     }
-    public void Load2()
-    {
-        string savePath = Application.persistentDataPath + "/sauvegarde2.json";
-
-        if (File.Exists(savePath))
-        {
-            string jsonData = File.ReadAllText(savePath);
-            SaveData saveData = new SaveData();
-            JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            Worket worket = new Worket();
-            worket = worket.initiateWorket(worket);
-            worket = saveData.worket;
-
-            //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
-
-
-            Debug.Log(saveData.WhiteMontain.Habitants + " WM habitant be like");
-            Debug.Log("Load 2 From Worket Path : " + savePath);
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }
-    public void Load3()
-    {
-        string savePath = Application.persistentDataPath + "/sauvegarde3.json";
-
-        if (File.Exists(savePath))
-        {
-            string jsonData = File.ReadAllText(savePath);
-            SaveData saveData = new SaveData();
-            JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            Worket worket = new Worket();
-            worket = worket.initiateWorket(worket);
-            worket = saveData.worket;
-
-            //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
-
-
-            Debug.Log(saveData.WhiteMontain.Habitants + " WM habitant be like");
-            Debug.Log("Load 3 From Worket Path : " + savePath);
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }
-    public void Load4()
-    {
-        string savePath = Application.persistentDataPath + "/sauvegarde4.json";
-
-        if (File.Exists(savePath))
-        {
-            string jsonData = File.ReadAllText(savePath);
-            SaveData saveData = new SaveData();
-            JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            Worket worket = new Worket();
-            worket = worket.initiateWorket(worket);
-            worket = saveData.worket;
-
-            //WhiteMontain.Habitants = worket.WhiteMontain.Habitants;
-
-
-            Debug.Log(saveData.WhiteMontain.Habitants + " WM habitant be like");
-            Debug.Log("Load 4 From Worket Path : " + savePath);
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }
+ 
 
 }

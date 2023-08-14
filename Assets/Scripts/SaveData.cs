@@ -26,13 +26,6 @@ public class SaveData : MonoBehaviour
 
     public SaveData() { }
 
-    private void Awake()
-    {
-        
-    }
-
-    
-
     public void InitializeSaveData()
     {
         entreprise = FindObjectOfType<Entreprise>();
@@ -46,7 +39,6 @@ public class SaveData : MonoBehaviour
 
         if (worket == null) Debug.LogError("worket null from savedata");
         Debug.Log(" initiate save" + WhiteMontain.Habitants);
-
 
         UserName = entreprise.GetUserName();
         Money = entreprise.GetMoney();

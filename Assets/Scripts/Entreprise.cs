@@ -17,6 +17,7 @@ public class Entreprise : MonoBehaviour
     [SerializeField] TMP_Text JobText;
 
     public TMP_Dropdown JobDB;
+    [SerializeField] GameObject ValidateJobBtn;
     [SerializeField] GameObject RestauDB;
     [SerializeField] GameObject VeloDB;
     [SerializeField] GameObject CoachDB;
@@ -86,23 +87,26 @@ public class Entreprise : MonoBehaviour
         NameText.text = UserName;
     }
     
-    public void jobChoice()
+    public void JobChoice()
     {        
         switch (JobDB.value)
         {
-            case 0:
+            case 1:
                 job = shop.Restau;
                 JobText.text = "Restaurateur";
+                ValidateJobBtn.SetActive(true);
                 RestauDB.SetActive(true);
                 VeloDB.SetActive(false);
                 CoachDB.SetActive(false);
                 VetementDB.SetActive(false);
                 jobtype = RestauDB.GetComponent<TMP_Dropdown>();
+                Debug.Log("restau"); 
                 break;
             
-            case 1:
+            case 2:
                 job = shop.Vélo;
                 JobText.text = "Magasin de vélo";
+                ValidateJobBtn.SetActive(true);
                 VeloDB.SetActive(true);
                 CoachDB.SetActive(false);
                 VetementDB.SetActive(false);
@@ -110,9 +114,10 @@ public class Entreprise : MonoBehaviour
                 jobtype = VeloDB.GetComponent<TMP_Dropdown>();
                 break;
 
-            case 2:
+            case 3:
                 job = shop.Coach;
                 JobText.text = "Coach";
+                ValidateJobBtn.SetActive(true);
                 CoachDB.SetActive(true);
                 VeloDB.SetActive(false);
                 RestauDB.SetActive(false);
@@ -121,18 +126,28 @@ public class Entreprise : MonoBehaviour
                 jobtype = CoachDB.GetComponent<TMP_Dropdown>();
                 break;
             
-            case 3:
+            case 4:
                 job = shop.Vetement;
                 JobText.text = "Magasin de vetement";
+                ValidateJobBtn.SetActive(true);
                 VetementDB.SetActive(true);
                 VeloDB.SetActive(false);
                 CoachDB.SetActive(false);
                 RestauDB.SetActive(false);
                 jobtype = VetementDB.GetComponent<TMP_Dropdown>();
                 break;
+
+            case 0:
+                
+                ValidateJobBtn.SetActive(false);
+                VetementDB.SetActive(false);
+                VeloDB.SetActive(false);
+                CoachDB.SetActive(false);
+                RestauDB.SetActive(false);
+                JobText.text = " ";
+                break;
         }
     }
-
     public void PosChoice()
     {
         switch (job)
@@ -172,7 +187,7 @@ public class Entreprise : MonoBehaviour
 
                     case 2:
                         veloType = VeloType.Electrique;
-                        PosText.text = "Electric";
+                        PosText.text = "Electrique";
                         break;
                 }
                 break;
@@ -192,7 +207,7 @@ public class Entreprise : MonoBehaviour
 
                     case 2:
                         coachType = CoachType.SelfDeveloppement;
-                        PosText.text = "Self developpement";
+                        PosText.text = "Developpement personnel";
                         break;
                 }
                 break;
@@ -218,7 +233,32 @@ public class Entreprise : MonoBehaviour
                 break;
         }
     }
-    
+
+    public void PlaceChoice()
+    {
+        switch (lieu)
+        {
+            case place.WhiteMontain:
+                lieu = place.WhiteMontain;
+                PlaceText.text = "White Montain";
+                break;
+
+            case place.PalmCoconut:
+                lieu = place.PalmCoconut;
+                PlaceText.text = "Palm Coconut";
+                break;
+
+            case place.UrbanCity:
+                lieu = place.UrbanCity;
+                PlaceText.text = "Urban City";
+                break;
+
+            case place.FenzyFarm:
+                lieu = place.FenzyFarm;
+                PlaceText.text = "Fenzy Farm";
+                break;
+        }
+    }
 
     public void ErasePlace()
     {
@@ -267,7 +307,10 @@ public class Entreprise : MonoBehaviour
 
     public void RefreshScreen()
     {
-
+        NameText.text = UserName;
+        JobChoice();
+        PosChoice();
+        PlaceChoice();
     }
 
     public void Load1()
