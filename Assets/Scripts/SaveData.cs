@@ -44,6 +44,7 @@ public class SaveData : MonoBehaviour
         Money = entreprise.GetMoney();
         Lieu = entreprise.GetPlace();
         Shop = entreprise.GetShop();
+
         RestauType = entreprise.GetRestauType();
         VeloType = entreprise.GetVeloType();
         CoachType = entreprise.GetCoachType();

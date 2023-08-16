@@ -10,7 +10,7 @@ using UnityEngine.Rendering.Universal;
 [System.Serializable]
 public class Entreprise : MonoBehaviour
 {
-    [SerializeField] TMP_InputField NameEntry; 
+    [SerializeField] TMP_InputField NameEntry;
     [SerializeField] TMP_Text NameText;
     [SerializeField] TMP_Text PosText;
     [SerializeField] TMP_Text PlaceText;
@@ -22,6 +22,19 @@ public class Entreprise : MonoBehaviour
     [SerializeField] GameObject VeloDB;
     [SerializeField] GameObject CoachDB;
     [SerializeField] GameObject VetementDB;
+
+
+    [SerializeField] public string UserName;
+    [SerializeField] public shop job;
+    [SerializeField] public int Money;
+    [SerializeField] public int TypeChoice;
+    [SerializeField] public place lieu;
+
+    [SerializeField] public RestauType restauType;
+    [SerializeField] public VeloType veloType;
+    [SerializeField] public CoachType coachType;
+    [SerializeField] public VetementType vetementType;
+    TMP_Dropdown jobtype;
 
     public enum place
     {
@@ -62,33 +75,23 @@ public class Entreprise : MonoBehaviour
         TechWear,
     }
 
-    [SerializeField] public string UserName;
-    [SerializeField] public shop job;
-    [SerializeField] public int Money;
-    [SerializeField] public int TypeChoice;
-    [SerializeField] public place lieu;
-
-    [SerializeField] public RestauType restauType;
-    [SerializeField] public VeloType veloType;
-    [SerializeField] public CoachType coachType;
-    [SerializeField] public VetementType vetementType;
-    TMP_Dropdown jobtype;
-
     public SaveData saveData;
 
     private void Awake()
     {
-        saveData = new SaveData();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void Named()
     {
         UserName = NameEntry.text;
         NameText.text = UserName;
+
+
     }
-    
+
     public void JobChoice()
-    {        
+    {
         switch (JobDB.value)
         {
             case 1:
@@ -100,9 +103,9 @@ public class Entreprise : MonoBehaviour
                 CoachDB.SetActive(false);
                 VetementDB.SetActive(false);
                 jobtype = RestauDB.GetComponent<TMP_Dropdown>();
-                Debug.Log("restau"); 
+                Debug.Log("restau");
                 break;
-            
+
             case 2:
                 job = shop.Vélo;
                 JobText.text = "Magasin de vélo";
@@ -125,7 +128,7 @@ public class Entreprise : MonoBehaviour
 
                 jobtype = CoachDB.GetComponent<TMP_Dropdown>();
                 break;
-            
+
             case 4:
                 job = shop.Vetement;
                 JobText.text = "Magasin de vetement";
@@ -138,7 +141,7 @@ public class Entreprise : MonoBehaviour
                 break;
 
             case 0:
-                
+
                 ValidateJobBtn.SetActive(false);
                 VetementDB.SetActive(false);
                 VeloDB.SetActive(false);
@@ -234,7 +237,7 @@ public class Entreprise : MonoBehaviour
         }
     }
 
-    public void PlaceChoice()
+    public void RefreshPlace()
     {
         switch (lieu)
         {
@@ -302,20 +305,70 @@ public class Entreprise : MonoBehaviour
     public place GetPlace() { return lieu; }
     public RestauType GetRestauType() { return restauType; }
     public VeloType GetVeloType() { return veloType; }
-    public CoachType GetCoachType() {  return coachType; }
+    public CoachType GetCoachType() { return coachType; }
     public VetementType GetVetementType() { return vetementType; }
 
-    public void RefreshScreen()
+    public void RefreshData(SaveData saveData)
     {
+        UserName = saveData.UserName;
+        Money = saveData.Money;
+        lieu = saveData.Lieu;
+        job = saveData.Shop;
+        restauType = saveData.RestauType;
+        veloType = saveData.VeloType;
+        coachType = saveData.CoachType;
+        vetementType = saveData.VetementType;
+
         NameText.text = UserName;
-        JobChoice();
-        PosChoice();
-        PlaceChoice();
+        PlaceText.text = lieu.ToString();
+
+        switch (job)
+        {
+            case shop.Restau:
+                JobText.text = job.ToString();
+                PosText.text = restauType.ToString();
+                break;
+            case shop.Vélo:
+                JobText.text = job.ToString();
+                PosText.text = veloType.ToString();
+                break;
+            case shop.Coach:
+                JobText.text = job.ToString();
+                PosText.text = coachType.ToString();
+                break;
+            case shop.Vetement:
+                JobText.text = job.ToString();
+                PosText.text = vetementType.ToString();
+                break;
+        }
+
     }
 
     public void Load1()
     {
         string savePath = Application.persistentDataPath + "/sauvegarde1.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
+
+
+            RefreshData(saveData);
+            Debug.Log("Load 1 Entreprise" + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
+    }
+    public void Load2()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde2.json";
 
         if (File.Exists(savePath))
         {
@@ -333,9 +386,67 @@ public class Entreprise : MonoBehaviour
             veloType = saveData.VeloType;
             coachType = saveData.CoachType;
             vetementType = saveData.VetementType;
-            
-            RefreshScreen();
-            Debug.Log("Chargement réussi depuis le fichier JSON " + savePath);
+
+            RefreshData(saveData);
+            Debug.Log("Load 2 Entreprise" + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
+    }
+    public void Load3()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde3.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
+            UserName = saveData.UserName;
+            Money = saveData.Money;
+            lieu = saveData.Lieu;
+            job = saveData.Shop;
+            restauType = saveData.RestauType;
+            veloType = saveData.VeloType;
+            coachType = saveData.CoachType;
+            vetementType = saveData.VetementType;
+
+            RefreshData(saveData);
+            Debug.Log("Load 3 Entreprise" + savePath);
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
+    }
+    public void Load4()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde4.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
+            UserName = saveData.UserName;
+            Money = saveData.Money;
+            lieu = saveData.Lieu;
+            job = saveData.Shop;
+            restauType = saveData.RestauType;
+            veloType = saveData.VeloType;
+            coachType = saveData.CoachType;
+            vetementType = saveData.VetementType;
+
+            RefreshData(saveData);
+            Debug.Log("Load 4 Entreprise" + savePath);
         }
         else
         {

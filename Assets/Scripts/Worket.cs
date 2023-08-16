@@ -16,6 +16,12 @@ public class Worket : MonoBehaviour
 
     public Worket() {}
 
+    private void Awake()
+    {
+        
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     void Start()
     {
         WhiteMontain = new Marche();
@@ -45,14 +51,95 @@ public class Worket : MonoBehaviour
             JsonUtility.FromJsonOverwrite(jsonData, saveData);
 
             Worket worket = saveData.worket;
+            WhiteMontain = saveData.WhiteMontain;
+            PalmCoconut = saveData.PalmCoconut;
+            FenzyFarm = saveData.FenzyFarm;
+            UrbanCity = saveData.UrbanCity;
+            Debug.Log( WhiteMontain.Habitants );
 
             Debug.Log("Load 1 From Worket Path : " + savePath);
+            
         }
         else
         {
             Debug.LogError("Le fichier de sauvegarde n'existe pas.");
         }
     }
- 
+    public void Load2()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde2.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = saveData.worket;
+            WhiteMontain = saveData.WhiteMontain;
+            PalmCoconut = saveData.PalmCoconut;
+            FenzyFarm = saveData.FenzyFarm;
+            UrbanCity = saveData.UrbanCity;
+            Debug.Log(WhiteMontain.Habitants);
+
+            Debug.Log("Load 2 From Worket Path : " + savePath);
+
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
+    }
+    public void Load3()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde3.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = saveData.worket;
+            WhiteMontain = saveData.WhiteMontain;
+            PalmCoconut = saveData.PalmCoconut;
+            FenzyFarm = saveData.FenzyFarm;
+            UrbanCity = saveData.UrbanCity;
+            Debug.Log(WhiteMontain.Habitants);
+
+            Debug.Log("Load 3 From Worket Path : " + savePath);
+
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
+    }
+    public void Load4()
+    {
+        string savePath = Application.persistentDataPath + "/sauvegarde4.json";
+
+        if (File.Exists(savePath))
+        {
+            string jsonData = File.ReadAllText(savePath);
+            SaveData saveData = new SaveData();
+            JsonUtility.FromJsonOverwrite(jsonData, saveData);
+
+            Worket worket = saveData.worket;
+            WhiteMontain = saveData.WhiteMontain;
+            PalmCoconut = saveData.PalmCoconut;
+            FenzyFarm = saveData.FenzyFarm;
+            UrbanCity = saveData.UrbanCity;
+            Debug.Log(WhiteMontain.Habitants);
+
+            Debug.Log("Load 3 From Worket Path : " + savePath);
+
+        }
+        else
+        {
+            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
+        }
+    }
+
 
 }
