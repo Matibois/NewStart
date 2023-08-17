@@ -1,8 +1,9 @@
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Entreprise;
 
-[System.Serializable] 
+[System.Serializable]
 public class SaveData : MonoBehaviour
 {
     public GameObject profil;
@@ -24,6 +25,7 @@ public class SaveData : MonoBehaviour
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
 
+    public static int onSave = 1;
     public SaveData() { }
 
     public void InitializeSaveData()
@@ -33,7 +35,7 @@ public class SaveData : MonoBehaviour
         worket = worket.initiateWorket(worket);
 
         WhiteMontain = worket.WhiteMontain;
-        PalmCoconut  = worket.PalmCoconut;
+        PalmCoconut = worket.PalmCoconut;
         FenzyFarm = worket.FenzyFarm;
         UrbanCity = worket.UrbanCity;
 
@@ -50,6 +52,25 @@ public class SaveData : MonoBehaviour
         CoachType = entreprise.GetCoachType();
         VetementType = entreprise.GetVetementType();
 
+    }
+
+    public void Save()
+    {
+        SaveData playerData = new SaveData();
+        playerData.InitializeSaveData();
+
+        string jsonData = JsonUtility.ToJson(playerData);
+
+        string filePath = Application.persistentDataPath + "/sauvegarde" + onSave + ".json";
+        System.IO.File.WriteAllText(filePath, jsonData);
+
+        Debug.Log("JSON data saved to: " + filePath);
+
+    }
+
+    public void ChangeSave(int save)
+    {
+        onSave = save;
     }
 
     public void Save1()
@@ -104,4 +125,6 @@ public class SaveData : MonoBehaviour
         Debug.Log("JSON data saved to: " + filePath);
 
     }
+
+   
 }

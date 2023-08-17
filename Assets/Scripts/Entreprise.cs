@@ -341,12 +341,13 @@ public class Entreprise : MonoBehaviour
                 PosText.text = vetementType.ToString();
                 break;
         }
+        GameManager.LoadPlace(lieu);
 
     }
 
-    public void Load1()
+    public void Load()
     {
-        string savePath = Application.persistentDataPath + "/sauvegarde1.json";
+        string savePath = Application.persistentDataPath + "/sauvegarde" + SaveData.onSave + ".json" ;
 
         if (File.Exists(savePath))
         {
@@ -359,100 +360,12 @@ public class Entreprise : MonoBehaviour
 
 
             RefreshData(saveData);
-            Debug.Log("Load 1 Entreprise" + savePath);
+            Debug.Log("Load : " + SaveData.onSave + " Entreprise on save" + savePath);
         }
         else
         {
             Debug.LogError("Le fichier de sauvegarde n'existe pas.");
         }
     }
-    public void Load2()
-    {
-        string savePath = Application.persistentDataPath + "/sauvegarde2.json";
-
-        if (File.Exists(savePath))
-        {
-            string jsonData = File.ReadAllText(savePath);
-
-            SaveData saveData = new SaveData();
-            JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
-            UserName = saveData.UserName;
-            Money = saveData.Money;
-            lieu = saveData.Lieu;
-            job = saveData.Shop;
-            restauType = saveData.RestauType;
-            veloType = saveData.VeloType;
-            coachType = saveData.CoachType;
-            vetementType = saveData.VetementType;
-
-            RefreshData(saveData);
-            Debug.Log("Load 2 Entreprise" + savePath);
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }
-    public void Load3()
-    {
-        string savePath = Application.persistentDataPath + "/sauvegarde3.json";
-
-        if (File.Exists(savePath))
-        {
-            string jsonData = File.ReadAllText(savePath);
-
-            SaveData saveData = new SaveData();
-            JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
-            UserName = saveData.UserName;
-            Money = saveData.Money;
-            lieu = saveData.Lieu;
-            job = saveData.Shop;
-            restauType = saveData.RestauType;
-            veloType = saveData.VeloType;
-            coachType = saveData.CoachType;
-            vetementType = saveData.VetementType;
-
-            RefreshData(saveData);
-            Debug.Log("Load 3 Entreprise" + savePath);
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }
-    public void Load4()
-    {
-        string savePath = Application.persistentDataPath + "/sauvegarde4.json";
-
-        if (File.Exists(savePath))
-        {
-            string jsonData = File.ReadAllText(savePath);
-
-            SaveData saveData = new SaveData();
-            JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
-            UserName = saveData.UserName;
-            Money = saveData.Money;
-            lieu = saveData.Lieu;
-            job = saveData.Shop;
-            restauType = saveData.RestauType;
-            veloType = saveData.VeloType;
-            coachType = saveData.CoachType;
-            vetementType = saveData.VetementType;
-
-            RefreshData(saveData);
-            Debug.Log("Load 4 Entreprise" + savePath);
-        }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
-    }
+    
 }
-
-

@@ -21,6 +21,16 @@ public class MenuPause : MonoBehaviour
         paused = !paused;
     }
 
+    public void Stop()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void Play()
+    {
+        Time.timeScale = 1;
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
