@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static Entreprise;
 
 public class Developpement : MonoBehaviour
 {
-    
+    public Slider slider;
+
     public GameObject marche;
     public GameObject profil;
     private Entreprise entreprise;
@@ -16,27 +18,36 @@ public class Developpement : MonoBehaviour
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
 
-    public string UserName;
-    public int Money;
-    public place Lieu;
-    public shop Shop;
-    public RestauType RestauType;
-    public VeloType VeloType;
-    public CoachType CoachType;
-    public VetementType VetementType;
+    private int Profit;
 
     private void Start()
     {
-        worket = GetComponent<Worket>();
-        worket.initiateWorket(worket);
+        worket = FindObjectOfType<Worket>();
+        worket = worket.initiateWorket(worket);
+        entreprise = FindObjectOfType<Entreprise>();
+
         entreprise.lieu = entreprise.GetPlace();
         entreprise.job = entreprise.GetShop();
         entreprise.restauType = entreprise.GetRestauType();
         entreprise.vetementType = entreprise.GetVetementType();
         entreprise.coachType = entreprise.GetCoachType();
         entreprise.veloType = entreprise.GetVeloType();
-        Debug.Log("entreprise.lieu");
-        Debug.Log("hab wh dvlpt : " + worket.WhiteMontain.Habitants);
+        Debug.Log(entreprise.lieu);
     }
 
+
+    public void EvaluateProfit()
+    {
+        switch (entreprise.job)
+        {
+            case shop.Restau:
+                EvaluateRestau();
+                break;
+        }
+    }
+
+    private void EvaluateRestau()
+    {
+
+    }
 }

@@ -15,8 +15,8 @@ public class Worket : MonoBehaviour
    
     public Worket() {}
 
-    private void Awake() => DontDestroyOnLoad(this.gameObject);
     
+    private void Awake() => DontDestroyOnLoad(this.gameObject);
     void Start()
     {
         WhiteMontain = new Marche();
