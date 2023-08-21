@@ -73,58 +73,7 @@ public class SaveData : MonoBehaviour
         onSave = save;
     }
 
-    public void Save1()
-    {
-        SaveData playerData = new SaveData();
-        playerData.InitializeSaveData();
-
-        string jsonData = JsonUtility.ToJson(playerData);
-
-        string filePath = Application.persistentDataPath + "/sauvegarde1.json";
-        System.IO.File.WriteAllText(filePath, jsonData);
-
-        Debug.Log("JSON data saved to: " + filePath);
-
-    }
-    public void Save2()
-    {
-        SaveData playerData = new SaveData();
-        playerData.InitializeSaveData();
-
-        string jsonData = JsonUtility.ToJson(playerData);
-
-        string filePath = Application.persistentDataPath + "/sauvegarde2.json";
-        System.IO.File.WriteAllText(filePath, jsonData);
-
-        Debug.Log("JSON data saved to: " + filePath);
-
-    }
-    public void Save3()
-    {
-        SaveData playerData = new SaveData();
-        playerData.InitializeSaveData();
-
-        string jsonData = JsonUtility.ToJson(playerData);
-
-        string filePath = Application.persistentDataPath + "/sauvegarde3.json";
-        System.IO.File.WriteAllText(filePath, jsonData);
-
-        Debug.Log("JSON data saved to: " + filePath);
-
-    }
-    public void Save4()
-    {
-        SaveData playerData = new SaveData();
-        playerData.InitializeSaveData();
-
-        string jsonData = JsonUtility.ToJson(playerData);
-
-        string filePath = Application.persistentDataPath + "/sauvegarde4.json";
-        System.IO.File.WriteAllText(filePath, jsonData);
-
-        Debug.Log("JSON data saved to: " + filePath);
-
-    }
+    
 
    
 }

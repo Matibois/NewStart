@@ -13,15 +13,10 @@ public class Worket : MonoBehaviour
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
    
-
     public Worket() {}
 
-    private void Awake()
-    {
-        
-        DontDestroyOnLoad(this.gameObject);
-    }
-
+    private void Awake() => DontDestroyOnLoad(this.gameObject);
+    
     void Start()
     {
         WhiteMontain = new Marche();
@@ -59,10 +54,9 @@ public class Worket : MonoBehaviour
 
             Debug.Log("Load" + SaveData.onSave +" From Worket Path : " + savePath);
         }
-        else
-        {
-            Debug.LogError("Le fichier de sauvegarde n'existe pas.");
-        }
+        else Debug.LogError("Le fichier de sauvegarde n'existe pas."); 
     }
+
+
 
 }
