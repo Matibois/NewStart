@@ -748,7 +748,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2024647036}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -17953,9 +17953,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38efcda40f30d4f4dbb5ae345d2fa8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slider: {fileID: 76886269}
   marche: {fileID: 1575567651}
   profil: {fileID: 1750439073}
-  worket: {fileID: 0}
+  worket: {fileID: 1575567652}
   WhiteMontain:
     Habitants: 187489
     RPH: 60
@@ -18036,14 +18037,6 @@ MonoBehaviour:
     VetementLuxe: 247
     VetementSport: 416
     VetementTechWear: 186
-  UserName: 
-  Money: 0
-  Lieu: 0
-  Shop: 0
-  RestauType: 0
-  VeloType: 0
-  CoachType: 0
-  VetementType: 0
 --- !u!1 &1758841475
 GameObject:
   m_ObjectHideFlags: 0
