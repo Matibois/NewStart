@@ -42,41 +42,41 @@ public class Marche
 
     private int SetHabitant()
     {
-        return new System.Random().Next(4000, 400001);
+        return new System.Random().Next(1, 4);
     }
 
     private int AverageAge()
     {
-        return new System.Random().Next(28, 61);
+        return new System.Random().Next(1, 4);
     }
 
     private int AverageMoney()
     {
-        return new System.Random().Next(23, 61);
+        return new System.Random().Next(1, 4);
     }
 
     public void CreateEntreprise()
     {
         System.Random random = new System.Random();
 
-        RestauLuxe = random.Next(1, Habitants / 400);
-        RestauBio = random.Next(1, Habitants / 400);
-        RestauFastFood = random.Next(1, Habitants / 400);
+        RestauLuxe = random.Next(1, 4);
+        RestauBio = random.Next(1, 4);
+        RestauFastFood = random.Next(1, 4);
         RestauNBR = RestauLuxe + RestauFastFood + RestauBio;
 
-        VeloCourse = random.Next(1, Habitants / 400);
-        VeloVTT = random.Next(1, Habitants / 400);
-        VeloElectric = random.Next(1, Habitants / 400);
+        VeloCourse = random.Next(1, 4);
+        VeloVTT = random.Next(1, 4);
+        VeloElectric = random.Next(1, 4);
         VeloNBR = VeloCourse + VeloVTT + VeloElectric;
 
-        CoachSport = random.Next(1, Habitants / 400);
-        CoachEntreprise = random.Next(1, Habitants / 400);
-        CoachSelfDeveloppement = random.Next(1, Habitants / 400);
+        CoachSport = random.Next(1, 4);
+        CoachEntreprise = random.Next(1, 4);
+        CoachSelfDeveloppement = random.Next(1, 4);
         CoachNBR = CoachSport + CoachEntreprise + CoachSelfDeveloppement;
 
-        VetementLuxe = random.Next(1, Habitants / 400);
-        VetementSport = random.Next(1, Habitants / 400);
-        VetementTechWear = random.Next(1, Habitants / 400);
+        VetementLuxe = random.Next(1, 4);
+        VetementSport = random.Next(1, 4);
+        VetementTechWear = random.Next(1, 4);
         VetementNBR = VetementLuxe + VetementSport + VetementTechWear;
     }
 }

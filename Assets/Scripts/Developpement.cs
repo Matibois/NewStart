@@ -17,6 +17,14 @@ public class Developpement : MonoBehaviour
     [SerializeField] public Marche PalmCoconut;
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
+    private Marche Concurrent;
+
+    private RestauType restauType;
+    private VeloType veloType;
+    private CoachType coachType;
+    private VetementType vetementType;
+    private place lieu;
+    private shop job;
 
     private int Profit;
 
@@ -26,24 +34,35 @@ public class Developpement : MonoBehaviour
         worket = worket.initiateWorket(worket);
         entreprise = FindObjectOfType<Entreprise>();
 
-        entreprise.lieu = entreprise.GetPlace();
-        entreprise.job = entreprise.GetShop();
-        entreprise.restauType = entreprise.GetRestauType();
-        entreprise.vetementType = entreprise.GetVetementType();
-        entreprise.coachType = entreprise.GetCoachType();
-        entreprise.veloType = entreprise.GetVeloType();
+        WhiteMontain = worket.WhiteMontain;
+        UrbanCity = worket.UrbanCity;
+        FenzyFarm = worket.FenzyFarm;
+        PalmCoconut = worket.PalmCoconut;
+
+        lieu = entreprise.GetPlace();
+        job = entreprise.GetShop();
+        restauType = entreprise.GetRestauType();
+        vetementType = entreprise.GetVetementType();
+        coachType = entreprise.GetCoachType();
+        veloType = entreprise.GetVeloType();
+
         Debug.Log(entreprise.lieu);
     }
 
 
     public void EvaluateProfit()
     {
-        switch (entreprise.job)
+        switch (job)
         {
             case shop.Restau:
                 EvaluateRestau();
                 break;
         }
+    }
+
+    public void WhichPlace()
+    {
+        
     }
 
     private void EvaluateRestau()
