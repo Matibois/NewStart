@@ -18,9 +18,9 @@ public class Entreprise : MonoBehaviour
 
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
-    [SerializeField] GameObject RestauDB;
+    [SerializeField] GameObject AlimentDB;
     [SerializeField] GameObject VeloDB;
-    [SerializeField] GameObject CoachDB;
+    [SerializeField] GameObject ServiceDB;
     [SerializeField] GameObject VetementDB;
 
 
@@ -30,9 +30,9 @@ public class Entreprise : MonoBehaviour
     [SerializeField] public int TypeChoice;
     [SerializeField] public place lieu;
 
-    [SerializeField] public RestauType restauType;
+    [SerializeField] public AlimentType alimentType;
     [SerializeField] public VeloType veloType;
-    [SerializeField] public CoachType coachType;
+    [SerializeField] public ServiceType serviceType;
     [SerializeField] public VetementType vetementType;
     TMP_Dropdown jobtype;
 
@@ -45,34 +45,34 @@ public class Entreprise : MonoBehaviour
     }
     public enum shop
     {
-        Restau,
-        Vélo,
-        Coach,
+        Aliment,
+        Velo,
+        Service,
         Vetement,
     }
-    public enum RestauType
+    public enum AlimentType
     {
-        Luxe,
-        EcoLocal,
-        FastFood,
+        Surgele,
+        Bio,
+        Livraison,
     }
     public enum VeloType
     {
         Course,
         VTT,
-        Electrique,
+        Ville,
     }
-    public enum CoachType
+    public enum ServiceType
     {
-        Sport,
-        Entreprise,
-        SelfDeveloppement,
+        CoachSport,
+        AidePerso,
+        ProfParticulier,
     }
     public enum VetementType
     {
         Luxe,
         Sport,
-        TechWear,
+        Quotidiens,
     }
 
     public SaveData saveData;
@@ -95,38 +95,38 @@ public class Entreprise : MonoBehaviour
         switch (JobDB.value)
         {
             case 1:
-                job = shop.Restau;
-                JobText.text = "Restaurateur";
+                job = shop.Aliment;
+                JobText.text = "Alimentrateur";
                 ValidateJobBtn.SetActive(true);
-                RestauDB.SetActive(true);
+                AlimentDB.SetActive(true);
                 VeloDB.SetActive(false);
-                CoachDB.SetActive(false);
+                ServiceDB.SetActive(false);
                 VetementDB.SetActive(false);
-                jobtype = RestauDB.GetComponent<TMP_Dropdown>();
-                Debug.Log("restau");
+                jobtype = AlimentDB.GetComponent<TMP_Dropdown>();
+                Debug.Log("Aliment");
                 break;
 
             case 2:
-                job = shop.Vélo;
-                JobText.text = "Magasin de vélo";
+                job = shop.Velo;
+                JobText.text = "Magasin de Velo";
                 ValidateJobBtn.SetActive(true);
                 VeloDB.SetActive(true);
-                CoachDB.SetActive(false);
+                ServiceDB.SetActive(false);
                 VetementDB.SetActive(false);
-                RestauDB.SetActive(false);
+                AlimentDB.SetActive(false);
                 jobtype = VeloDB.GetComponent<TMP_Dropdown>();
                 break;
 
             case 3:
-                job = shop.Coach;
-                JobText.text = "Coach";
+                job = shop.Service;
+                JobText.text = "Service Personnelle";
                 ValidateJobBtn.SetActive(true);
-                CoachDB.SetActive(true);
+                ServiceDB.SetActive(true);
                 VeloDB.SetActive(false);
-                RestauDB.SetActive(false);
+                AlimentDB.SetActive(false);
                 VetementDB.SetActive(false);
 
-                jobtype = CoachDB.GetComponent<TMP_Dropdown>();
+                jobtype = ServiceDB.GetComponent<TMP_Dropdown>();
                 break;
 
             case 4:
@@ -135,8 +135,8 @@ public class Entreprise : MonoBehaviour
                 ValidateJobBtn.SetActive(true);
                 VetementDB.SetActive(true);
                 VeloDB.SetActive(false);
-                CoachDB.SetActive(false);
-                RestauDB.SetActive(false);
+                ServiceDB.SetActive(false);
+                AlimentDB.SetActive(false);
                 jobtype = VetementDB.GetComponent<TMP_Dropdown>();
                 break;
 
@@ -145,8 +145,8 @@ public class Entreprise : MonoBehaviour
                 ValidateJobBtn.SetActive(false);
                 VetementDB.SetActive(false);
                 VeloDB.SetActive(false);
-                CoachDB.SetActive(false);
-                RestauDB.SetActive(false);
+                ServiceDB.SetActive(false);
+                AlimentDB.SetActive(false);
                 JobText.text = " ";
                 break;
         }
@@ -155,27 +155,27 @@ public class Entreprise : MonoBehaviour
     {
         switch (job)
         {
-            case shop.Restau:
+            case shop.Aliment:
                 switch (jobtype.value)
                 {
                     case 0:
-                        restauType = RestauType.Luxe;
-                        PosText.text = "Luxe";
+                        alimentType = AlimentType.Surgele;
+                        PosText.text = "Surgelé";
                         break;
 
                     case 1:
-                        restauType = RestauType.EcoLocal;
-                        PosText.text = "Bio local";
+                        alimentType = AlimentType.Bio;
+                        PosText.text = "Bio";
                         break;
 
                     case 2:
-                        restauType = RestauType.FastFood;
-                        PosText.text = "Fast Food";
+                        alimentType = AlimentType.Livraison;
+                        PosText.text = "Livraison";
                         break;
                 }
                 break;
 
-            case shop.Vélo:
+            case shop.Velo:
                 switch (jobtype.value)
                 {
                     case 0:
@@ -189,28 +189,28 @@ public class Entreprise : MonoBehaviour
                         break;
 
                     case 2:
-                        veloType = VeloType.Electrique;
-                        PosText.text = "Electrique";
+                        veloType = VeloType.Ville;
+                        PosText.text = "Ville";
                         break;
                 }
                 break;
 
-            case shop.Coach:
+            case shop.Service:
                 switch (jobtype.value)
                 {
                     case 0:
-                        coachType = CoachType.Sport;
-                        PosText.text = "Sport";
+                        serviceType = ServiceType.CoachSport;
+                        PosText.text = "Coach sportif";
                         break;
 
                     case 1:
-                        coachType = CoachType.Entreprise;
-                        PosText.text = "Entreprise";
+                        serviceType = ServiceType.AidePerso;
+                        PosText.text = "Aide à la personne";
                         break;
 
                     case 2:
-                        coachType = CoachType.SelfDeveloppement;
-                        PosText.text = "Developpement personnel";
+                        serviceType = ServiceType.ProfParticulier;
+                        PosText.text = "Prof particulier";
                         break;
                 }
                 break;
@@ -229,8 +229,8 @@ public class Entreprise : MonoBehaviour
                         break;
 
                     case 2:
-                        vetementType = VetementType.TechWear;
-                        PosText.text = "Tech Wear";
+                        vetementType = VetementType.Quotidiens;
+                        PosText.text = "Quotidiens";
                         break;
                 }
                 break;
@@ -303,9 +303,9 @@ public class Entreprise : MonoBehaviour
     public shop GetShop() { return job; }
 
     public place GetPlace() { return lieu; }
-    public RestauType GetRestauType() { return restauType; }
+    public AlimentType GetAlimentType() { return alimentType; }
     public VeloType GetVeloType() { return veloType; }
-    public CoachType GetCoachType() { return coachType; }
+    public ServiceType GetServiceType() { return serviceType; }
     public VetementType GetVetementType() { return vetementType; }
 
     public void RefreshData(SaveData saveData)
@@ -314,9 +314,9 @@ public class Entreprise : MonoBehaviour
         Money = saveData.Money;
         lieu = saveData.Lieu;
         job = saveData.Shop;
-        restauType = saveData.RestauType;
+        alimentType = saveData.AlimentType;
         veloType = saveData.VeloType;
-        coachType = saveData.CoachType;
+        serviceType = saveData.ServiceType;
         vetementType = saveData.VetementType;
 
         NameText.text = UserName;
@@ -324,17 +324,17 @@ public class Entreprise : MonoBehaviour
 
         switch (job)
         {
-            case shop.Restau:
+            case shop.Aliment:
                 JobText.text = job.ToString();
-                PosText.text = restauType.ToString();
+                PosText.text = alimentType.ToString();
                 break;
-            case shop.Vélo:
+            case shop.Velo:
                 JobText.text = job.ToString();
                 PosText.text = veloType.ToString();
                 break;
-            case shop.Coach:
+            case shop.Service:
                 JobText.text = job.ToString();
-                PosText.text = coachType.ToString();
+                PosText.text = serviceType.ToString();
                 break;
             case shop.Vetement:
                 JobText.text = job.ToString();

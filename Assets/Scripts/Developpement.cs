@@ -17,11 +17,12 @@ public class Developpement : MonoBehaviour
     [SerializeField] public Marche PalmCoconut;
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
+    private Marche Place;
     private Marche Concurrent;
 
-    private RestauType restauType;
+    private AlimentType alimentType;
     private VeloType veloType;
-    private CoachType coachType;
+    private ServiceType ServiceType;
     private VetementType vetementType;
     private place lieu;
     private shop job;
@@ -41,32 +42,73 @@ public class Developpement : MonoBehaviour
 
         lieu = entreprise.GetPlace();
         job = entreprise.GetShop();
-        restauType = entreprise.GetRestauType();
+        alimentType = entreprise.GetAlimentType();
         vetementType = entreprise.GetVetementType();
-        coachType = entreprise.GetCoachType();
+        ServiceType = entreprise.GetServiceType();
         veloType = entreprise.GetVeloType();
-
-        Debug.Log(entreprise.lieu);
     }
 
 
     public void EvaluateProfit()
     {
-        switch (job)
+        /*switch (job)
         {
-            case shop.Restau:
-                EvaluateRestau();
+            case shop.Aliment:
+                EvaluateAliment();
+                break;
+        }*/
+    }
+
+    private void DefinePlace()
+    {
+        switch (lieu)
+        {
+            case place.WhiteMontain:
+                Place = WhiteMontain;
+                break;
+
+            case place.UrbanCity:
+                Place = UrbanCity;
+                break;
+
+            case place.FenzyFarm:
+                Place = FenzyFarm;
+                break;
+
+            case place.PalmCoconut:
+                Place = PalmCoconut;
                 break;
         }
     }
 
-    public void WhichPlace()
+    private void EvaluateAliment(AlimentType alimentType)
     {
-        
+        int profit;
+
+         switch (alimentType)
+         {
+             case AlimentType.Surgele:
+                RapportTest(Place.AlimentSurgele - Place.Habitants); 
+                break;
+         }
+
+
     }
 
-    private void EvaluateRestau()
+    private void RapportTest(float rapport)
     {
+        /*switch (rapport)
+        {
+            case 0:
 
+                Break;
+            case 1:
+
+                Break;
+            case 2:
+
+                Break;
+
+        }*/
     }
 }

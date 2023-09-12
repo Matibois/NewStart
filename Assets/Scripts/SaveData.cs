@@ -14,9 +14,9 @@ public class SaveData : MonoBehaviour
     public int Money;
     public place Lieu;
     public shop Shop;
-    public RestauType RestauType;
+    public AlimentType AlimentType;
     public VeloType VeloType;
-    public CoachType CoachType;
+    public ServiceType ServiceType;
     public VetementType VetementType;
 
     [SerializeField] public Worket worket;
@@ -47,9 +47,9 @@ public class SaveData : MonoBehaviour
         Lieu = entreprise.GetPlace();
         Shop = entreprise.GetShop();
 
-        RestauType = entreprise.GetRestauType();
+        AlimentType = entreprise.GetAlimentType();
         VeloType = entreprise.GetVeloType();
-        CoachType = entreprise.GetCoachType();
+        ServiceType = entreprise.GetServiceType();
         VetementType = entreprise.GetVetementType();
 
     }
