@@ -46,17 +46,25 @@ public class Developpement : MonoBehaviour
         vetementType = entreprise.GetVetementType();
         ServiceType = entreprise.GetServiceType();
         veloType = entreprise.GetVeloType();
+
+        DefinePlace();
     }
 
 
     public void EvaluateProfit()
     {
-        /*switch (job)
+        switch (job)
         {
             case shop.Aliment:
                 EvaluateAliment();
                 break;
-        }*/
+            case shop.Service:
+                break;
+            case shop.Velo:
+                break;
+            case shop.Vetement:
+                break;
+        }
     }
 
     private void DefinePlace()
@@ -81,34 +89,33 @@ public class Developpement : MonoBehaviour
         }
     }
 
-    private void EvaluateAliment(AlimentType alimentType)
+    private void EvaluateAliment()
     {
-        int profit;
+        int rapportAliment;
+        rapportAliment = ((Place.AlimentSurgele - Place.Habitants) * entreprise.intSurgele);
+        rapportAliment += ((Place.AlimentLivraison - Place.Habitants) * entreprise.intLivraison);
+        rapportAliment += ((Place.AlimentBio - Place.Habitants) * entreprise.intBio);
 
-         switch (alimentType)
-         {
-             case AlimentType.Surgele:
-                RapportTest(Place.AlimentSurgele - Place.Habitants); 
-                break;
-         }
-
-
+        
     }
+
+  
 
     private void RapportTest(float rapport)
     {
-        /*switch (rapport)
+        //Texte robot catégorie bien choisis ?
+        switch (rapport)
         {
             case 0:
 
-                Break;
+                break;
             case 1:
 
-                Break;
+                break;
             case 2:
 
-                Break;
+                break;
 
-        }*/
+        }
     }
 }

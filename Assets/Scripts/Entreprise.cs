@@ -36,6 +36,23 @@ public class Entreprise : MonoBehaviour
     [SerializeField] public VetementType vetementType;
     TMP_Dropdown jobtype;
 
+    [SerializeField] public int intSurgele;
+    [SerializeField] public int intLivraison;
+    [SerializeField] public int intBio;
+
+    [SerializeField] public int intCourses;
+    [SerializeField] public int intVTT;
+    [SerializeField] public int intVille;
+
+    [SerializeField] public int intAidePerso;
+    [SerializeField] public int intProfParticulier;
+    [SerializeField] public int intCoachSport;
+
+    [SerializeField] public int intLuxe;
+    [SerializeField] public int intSport;
+    [SerializeField] public int intQuotidiens;
+
+
     public enum place
     {
         WhiteMontain,
@@ -80,14 +97,13 @@ public class Entreprise : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+
     }
 
     public void Named()
     {
         UserName = NameEntry.text;
         NameText.text = UserName;
-
-
     }
 
     public void JobChoice()
@@ -103,7 +119,6 @@ public class Entreprise : MonoBehaviour
                 ServiceDB.SetActive(false);
                 VetementDB.SetActive(false);
                 jobtype = AlimentDB.GetComponent<TMP_Dropdown>();
-                Debug.Log("Aliment");
                 break;
 
             case 2:
@@ -308,6 +323,22 @@ public class Entreprise : MonoBehaviour
     public ServiceType GetServiceType() { return serviceType; }
     public VetementType GetVetementType() { return vetementType; }
 
+    public int GetLuxe() {return intLuxe;}
+    public int GetSport() {return intSport;}
+    public int GetQuotidiens() {return intQuotidiens;}
+
+    public int GetAidePerso() { return intAidePerso; }
+    public int GetCoachSport() { return intCoachSport; }
+    public int GetProfParticulier() { return intProfParticulier; }
+
+    public int GetBio() { return intBio; }
+    public int GetLivraison() { return intLivraison; }
+    public int GetSurgele() { return intSurgele; }
+
+    public int GetVTT() { return intVTT; }
+    public int GetCourses() { return intCourses; }
+    public int GetVille() { return intVille; }
+
     public void RefreshData(SaveData saveData)
     {
         UserName = saveData.UserName;
@@ -347,7 +378,7 @@ public class Entreprise : MonoBehaviour
 
     public void Load()
     {
-        string savePath = Application.persistentDataPath + "/sauvegarde" + SaveData.onSave + ".json" ;
+        string savePath = Application.persistentDataPath + "/sauvegarde" + SaveData.onSave + ".json";
 
         if (File.Exists(savePath))
         {
@@ -367,5 +398,5 @@ public class Entreprise : MonoBehaviour
             Debug.LogError("Le fichier de sauvegarde n'existe pas.");
         }
     }
-    
+
 }

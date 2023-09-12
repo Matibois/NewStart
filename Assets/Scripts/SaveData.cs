@@ -25,6 +25,19 @@ public class SaveData : MonoBehaviour
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
 
+    public int intSurgele;
+    public int intLivraison;
+    public int intBio;
+    public int intCourses;
+    public int intVTT;
+    public int intVille;
+    public int intAidePerso;
+    public int intProfParticulier;
+    public int intCoachSport;
+    public int intLuxe;
+    public int intSport;
+    public int intQuotidiens;
+
     public static int onSave = 1;
     public SaveData() { }
 
@@ -52,6 +65,18 @@ public class SaveData : MonoBehaviour
         ServiceType = entreprise.GetServiceType();
         VetementType = entreprise.GetVetementType();
 
+        intSurgele = entreprise.GetSurgele();
+        intLivraison = entreprise.GetLivraison();
+        intBio = entreprise.GetBio();
+        intCourses = entreprise.GetCourses();
+        intVTT = entreprise.GetVTT();
+        intVille = entreprise.GetVille();
+        intAidePerso = entreprise.GetAidePerso();
+        intProfParticulier = entreprise.GetProfParticulier();
+        intCoachSport = entreprise.GetCoachSport();
+        intLuxe = entreprise.GetLuxe();
+        intSport = entreprise.GetSport();
+        intQuotidiens = entreprise.GetQuotidiens();
     }
 
     public void Save()
@@ -73,7 +98,7 @@ public class SaveData : MonoBehaviour
         onSave = save;
     }
 
-    
 
-   
+
+
 }
