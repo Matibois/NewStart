@@ -53,21 +53,24 @@ public class Developpement : MonoBehaviour
 
     public void EvaluateProfit()
     {
+        int rapport;
         switch (job)
         {
             case shop.Aliment:
-                EvaluateAliment();
+                rapport = EvaluateAliment();
                 break;
             case shop.Service:
-                EvaluateService();
+                rapport = EvaluateService();
                 break;
             case shop.Velo:
-                EvaluateVelo();
+                rapport = EvaluateVelo();
                 break;
             case shop.Vetement:
-                EvaluateVetement(); 
+                rapport = EvaluateVetement(); 
                 break;
         }
+
+        RapportProfit(rapport);
     }
 
     private void DefinePlace()
@@ -94,49 +97,85 @@ public class Developpement : MonoBehaviour
 
     private void EvaluateAliment() // nombre de commerce existant dans le lieu moins population * le nombre de point investie dans le commerce
     {
-        int rapportAliment;
-        rapportAliment = ((Place.AlimentSurgele - Place.Habitants) * entreprise.intSurgele);
-        rapportAliment += ((Place.AlimentLivraison - Place.Habitants) * entreprise.intLivraison);
-        rapportAliment += ((Place.AlimentBio - Place.Habitants) * entreprise.intBio); 
+        int rapport;
+        rapport = ((Place.AlimentSurgele - Place.Habitants) * entreprise.intSurgele);
+        rapport += ((Place.AlimentLivraison - Place.Habitants) * entreprise.intLivraison);
+        rapport += ((Place.AlimentBio - Place.Habitants) * entreprise.intBio);
+        
+        if (entreprise.intSurgele > 0 && Place.AgeMoyen == 1 || entreprise.intSurgele > 0  && Place.AgeMoyen == 2) rapport += 5 + entreprise.intSurgele;
+        if (entreprise.intLivraison > 0 && Place.AgeMoyen == 1) rapport += 5 + entreprise.intLivraison;
+        if (entreprise.intBio > 0 && Place.AgeMoyen == 2 || entreprise.intBio > 0 && Place.AgeMoyen == 3) rapport += 5 + entreprise.intBio;
 
-        if (entreprise.intSurgele > 0 && Place.AgeMoyen == 1 && Place.AgeMoyen == 2) 
+        if (entreprise.intSurgele > 0 && Place.RPH == 1 || entreprise.intSurgele > 0 && Place.RPH == 2) rapport += 5 + entreprise.intSurgele;
+        if (entreprise.intLivraison > 0 && Place.RPH == 2 || entreprise.intLivraison > 0 && Place.RPH == 3) rapport += 5 + entreprise.intLivraison;
+        if (entreprise.intBio > 0 ) rapport += 5 + entreprise.intBio; //Car ça touche les pauvres les moyens et les riches
+
+        return rapport;
     }
     
     private void EvaluateService()
     {
-        int rapportService;
-        rapportService = ((Place.ServiceAidePerso - Place.Habitants) * entreprise.intAidePerso);
-        rapportService += ((Place.ServiceProfParticulier- Place.Habitants) * entreprise.intProfParticulier);
-        rapportService += ((Place.ServiceCoachSport- Place.Habitants) * entreprise.intCoachSport); 
-    }
-    
-    private void EvaluateVelo()
-    {
-        int rapportVelo;
-        rapportVelo = ((Place.VeloVTT- Place.Habitants) * entreprise.intVTT);
-        rapportVelo += ((Place.VeloVille - Place.Habitants) * entreprise.intVille);
-        rapportVelo += ((Place.VeloCourse - Place.Habitants) * entreprise.intCourse); 
-    }
-    
-    private void EvaluateVetement()
-    {
-        int rapportVetement;
-        rapportVetement = ((Place.VetementLuxe - Place.Habitants) * entreprise.intLuxe);
-        rapportVetement += ((Place.VetementSport - Place.Habitants) * entreprise.intSport);
-        rapportVetement += ((Place.VetementQuotidiens - Place.Habitants) * entreprise.intQuotidiens);
-        //min (1 - 3) * 3 = -6 -> -18
-        ///max (3-1) * 3 = 6 -> 18 
-        ///0 (2-2) * 0 
-        ///
+        int rapport;
+        rapport = ((Place.ServiceAidePerso - Place.Habitants) * entreprise.intAidePerso);
+        rapport += ((Place.ServiceProfParticulier- Place.Habitants) * entreprise.intProfParticulier);
+        rapport += ((Place.ServiceCoachSport- Place.Habitants) * entreprise.intCoachSport);
+
+        if (entreprise.intCoachSport> 0 && Place.AgeMoyen == 2) rapport += 5 + entreprise.intCoachSport;
+        if (entreprise.intProfParticulier> 0 && Place.AgeMoyen == 1) rapport += 5 + entreprise.intProfParticulier;
+        if (entreprise.intAidePerso> 0 && Place.AgeMoyen == 3) rapport += 5 + entreprise.intAidePerso;
+
+        if (entreprise.intCoachSport > 0 && Place.RPH == 2 || entreprise.intCoachSport > 0 && Place.RPH == 3) rapport += 5 + entreprise.intCoachSport;
+        if (entreprise.intProfParticulier > 0 && Place.RPH == 2 || entreprise.intProfParticulier > 0 && Place.RPH == 3) rapport += 5 + entreprise.intProfParticulier;
+        if (entreprise.intAidePerso > 0) rapport += 5 + entreprise.intAidePerso; //Car ça touche les pauvres les moyens et les riches
+
+        return rapport;
+
     }
 
-  
+    private void EvaluateVelo()
+    {
+        int rapport;
+        rapport = ((Place.VeloVTT- Place.Habitants) * entreprise.intVTT);
+        rapport += ((Place.VeloVille - Place.Habitants) * entreprise.intVille);
+        rapport += ((Place.VeloCourse - Place.Habitants) * entreprise.intCourse);
+
+        if (entreprise.intVTT> 0 && Place.AgeMoyen == 1) rapport += 5 + entreprise.intVTT;
+        if (entreprise.intCourse > 0 && Place.AgeMoyen == 2) rapport += 5 + entreprise.intCourse;
+        if (entreprise.intVille > 0) rapport += 5 + entreprise.intVille; //Car ça touche les jeunes les adultes et les vieux
+
+        if (entreprise.intVTT> 0 && Place.RPH == 2 || entreprise.intVTT > 0 && Place.RPH == 3) rapport += 5 + entreprise.intVTT;
+        if (entreprise.intCourse > 0 && Place.RPH == 2 || entreprise.intCourse > 0 && Place.RPH == 3 ) rapport += 5 + entreprise.intCourse;
+        if (entreprise.intVille > 0 && Place.RPH == 1 || entreprise.intVille > 0 && Place.RPH == 2) rapport += 5 + entreprise.intVille;
+
+        return rapport;
+
+    }
+
+    private void EvaluateVetement()
+    {
+        int rapport;
+        rapport = ((Place.VetementLuxe - Place.Habitants) * entreprise.intLuxe);
+        rapport += ((Place.VetementSport - Place.Habitants) * entreprise.intSport);
+        rapport+= ((Place.VetementQuotidiens - Place.Habitants) * entreprise.intQuotidiens);
+
+        if (entreprise.intLuxe > 0 && Place.AgeMoyen == 1 && Place.AgeMoyen == 2) rapport += 5 + entreprise.intLuxe;
+        if (entreprise.intSport > 0 && Place.AgeMoyen == 1) rapport += 5 + entreprise.intSport;
+        if (entreprise.intQuotidiens > 0) rapport += 5 + entreprise.intQuotidiens;//Car ça touche les jeunes les adultes et les vieux
+
+        if (entreprise.intLuxe > 0 && Place.RPH == 3) rapport += 5 + entreprise.intLuxe;
+        if (entreprise.intSport > 0 && Place.RPH == 1 && Place.RPH == 2) rapport += 5 + entreprise.intSport;
+        if (entreprise.intQuotidiens > 0 && Place.RPH == 1 || entreprise.intQuotidiens > 0 && Place.RPH == 2) rapport += 5 + entreprise.intQuotidiens;
+        //min  -8
+        ///max 8 
+        return rapport;
+    }
+
+
 
     private void RapportProfit(float rapport)
     {
-        //Texte robot catégorie bien choisis ?
-        // Gérer slider 
-        //Max value 18 // min -18
-        // Faire un +18 avec max 36 min 0 et average 18 ?
+        //Gérer slider
+        //Gérer texte robot
+
     }
 }

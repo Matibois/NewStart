@@ -11,6 +11,7 @@ public class SaveData : MonoBehaviour
 
     private Entreprise entreprise;
     public string UserName;
+    public string EntrepriseName;
     public int Money;
     public place Lieu;
     public shop Shop;
@@ -47,19 +48,33 @@ public class SaveData : MonoBehaviour
         worket = FindObjectOfType<Worket>();
         worket = worket.initiateWorket(worket);
 
+        if (worket == null) Debug.LogError("worket null from savedata");
+        Debug.Log(" initiate save" + WhiteMontain.Habitants);
+
+        SafePlace();
+        UserDataSave();
+        SousMetierSave();
+    }
+
+    public void SafePlace()
+    {
         WhiteMontain = worket.WhiteMontain;
         PalmCoconut = worket.PalmCoconut;
         FenzyFarm = worket.FenzyFarm;
         UrbanCity = worket.UrbanCity;
+    }
 
-        if (worket == null) Debug.LogError("worket null from savedata");
-        Debug.Log(" initiate save" + WhiteMontain.Habitants);
-
+    public void UserDataSave()
+    {
         UserName = entreprise.GetUserName();
+        EntrepriseName = entreprise.GetEntrepriseName();
         Money = entreprise.GetMoney();
         Lieu = entreprise.GetPlace();
         Shop = entreprise.GetShop();
+    }
 
+    public void SousMetierSave()
+    {
         AlimentType = entreprise.GetAlimentType();
         VeloType = entreprise.GetVeloType();
         ServiceType = entreprise.GetServiceType();
@@ -97,8 +112,5 @@ public class SaveData : MonoBehaviour
     {
         onSave = save;
     }
-
-
-
 
 }

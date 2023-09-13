@@ -11,7 +11,9 @@ using UnityEngine.Rendering.Universal;
 public class Entreprise : MonoBehaviour
 {
     [SerializeField] TMP_InputField NameEntry;
+    [SerializeField] TMP_InputField EntrepriseNameEntry;
     [SerializeField] TMP_Text NameText;
+    [SerializeField] TMP_Text EntrepriseNameText;
     [SerializeField] TMP_Text PosText;
     [SerializeField] TMP_Text PlaceText;
     [SerializeField] TMP_Text JobText;
@@ -25,6 +27,7 @@ public class Entreprise : MonoBehaviour
 
 
     [SerializeField] public string UserName;
+    [SerializeField] public string EntrepriseName;
     [SerializeField] public shop job;
     [SerializeField] public int Money;
     [SerializeField] public int TypeChoice;
@@ -52,6 +55,9 @@ public class Entreprise : MonoBehaviour
     [SerializeField] public int intSport;
     [SerializeField] public int intQuotidiens;
 
+    public int SousMetier1;
+    public int SousMetier2;
+    public int SousMetier3;
 
     public enum place
     {
@@ -119,6 +125,10 @@ public class Entreprise : MonoBehaviour
                 ServiceDB.SetActive(false);
                 VetementDB.SetActive(false);
                 jobtype = AlimentDB.GetComponent<TMP_Dropdown>();
+                SousMetier1 = intSurgele;
+                SousMetier2 = intBio;
+                SousMetier3 = intLivraison;
+
                 break;
 
             case 2:
@@ -130,6 +140,10 @@ public class Entreprise : MonoBehaviour
                 VetementDB.SetActive(false);
                 AlimentDB.SetActive(false);
                 jobtype = VeloDB.GetComponent<TMP_Dropdown>();
+                SousMetier1 = intVTT;
+                SousMetier2 = intCourse;
+                SousMetier3 = intVille;
+
                 break;
 
             case 3:
@@ -142,6 +156,10 @@ public class Entreprise : MonoBehaviour
                 VetementDB.SetActive(false);
 
                 jobtype = ServiceDB.GetComponent<TMP_Dropdown>();
+                SousMetier1 = intAidePerso;
+                SousMetier2 = intCoachSport;
+                SousMetier3 = intProfParticulier;
+
                 break;
 
             case 4:
@@ -153,6 +171,10 @@ public class Entreprise : MonoBehaviour
                 ServiceDB.SetActive(false);
                 AlimentDB.SetActive(false);
                 jobtype = VetementDB.GetComponent<TMP_Dropdown>();
+                SousMetier1 = intLuxe;
+                SousMetier2 = intSport;
+                SousMetier3 = intQuotidiens;
+
                 break;
 
             case 0:
@@ -163,6 +185,9 @@ public class Entreprise : MonoBehaviour
                 ServiceDB.SetActive(false);
                 AlimentDB.SetActive(false);
                 JobText.text = " ";
+                SousMetier1 = NULL;
+                SousMetier2 = NULL;
+                SousMetier3 = NULL;
                 break;
         }
     }
@@ -252,6 +277,76 @@ public class Entreprise : MonoBehaviour
         }
     }
 
+    public void SousMetierAddPoint(int sousMetier)
+    {
+        switch (sousMetier)
+        {
+            case 1;
+                SousMetier1++;
+                break;
+
+            case 2;
+                SousMetier2++;
+                break;
+
+            case 3:
+                SousMetier3++;
+                break;
+        }
+
+        RefreshMetierPoint();
+    }
+
+    public void SousMetierRemovePoint(int sousMetier)
+    {
+        switch (sousMetier)
+        {
+            case 1;
+                SousMetier1--;
+                break;
+
+            case 2;
+                SousMetier2--;
+                break;
+
+            case 3:
+                SousMetier3--;
+                break;
+        }
+
+        RefreshMetierPoint();
+    }
+
+    public void RefreshMetierPoint()
+    {
+        switch (job)
+        {
+            case shop.Aliment:
+                intLuxe = SousMetier1;
+                intSport = SousMetier2;
+                intQuotidiens = SousMetier3;
+                break;
+
+            case shop.Service:
+                intAidePerso = SousMetier1;
+                intCoachSport = SousMetier2;
+                intProfParticulier = SousMetier3;
+                break;
+
+            case shop.Velo:
+                intVTT = SousMetier1;
+                intCourse = SousMetier2;
+                intVille = SousMetier3;
+                break;
+
+            case shop.Vetement:
+                intSurgele = SousMetier1;
+                intBio = SousMetier2;
+                intLivraison = SousMetier3;
+                break;
+        }
+    }
+
     public void RefreshPlace()
     {
         switch (lieu)
@@ -282,6 +377,7 @@ public class Entreprise : MonoBehaviour
     {
         PlaceText.text = string.Empty;
     }
+
     public void EraseJob()
     {
         JobText.text = string.Empty;
@@ -313,6 +409,11 @@ public class Entreprise : MonoBehaviour
     {
         return UserName;
     }
+    
+    public string GetEntrepriseName()
+    {
+        return EntrepriseName;
+    }
 
     public int GetMoney() { return Money; }
     public shop GetShop() { return job; }
@@ -323,9 +424,9 @@ public class Entreprise : MonoBehaviour
     public ServiceType GetServiceType() { return serviceType; }
     public VetementType GetVetementType() { return vetementType; }
 
-    public int GetLuxe() {return intLuxe;}
-    public int GetSport() {return intSport;}
-    public int GetQuotidiens() {return intQuotidiens;}
+    public int GetLuxe() { return intLuxe; }
+    public int GetSport() { return intSport; }
+    public int GetQuotidiens() { return intQuotidiens; }
 
     public int GetAidePerso() { return intAidePerso; }
     public int GetCoachSport() { return intCoachSport; }
@@ -373,6 +474,19 @@ public class Entreprise : MonoBehaviour
                 break;
         }
         GameManager.LoadPlace(lieu);
+
+        intSurgele = saveData.intSurgele;
+        intLivraison = saveData.intLivraison ;
+        intBio = saveData.intBio ;
+        intCourse = saveData.intCourse ;
+        intVTT = saveData.intVTT ;
+        intVille = saveData.intVille ;
+        intAidePerso = saveData.intAidePerso ;
+        intProfParticulier = saveData.intProfParticulier ;
+        intCoachSport = saveData.intCoachSport ;
+        intLuxe = saveData.intLuxe ;
+        intSport = saveData.intSport ;
+        intQuotidiens = saveData.intQuotidiens ;
 
     }
 
