@@ -59,10 +59,13 @@ public class Developpement : MonoBehaviour
                 EvaluateAliment();
                 break;
             case shop.Service:
+                EvaluateService();
                 break;
             case shop.Velo:
+                EvaluateVelo();
                 break;
             case shop.Vetement:
+                EvaluateVetement(); 
                 break;
         }
     }
@@ -89,33 +92,50 @@ public class Developpement : MonoBehaviour
         }
     }
 
-    private void EvaluateAliment()
+    private void EvaluateAliment() // nombre de commerce existant dans le lieu moins population * le nombre de point investie dans le commerce
     {
         int rapportAliment;
         rapportAliment = ((Place.AlimentSurgele - Place.Habitants) * entreprise.intSurgele);
         rapportAliment += ((Place.AlimentLivraison - Place.Habitants) * entreprise.intLivraison);
-        rapportAliment += ((Place.AlimentBio - Place.Habitants) * entreprise.intBio);
+        rapportAliment += ((Place.AlimentBio - Place.Habitants) * entreprise.intBio); 
 
-        
+        if (entreprise.intSurgele > 0 && Place.AgeMoyen == 1 && Place.AgeMoyen == 2) 
+    }
+    
+    private void EvaluateService()
+    {
+        int rapportService;
+        rapportService = ((Place.ServiceAidePerso - Place.Habitants) * entreprise.intAidePerso);
+        rapportService += ((Place.ServiceProfParticulier- Place.Habitants) * entreprise.intProfParticulier);
+        rapportService += ((Place.ServiceCoachSport- Place.Habitants) * entreprise.intCoachSport); 
+    }
+    
+    private void EvaluateVelo()
+    {
+        int rapportVelo;
+        rapportVelo = ((Place.VeloVTT- Place.Habitants) * entreprise.intVTT);
+        rapportVelo += ((Place.VeloVille - Place.Habitants) * entreprise.intVille);
+        rapportVelo += ((Place.VeloCourse - Place.Habitants) * entreprise.intCourse); 
+    }
+    
+    private void EvaluateVetement()
+    {
+        int rapportVetement;
+        rapportVetement = ((Place.VetementLuxe - Place.Habitants) * entreprise.intLuxe);
+        rapportVetement += ((Place.VetementSport - Place.Habitants) * entreprise.intSport);
+        rapportVetement += ((Place.VetementQuotidiens - Place.Habitants) * entreprise.intQuotidiens);
+        //min (1 - 3) * 3 = -6 -> -18
+        ///max (3-1) * 3 = 6 -> 18 
+        ///0 (2-2) * 0 
     }
 
   
 
-    private void RapportTest(float rapport)
+    private void RapportProfit(float rapport)
     {
         //Texte robot catégorie bien choisis ?
-        switch (rapport)
-        {
-            case 0:
-
-                break;
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-
-        }
+        // Gérer slider 
+        //Max value 18 // min -18
+        // Faire un +18 avec max 36 min 0 et average 18 ?
     }
 }

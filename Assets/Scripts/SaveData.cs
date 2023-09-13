@@ -28,7 +28,7 @@ public class SaveData : MonoBehaviour
     public int intSurgele;
     public int intLivraison;
     public int intBio;
-    public int intCourses;
+    public int intCourse;
     public int intVTT;
     public int intVille;
     public int intAidePerso;
@@ -68,7 +68,7 @@ public class SaveData : MonoBehaviour
         intSurgele = entreprise.GetSurgele();
         intLivraison = entreprise.GetLivraison();
         intBio = entreprise.GetBio();
-        intCourses = entreprise.GetCourses();
+        intCourse = entreprise.GetCourses();
         intVTT = entreprise.GetVTT();
         intVille = entreprise.GetVille();
         intAidePerso = entreprise.GetAidePerso();

@@ -40,7 +40,7 @@ public class Entreprise : MonoBehaviour
     [SerializeField] public int intLivraison;
     [SerializeField] public int intBio;
 
-    [SerializeField] public int intCourses;
+    [SerializeField] public int intCourse;
     [SerializeField] public int intVTT;
     [SerializeField] public int intVille;
 
@@ -112,7 +112,7 @@ public class Entreprise : MonoBehaviour
         {
             case 1:
                 job = shop.Aliment;
-                JobText.text = "Alimentrateur";
+                JobText.text = "Magasin alimentaire";
                 ValidateJobBtn.SetActive(true);
                 AlimentDB.SetActive(true);
                 VeloDB.SetActive(false);
@@ -336,7 +336,7 @@ public class Entreprise : MonoBehaviour
     public int GetSurgele() { return intSurgele; }
 
     public int GetVTT() { return intVTT; }
-    public int GetCourses() { return intCourses; }
+    public int GetCourses() { return intCourse; }
     public int GetVille() { return intVille; }
 
     public void RefreshData(SaveData saveData)

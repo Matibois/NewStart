@@ -18,7 +18,7 @@ public class Marche
     [SerializeField] public int VeloVille;
 
     [SerializeField] public int ServiceNBR;
-    [SerializeField] public int ServicesCoachSport;
+    [SerializeField] public int ServiceCoachSport;
     [SerializeField] public int ServiceProfParticulier;
     [SerializeField] public int ServiceAidePerso;
 
@@ -69,10 +69,10 @@ public class Marche
         VeloVille = random.Next(1, 4);
         VeloNBR = VeloCourse + VeloVTT + VeloVille;
 
-        ServicesCoachSport = random.Next(1, 4);
+        ServiceCoachSport = random.Next(1, 4);
         ServiceProfParticulier = random.Next(1, 4);
         ServiceAidePerso = random.Next(1, 4);
-        ServiceNBR = ServicesCoachSport + ServiceProfParticulier + ServiceAidePerso;
+        ServiceNBR = ServiceCoachSport + ServiceProfParticulier + ServiceAidePerso;
 
         VetementLuxe = random.Next(1, 4);
         VetementSport = random.Next(1, 4);
