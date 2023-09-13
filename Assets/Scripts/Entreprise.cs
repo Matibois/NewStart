@@ -58,6 +58,7 @@ public class Entreprise : MonoBehaviour
     public int SousMetier1;
     public int SousMetier2;
     public int SousMetier3;
+    private int sousMetierPoint = 4;
 
     public enum place
     {
@@ -279,22 +280,28 @@ public class Entreprise : MonoBehaviour
 
     public void SousMetierAddPoint(int sousMetier)
     {
-        switch (sousMetier)
+        if (sousMetierPoint > 0)
         {
-            case 1;
-                SousMetier1++;
-                break;
+            switch (sousMetier)
+            {
+                case 1;
+                    if (SousMetier1 < 3) SousMetier1++;
+                    sousMetierPoint--;
+                    break;
 
-            case 2;
-                SousMetier2++;
-                break;
+                case 2;
+                    if (SousMetier2 < 3) SousMetier2++;
+                    sousMetierPoint--;
+                    break;
 
-            case 3:
-                SousMetier3++;
-                break;
+                case 3:
+                    if (SousMetier3 < 3) SousMetier3++;
+                    sousMetierPoint--;
+                    break;
+            }
+
+            RefreshMetierPoint();
         }
-
-        RefreshMetierPoint();
     }
 
     public void SousMetierRemovePoint(int sousMetier)
@@ -302,15 +309,18 @@ public class Entreprise : MonoBehaviour
         switch (sousMetier)
         {
             case 1;
-                SousMetier1--;
+                if (SousMetier1 > 0)  SousMetier1--;
+                sousMetierPoint++;
                 break;
 
             case 2;
-                SousMetier2--;
+                if (SousMetier2 > 0) SousMetier2--;
+                sousMetierPoint++;
                 break;
 
             case 3:
-                SousMetier3--;
+                if (SousMetier3 > 0) SousMetier3--;
+                sousMetierPoint++;
                 break;
         }
 
@@ -409,7 +419,7 @@ public class Entreprise : MonoBehaviour
     {
         return UserName;
     }
-    
+
     public string GetEntrepriseName()
     {
         return EntrepriseName;
@@ -476,17 +486,17 @@ public class Entreprise : MonoBehaviour
         GameManager.LoadPlace(lieu);
 
         intSurgele = saveData.intSurgele;
-        intLivraison = saveData.intLivraison ;
-        intBio = saveData.intBio ;
-        intCourse = saveData.intCourse ;
-        intVTT = saveData.intVTT ;
-        intVille = saveData.intVille ;
-        intAidePerso = saveData.intAidePerso ;
-        intProfParticulier = saveData.intProfParticulier ;
-        intCoachSport = saveData.intCoachSport ;
-        intLuxe = saveData.intLuxe ;
-        intSport = saveData.intSport ;
-        intQuotidiens = saveData.intQuotidiens ;
+        intLivraison = saveData.intLivraison;
+        intBio = saveData.intBio;
+        intCourse = saveData.intCourse;
+        intVTT = saveData.intVTT;
+        intVille = saveData.intVille;
+        intAidePerso = saveData.intAidePerso;
+        intProfParticulier = saveData.intProfParticulier;
+        intCoachSport = saveData.intCoachSport;
+        intLuxe = saveData.intLuxe;
+        intSport = saveData.intSport;
+        intQuotidiens = saveData.intQuotidiens;
 
     }
 
