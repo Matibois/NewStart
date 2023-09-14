@@ -356,10 +356,11 @@ public class Entreprise : MonoBehaviour
     {
         switch (job)
         {
-            case shop.Aliment:
+            case shop.Vetement:
                 intLuxe = SousMetier1;
                 intSport = SousMetier2;
                 intQuotidiens = SousMetier3;
+                Debug.Log("Vetement reload point ok");
                 break;
 
             case shop.Service:
@@ -374,11 +375,10 @@ public class Entreprise : MonoBehaviour
                 intVille = SousMetier3;
                 break;
 
-            case shop.Vetement:
+            case shop.Aliment:
                 intSurgele = SousMetier1;
                 intBio = SousMetier2;
                 intLivraison = SousMetier3;
-                Debug.Log("Vetement reload point ok");
                 break;
         }
         Debug.Log("refresh point ok");
