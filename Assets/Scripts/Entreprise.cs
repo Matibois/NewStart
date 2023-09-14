@@ -32,10 +32,6 @@ public class Entreprise : MonoBehaviour
     [SerializeField] public int TypeChoice;
     [SerializeField] public place lieu;
 
-    [SerializeField] public AlimentType alimentType;
-    [SerializeField] public VeloType veloType;
-    [SerializeField] public ServiceType serviceType;
-    [SerializeField] public VetementType vetementType;
     TMP_Dropdown jobtype;
 
     [SerializeField] public int intSurgele;
@@ -72,30 +68,6 @@ public class Entreprise : MonoBehaviour
         Velo,
         Service,
         Vetement,
-    }
-    public enum AlimentType
-    {
-        Surgele,
-        Bio,
-        Livraison,
-    }
-    public enum VeloType
-    {
-        Course,
-        VTT,
-        Ville,
-    }
-    public enum ServiceType
-    {
-        CoachSport,
-        AidePerso,
-        ProfParticulier,
-    }
-    public enum VetementType
-    {
-        Luxe,
-        Sport,
-        Quotidiens,
     }
 
     public SaveData saveData;
@@ -452,19 +424,15 @@ public class Entreprise : MonoBehaviour
         {
             case shop.Aliment:
                 JobText.text = job.ToString();
-                PosText.text = alimentType.ToString();
                 break;
             case shop.Velo:
                 JobText.text = job.ToString();
-                PosText.text = veloType.ToString();
                 break;
             case shop.Service:
                 JobText.text = job.ToString();
-                PosText.text = serviceType.ToString();
                 break;
             case shop.Vetement:
                 JobText.text = job.ToString();
-                PosText.text = vetementType.ToString();
                 break;
         }
         GameManager.LoadPlace(lieu);

@@ -6,7 +6,7 @@ using static Entreprise;
 
 public class Developpement : MonoBehaviour
 {
-    public Slider slider;
+    public Slider ProfitSlider;
 
     public GameObject marche;
     public GameObject profil;
@@ -20,10 +20,6 @@ public class Developpement : MonoBehaviour
     private Marche Place;
     private Marche Concurrent;
 
-    private AlimentType alimentType;
-    private VeloType veloType;
-    private ServiceType ServiceType;
-    private VetementType vetementType;
     private place lieu;
     private shop job;
 
@@ -60,7 +56,6 @@ public class Developpement : MonoBehaviour
         lieu = entreprise.GetPlace();
         job = entreprise.GetShop();
 
-        Debug.Log("GetData entreprise.int vetement luxe : " + entreprise.intLuxe);
     }
 
 
@@ -182,8 +177,6 @@ public class Developpement : MonoBehaviour
         rapport += ((Place.VetementSport - Place.Habitants) * entreprise.intSport);
         rapport += ((Place.VetementQuotidiens - Place.Habitants) * entreprise.intQuotidiens);
 
-        Debug.Log(Place.Habitants + " hab"+ Place.VetementLuxe +  " Place.veteluxe" + entreprise.intLuxe +" from evaluate Vetement");
-        Debug.Log(rapport + "  rapport from evaluate Vetement");
 
         if (entreprise.intLuxe > 0 && Place.AgeMoyen == 1 && Place.AgeMoyen == 2) rapport += 5 + entreprise.intLuxe;
         if (entreprise.intSport > 0 && Place.AgeMoyen == 1) rapport += 5 + entreprise.intSport;
@@ -195,16 +188,16 @@ public class Developpement : MonoBehaviour
         //min  -8
         ///max 8 
         ///44 ?
-        Debug.Log("Rapport vetement : " + rapport);
 
         return rapport;
     }
 
 
-    private void RapportProfit(float rapport)
+    private void RapportProfit(int rapport)
     {
         //Gérer slider
         //Gérer texte robot ?
-
+        ProfitSlider.value = rapport;
+        Debug.Log("Profit actuelle : " + rapport + "\nMétier : " + job);
     }
 }
