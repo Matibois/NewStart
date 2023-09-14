@@ -15,10 +15,6 @@ public class SaveData : MonoBehaviour
     public int Money;
     public place Lieu;
     public shop Shop;
-    public AlimentType AlimentType;
-    public VeloType VeloType;
-    public ServiceType ServiceType;
-    public VetementType VetementType;
 
     [SerializeField] public Worket worket;
     [SerializeField] public Marche WhiteMontain;
@@ -75,11 +71,6 @@ public class SaveData : MonoBehaviour
 
     public void SousMetierSave()
     {
-        AlimentType = entreprise.GetAlimentType();
-        VeloType = entreprise.GetVeloType();
-        ServiceType = entreprise.GetServiceType();
-        VetementType = entreprise.GetVetementType();
-
         intSurgele = entreprise.GetSurgele();
         intLivraison = entreprise.GetLivraison();
         intBio = entreprise.GetBio();

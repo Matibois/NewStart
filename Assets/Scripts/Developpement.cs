@@ -42,10 +42,6 @@ public class Developpement : MonoBehaviour
 
         lieu = entreprise.GetPlace();
         job = entreprise.GetShop();
-        alimentType = entreprise.GetAlimentType();
-        vetementType = entreprise.GetVetementType();
-        ServiceType = entreprise.GetServiceType();
-        veloType = entreprise.GetVeloType();
 
         DefinePlace();
     }
@@ -63,10 +59,6 @@ public class Developpement : MonoBehaviour
 
         lieu = entreprise.GetPlace();
         job = entreprise.GetShop();
-        alimentType = entreprise.GetAlimentType();
-        vetementType = entreprise.GetVetementType();
-        ServiceType = entreprise.GetServiceType();
-        veloType = entreprise.GetVeloType();
 
         Debug.Log("GetData entreprise.int vetement luxe : " + entreprise.intLuxe);
     }

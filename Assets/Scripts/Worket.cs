@@ -22,6 +22,7 @@ public class Worket : MonoBehaviour
         WhiteMontain = new Marche();
         PalmCoconut = new Marche();
         UrbanCity = new Marche();
+        FenzyFarm = new Marche();
     }
 
     public Worket initiateWorket(Worket worket)
@@ -47,6 +48,7 @@ public class Worket : MonoBehaviour
             WhiteMontain = saveData.WhiteMontain;
             PalmCoconut = saveData.PalmCoconut;
             UrbanCity = saveData.UrbanCity;
+            FenzyFarm = saveData.FenzyFarm;
 
             Debug.Log("Load" + SaveData.onSave +" From Worket Path : " + savePath);
         }

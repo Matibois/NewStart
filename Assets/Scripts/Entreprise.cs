@@ -23,10 +23,6 @@ public class Entreprise : MonoBehaviour
 
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
-    [SerializeField] GameObject AlimentDB;
-    [SerializeField] GameObject VeloDB;
-    [SerializeField] GameObject ServiceDB;
-    [SerializeField] GameObject VetementDB;
 
 
     [SerializeField] public string UserName;
@@ -124,75 +120,45 @@ public class Entreprise : MonoBehaviour
                 job = shop.Aliment;
                 JobText.text = "Magasin alimentaire";
                 ValidateJobBtn.SetActive(true);
-                AlimentDB.SetActive(true);
-                VeloDB.SetActive(false);
-                ServiceDB.SetActive(false);
-                VetementDB.SetActive(false);
-                jobtype = AlimentDB.GetComponent<TMP_Dropdown>();
                 SousMetier1 = intSurgele;
                 SousMetier2 = intBio;
                 SousMetier3 = intLivraison;
-
                 break;
 
             case 2:
                 job = shop.Velo;
                 JobText.text = "Magasin de Velo";
                 ValidateJobBtn.SetActive(true);
-                VeloDB.SetActive(true);
-                ServiceDB.SetActive(false);
-                VetementDB.SetActive(false);
-                AlimentDB.SetActive(false);
-                jobtype = VeloDB.GetComponent<TMP_Dropdown>();
                 SousMetier1 = intVTT;
                 SousMetier2 = intCourse;
                 SousMetier3 = intVille;
-
                 break;
 
             case 3:
                 job = shop.Service;
                 JobText.text = "Service Personnelle";
                 ValidateJobBtn.SetActive(true);
-                ServiceDB.SetActive(true);
-                VeloDB.SetActive(false);
-                AlimentDB.SetActive(false);
-                VetementDB.SetActive(false);
-
-                jobtype = ServiceDB.GetComponent<TMP_Dropdown>();
                 SousMetier1 = intAidePerso;
                 SousMetier2 = intCoachSport;
                 SousMetier3 = intProfParticulier;
-
                 break;
 
             case 4:
                 job = shop.Vetement;
                 JobText.text = "Magasin de vetement";
                 ValidateJobBtn.SetActive(true);
-                VetementDB.SetActive(true);
-                VeloDB.SetActive(false);
-                ServiceDB.SetActive(false);
-                AlimentDB.SetActive(false);
-                jobtype = VetementDB.GetComponent<TMP_Dropdown>();
                 SousMetier1 = intLuxe;
                 SousMetier2 = intSport;
                 SousMetier3 = intQuotidiens;
-
                 break;
 
             case 0:
-
                 ValidateJobBtn.SetActive(false);
-                VetementDB.SetActive(false);
-                VeloDB.SetActive(false);
-                ServiceDB.SetActive(false);
-                AlimentDB.SetActive(false);
                 JobText.text = " ";
                 break;
         }
     }
-    public void PosChoice()
+    /*public void PosChoice()
     {
         switch (job)
         {
@@ -276,7 +242,7 @@ public class Entreprise : MonoBehaviour
                 }
                 break;
         }
-    }
+    }*/
 
     public void SousMetierAddPoint(int sousMetier)
     {
@@ -418,7 +384,6 @@ public class Entreprise : MonoBehaviour
     public void EraseJob()
     {
         JobText.text = string.Empty;
-        PosText.text = string.Empty;
     }
 
     public void MontainPlace()
@@ -456,10 +421,6 @@ public class Entreprise : MonoBehaviour
     public shop GetShop() { return job; }
 
     public place GetPlace() { return lieu; }
-    public AlimentType GetAlimentType() { return alimentType; }
-    public VeloType GetVeloType() { return veloType; }
-    public ServiceType GetServiceType() { return serviceType; }
-    public VetementType GetVetementType() { return vetementType; }
 
     public int GetLuxe() { return intLuxe; }
     public int GetSport() { return intSport; }
@@ -483,10 +444,6 @@ public class Entreprise : MonoBehaviour
         Money = saveData.Money;
         lieu = saveData.Lieu;
         job = saveData.Shop;
-        alimentType = saveData.AlimentType;
-        veloType = saveData.VeloType;
-        serviceType = saveData.ServiceType;
-        vetementType = saveData.VetementType;
 
         NameText.text = UserName;
         PlaceText.text = lieu.ToString();

@@ -7,22 +7,18 @@ public class Marche
     [SerializeField] public int RPH;
     [SerializeField] public int AgeMoyen;
 
-    [SerializeField] public int AlimentNBR;
     [SerializeField] public int AlimentSurgele;
     [SerializeField] public int AlimentBio;
     [SerializeField] public int AlimentLivraison;
 
-    [SerializeField] public int VeloNBR;
     [SerializeField] public int VeloCourse;
     [SerializeField] public int VeloVTT;
     [SerializeField] public int VeloVille;
 
-    [SerializeField] public int ServiceNBR;
     [SerializeField] public int ServiceCoachSport;
     [SerializeField] public int ServiceProfParticulier;
     [SerializeField] public int ServiceAidePerso;
 
-    [SerializeField] public int VetementNBR;
     [SerializeField] public int VetementLuxe;
     [SerializeField] public int VetementSport;
     [SerializeField] public int VetementQuotidiens;
@@ -62,21 +58,17 @@ public class Marche
         AlimentSurgele = random.Next(1, 4);
         AlimentBio = random.Next(1, 4);
         AlimentLivraison = random.Next(1, 4);
-        AlimentNBR = AlimentSurgele + AlimentLivraison + AlimentBio;
 
         VeloCourse = random.Next(1, 4);
         VeloVTT = random.Next(1, 4);
         VeloVille = random.Next(1, 4);
-        VeloNBR = VeloCourse + VeloVTT + VeloVille;
 
         ServiceCoachSport = random.Next(1, 4);
         ServiceProfParticulier = random.Next(1, 4);
         ServiceAidePerso = random.Next(1, 4);
-        ServiceNBR = ServiceCoachSport + ServiceProfParticulier + ServiceAidePerso;
 
         VetementLuxe = random.Next(1, 4);
         VetementSport = random.Next(1, 4);
         VetementQuotidiens = random.Next(1, 4);
-        VetementNBR = VetementLuxe + VetementSport + VetementQuotidiens;
     }
 }
