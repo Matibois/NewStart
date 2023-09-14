@@ -17,6 +17,9 @@ public class Entreprise : MonoBehaviour
     [SerializeField] TMP_Text PosText;
     [SerializeField] TMP_Text PlaceText;
     [SerializeField] TMP_Text JobText;
+    [SerializeField] TMP_Text SousMetier1Text;
+    [SerializeField] TMP_Text SousMetier2Text;
+    [SerializeField] TMP_Text SousMetier3Text;
 
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
@@ -186,9 +189,6 @@ public class Entreprise : MonoBehaviour
                 ServiceDB.SetActive(false);
                 AlimentDB.SetActive(false);
                 JobText.text = " ";
-                SousMetier1 = NULL;
-                SousMetier2 = NULL;
-                SousMetier3 = NULL;
                 break;
         }
     }
@@ -284,19 +284,31 @@ public class Entreprise : MonoBehaviour
         {
             switch (sousMetier)
             {
-                case 1;
-                    if (SousMetier1 < 3) SousMetier1++;
-                    sousMetierPoint--;
+                case 1:
+                    if (SousMetier1 < 3)
+                    {
+                        SousMetier1++;
+                        sousMetierPoint--;
+                        SousMetier1Text.text = SousMetier1.ToString();
+                    }
                     break;
 
-                case 2;
-                    if (SousMetier2 < 3) SousMetier2++;
-                    sousMetierPoint--;
+                case 2:
+                    if (SousMetier2 < 3)
+                    {
+                        SousMetier2++;
+                        sousMetierPoint--;
+                        SousMetier2Text.text = SousMetier2.ToString();
+                    }
                     break;
 
                 case 3:
-                    if (SousMetier3 < 3) SousMetier3++;
-                    sousMetierPoint--;
+                    if (SousMetier3 < 3)
+                    {
+                        SousMetier3++;
+                        sousMetierPoint--;
+                        SousMetier3Text.text = SousMetier3.ToString();
+                    }
                     break;
             }
 
@@ -308,21 +320,34 @@ public class Entreprise : MonoBehaviour
     {
         switch (sousMetier)
         {
-            case 1;
-                if (SousMetier1 > 0)  SousMetier1--;
-                sousMetierPoint++;
+            case 1:
+                if (SousMetier1 > 0)
+                {
+                    SousMetier1--;
+                    sousMetierPoint++;
+                    SousMetier1Text.text = SousMetier1.ToString();
+                }
                 break;
 
-            case 2;
-                if (SousMetier2 > 0) SousMetier2--;
-                sousMetierPoint++;
+            case 2:
+                if (SousMetier2 > 0)
+                {
+                    SousMetier2--;
+                    sousMetierPoint++;
+                    SousMetier2Text.text = SousMetier2.ToString();
+                }
                 break;
 
             case 3:
-                if (SousMetier3 > 0) SousMetier3--;
-                sousMetierPoint++;
+                if (SousMetier3 > 0)
+                {
+                    SousMetier3--;
+                    sousMetierPoint++;
+                    SousMetier3Text.text = SousMetier3.ToString();
+                }
                 break;
         }
+
 
         RefreshMetierPoint();
     }
@@ -353,8 +378,10 @@ public class Entreprise : MonoBehaviour
                 intSurgele = SousMetier1;
                 intBio = SousMetier2;
                 intLivraison = SousMetier3;
+                Debug.Log("Vetement reload point ok");
                 break;
         }
+        Debug.Log("refresh point ok");
     }
 
     public void RefreshPlace()
