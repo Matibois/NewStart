@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Entreprise;
 using UnityEngine.Rendering.Universal;
-
+using System;
 
 public class GestionnaireUI : MonoBehaviour
 {
@@ -22,7 +22,7 @@ public class GestionnaireUI : MonoBehaviour
     [SerializeField] TMP_Text SousMetier2Text;
     [SerializeField] TMP_Text SousMetier3Text;
 
-    private Entreprise entreprise;
+    [SerializeField] private Entreprise entreprise;
     public string UserName;
     public string EntrepriseName;
     public shop job;
@@ -46,17 +46,25 @@ public class GestionnaireUI : MonoBehaviour
     public int intSport;
     public int intQuotidiens;
 
-    public void RefreshInfo()
+    public void RefreshData()
     {
         GetDataToRefresh();
         GetIntMetier();
 
+        RefreshName();
         RefreshPlace();
         RefreshJob();
     }
 
+    private void RefreshName()
+    {
+        NameText.text = UserName;
+    }
+
     private void GetDataToRefresh()
     {
+        entreprise = FindObjectOfType<Entreprise>();
+
         UserName = entreprise.GetUserName();
         EntrepriseName = entreprise.GetEntrepriseName();
         Money = entreprise.GetMoney();

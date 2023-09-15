@@ -70,7 +70,7 @@ public class Entreprise : MonoBehaviour
     }
 
     public SaveData saveData;
-    private GestionnaireUI gestionnaireUI;
+    [SerializeField] private GestionnaireUI gestionnaireUI;
 
     private void Awake()
     {
@@ -284,8 +284,8 @@ public class Entreprise : MonoBehaviour
         lieu = saveData.Lieu;
         job = saveData.Shop;
 
-        NameText.text = UserName;
-        PlaceText.text = lieu.ToString();
+        //NameText.text = UserName;
+        //PlaceText.text = lieu.ToString();
 
         intSurgele = saveData.intSurgele;
         intLivraison = saveData.intLivraison;
@@ -301,7 +301,7 @@ public class Entreprise : MonoBehaviour
         intQuotidiens = saveData.intQuotidiens;
 
         GameManager.LoadPlace(lieu);
-        gestionnaireUI.RefreshInfo();
+        gestionnaireUI.RefreshData();
        
     }
 

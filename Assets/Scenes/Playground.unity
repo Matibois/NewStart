@@ -2198,7 +2198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -533.8, y: -253.58}
+  m_AnchoredPosition: {x: -464.8, y: -199.3}
   m_SizeDelta: {x: 29.4, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220002051
@@ -6152,6 +6152,7 @@ GameObject:
   - component: {fileID: 638446943}
   - component: {fileID: 638446942}
   - component: {fileID: 638446941}
+  - component: {fileID: 638446944}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6246,6 +6247,46 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &638446944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638446939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df90e852a6100a74ca3c7ac36f9ed37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameEntry: {fileID: 1267296226}
+  EntrepriseNameEntry: {fileID: 0}
+  NameText: {fileID: 844193692}
+  EntrepriseNameText: {fileID: 0}
+  PosText: {fileID: 1854995187}
+  PlaceText: {fileID: 1142226752}
+  JobText: {fileID: 2036370915}
+  SousMetier1Text: {fileID: 715589304}
+  SousMetier2Text: {fileID: 439768410}
+  SousMetier3Text: {fileID: 454112195}
+  UserName: 
+  EntrepriseName: 
+  job: 0
+  Money: 0
+  TypeChoice: 0
+  lieu: 0
+  intSurgele: 0
+  intLivraison: 0
+  intBio: 0
+  intCourse: 0
+  intVTT: 0
+  intVille: 0
+  intAidePerso: 0
+  intProfParticulier: 0
+  intCoachSport: 0
+  intLuxe: 0
+  intSport: 0
+  intQuotidiens: 0
 --- !u!1 &639979464
 GameObject:
   m_ObjectHideFlags: 0
@@ -15287,7 +15328,7 @@ MonoBehaviour:
   SousMetier1: 0
   SousMetier2: 0
   SousMetier3: 0
-  saveData: {fileID: 0}
+  saveData: {fileID: 1750439075}
 --- !u!4 &1750439077
 Transform:
   m_ObjectHideFlags: 0

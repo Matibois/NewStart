@@ -45,7 +45,7 @@ public class SaveData : MonoBehaviour
         worket = worket.initiateWorket(worket);
 
         if (worket == null) Debug.LogError("worket null from savedata");
-        Debug.Log(" initiate save" + WhiteMontain.Habitants);
+      
 
         SafePlace();
         UserDataSave();
