@@ -24,7 +24,6 @@ public class Entreprise : MonoBehaviour
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
 
-
     [SerializeField] public string UserName;
     [SerializeField] public string EntrepriseName;
     [SerializeField] public shop job;
@@ -71,11 +70,11 @@ public class Entreprise : MonoBehaviour
     }
 
     public SaveData saveData;
+    private GestionnaireUI gestionnaireUI;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-
     }
 
     public void Named()
@@ -130,91 +129,6 @@ public class Entreprise : MonoBehaviour
                 break;
         }
     }
-    /*public void PosChoice()
-    {
-        switch (job)
-        {
-            case shop.Aliment:
-                switch (jobtype.value)
-                {
-                    case 0:
-                        alimentType = AlimentType.Surgele;
-                        PosText.text = "Surgelé";
-                        break;
-
-                    case 1:
-                        alimentType = AlimentType.Bio;
-                        PosText.text = "Bio";
-                        break;
-
-                    case 2:
-                        alimentType = AlimentType.Livraison;
-                        PosText.text = "Livraison";
-                        break;
-                }
-                break;
-
-            case shop.Velo:
-                switch (jobtype.value)
-                {
-                    case 0:
-                        veloType = VeloType.Course;
-                        PosText.text = "Courses";
-                        break;
-
-                    case 1:
-                        veloType = VeloType.VTT;
-                        PosText.text = "VTT";
-                        break;
-
-                    case 2:
-                        veloType = VeloType.Ville;
-                        PosText.text = "Ville";
-                        break;
-                }
-                break;
-
-            case shop.Service:
-                switch (jobtype.value)
-                {
-                    case 0:
-                        serviceType = ServiceType.CoachSport;
-                        PosText.text = "Coach sportif";
-                        break;
-
-                    case 1:
-                        serviceType = ServiceType.AidePerso;
-                        PosText.text = "Aide à la personne";
-                        break;
-
-                    case 2:
-                        serviceType = ServiceType.ProfParticulier;
-                        PosText.text = "Prof particulier";
-                        break;
-                }
-                break;
-
-            case shop.Vetement:
-                switch (jobtype.value)
-                {
-                    case 0:
-                        vetementType = VetementType.Luxe;
-                        PosText.text = "Luxe";
-                        break;
-
-                    case 1:
-                        vetementType = VetementType.Sport;
-                        PosText.text = "Sport";
-                        break;
-
-                    case 2:
-                        vetementType = VetementType.Quotidiens;
-                        PosText.text = "Quotidiens";
-                        break;
-                }
-                break;
-        }
-    }*/
 
     public void SousMetierAddPoint(int sousMetier)
     {
@@ -253,7 +167,6 @@ public class Entreprise : MonoBehaviour
             RefreshMetierPoint();
         }
     }
-
     public void SousMetierRemovePoint(int sousMetier)
     {
         switch (sousMetier)
@@ -289,7 +202,6 @@ public class Entreprise : MonoBehaviour
 
         RefreshMetierPoint();
     }
-
     public void RefreshMetierPoint()
     {
         switch (job)
@@ -321,43 +233,7 @@ public class Entreprise : MonoBehaviour
         }
         Debug.Log("refresh point ok");
     }
-
-    public void RefreshPlace()
-    {
-        switch (lieu)
-        {
-            case place.WhiteMontain:
-                lieu = place.WhiteMontain;
-                PlaceText.text = "White Montain";
-                break;
-
-            case place.PalmCoconut:
-                lieu = place.PalmCoconut;
-                PlaceText.text = "Palm Coconut";
-                break;
-
-            case place.UrbanCity:
-                lieu = place.UrbanCity;
-                PlaceText.text = "Urban City";
-                break;
-
-            case place.FenzyFarm:
-                lieu = place.FenzyFarm;
-                PlaceText.text = "Fenzy Farm";
-                break;
-        }
-    }
-
-    public void ErasePlace()
-    {
-        PlaceText.text = string.Empty;
-    }
-
-    public void EraseJob()
-    {
-        JobText.text = string.Empty;
-    }
-
+    
     public void MontainPlace()
     {
         lieu = place.WhiteMontain;
@@ -379,19 +255,10 @@ public class Entreprise : MonoBehaviour
         PlaceText.text = "Fenzy Farm";
     }
 
-    public string GetUserName()
-    {
-        return UserName;
-    }
-
-    public string GetEntrepriseName()
-    {
-        return EntrepriseName;
-    }
-
+    public string GetUserName() { return UserName; }
+    public string GetEntrepriseName() { return EntrepriseName; }
     public int GetMoney() { return Money; }
     public shop GetShop() { return job; }
-
     public place GetPlace() { return lieu; }
 
     public int GetLuxe() { return intLuxe; }
@@ -420,23 +287,6 @@ public class Entreprise : MonoBehaviour
         NameText.text = UserName;
         PlaceText.text = lieu.ToString();
 
-        switch (job)
-        {
-            case shop.Aliment:
-                JobText.text = job.ToString();
-                break;
-            case shop.Velo:
-                JobText.text = job.ToString();
-                break;
-            case shop.Service:
-                JobText.text = job.ToString();
-                break;
-            case shop.Vetement:
-                JobText.text = job.ToString();
-                break;
-        }
-        GameManager.LoadPlace(lieu);
-
         intSurgele = saveData.intSurgele;
         intLivraison = saveData.intLivraison;
         intBio = saveData.intBio;
@@ -450,6 +300,9 @@ public class Entreprise : MonoBehaviour
         intSport = saveData.intSport;
         intQuotidiens = saveData.intQuotidiens;
 
+        GameManager.LoadPlace(lieu);
+        gestionnaireUI.RefreshInfo();
+       
     }
 
     public void Load()
@@ -474,5 +327,4 @@ public class Entreprise : MonoBehaviour
             Debug.LogError("Le fichier de sauvegarde n'existe pas.");
         }
     }
-
 }
