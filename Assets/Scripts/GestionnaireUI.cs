@@ -1,6 +1,12 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static Entreprise;
+using UnityEngine.Rendering.Universal;
+
 
 public class GestionnaireUI : MonoBehaviour
 {
@@ -54,7 +60,7 @@ public class GestionnaireUI : MonoBehaviour
         UserName = entreprise.GetUserName();
         EntrepriseName = entreprise.GetEntrepriseName();
         Money = entreprise.GetMoney();
-        job = entreprise.GetJob();
+        job = entreprise.GetShop();
         lieu = entreprise.GetPlace();
     }
 
@@ -69,7 +75,7 @@ public class GestionnaireUI : MonoBehaviour
         intAidePerso = entreprise.GetAidePerso();
         intProfParticulier = entreprise.GetProfParticulier();
         intCoachSport = entreprise.GetCoachSport();
-        intLuxe = entreprise.Luxe();
+        intLuxe = entreprise.GetLuxe();
         intSport = entreprise.GetSport();
         intQuotidiens = entreprise.GetQuotidiens();
 
