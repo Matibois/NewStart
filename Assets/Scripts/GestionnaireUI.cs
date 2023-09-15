@@ -56,10 +56,12 @@ public class GestionnaireUI : MonoBehaviour
         RefreshJob();
     }
 
-    private void RefreshName()
+    public void Named()
     {
-        NameText.text = UserName;
+        UserName = NameEntry.text;
+        entreprise.Named(UserName);
     }
+    private void RefreshName() { NameText.text = UserName; }
 
     private void GetDataToRefresh()
     {

@@ -77,10 +77,9 @@ public class Entreprise : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void Named()
+    public void Named(string name)
     {
-        UserName = NameEntry.text;
-        NameText.text = UserName;
+        UserName = name;
     }
 
     public void JobChoice()
@@ -163,7 +162,6 @@ public class Entreprise : MonoBehaviour
                     }
                     break;
             }
-
             RefreshMetierPoint();
         }
     }
@@ -198,8 +196,6 @@ public class Entreprise : MonoBehaviour
                 }
                 break;
         }
-
-
         RefreshMetierPoint();
     }
     public void RefreshMetierPoint()
@@ -210,7 +206,6 @@ public class Entreprise : MonoBehaviour
                 intLuxe = SousMetier1;
                 intSport = SousMetier2;
                 intQuotidiens = SousMetier3;
-                Debug.Log("Vetement reload point ok");
                 break;
 
             case shop.Service:
@@ -231,7 +226,6 @@ public class Entreprise : MonoBehaviour
                 intLivraison = SousMetier3;
                 break;
         }
-        Debug.Log("refresh point ok");
     }
     
     public void MontainPlace()
@@ -279,13 +273,10 @@ public class Entreprise : MonoBehaviour
 
     public void RefreshData(SaveData saveData)
     {
-        UserName = saveData.UserName;
+        Named(saveData.UserName);
         Money = saveData.Money;
         lieu = saveData.Lieu;
         job = saveData.Shop;
-
-        //NameText.text = UserName;
-        //PlaceText.text = lieu.ToString();
 
         intSurgele = saveData.intSurgele;
         intLivraison = saveData.intLivraison;
@@ -312,12 +303,8 @@ public class Entreprise : MonoBehaviour
         if (File.Exists(savePath))
         {
             string jsonData = File.ReadAllText(savePath);
-
             SaveData saveData = new SaveData();
             JsonUtility.FromJsonOverwrite(jsonData, saveData);
-
-            // Mettez à jour les valeurs de la classe Entreprise avec les données désérialisées
-
 
             RefreshData(saveData);
             Debug.Log("Load : " + SaveData.onSave + " Entreprise on save" + savePath);
