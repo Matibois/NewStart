@@ -54,6 +54,18 @@ public class Entreprise : MonoBehaviour
     public int SousMetier3;
     private int sousMetierPoint = 4;
 
+    [SerializeField] public int intTransport;
+    [SerializeField] public int intNewsLetters;
+    [SerializeField] public int intBoiteAuLettre;
+
+    [SerializeField] public int intFakebook;
+    [SerializeField] public int intYourTube;
+    [SerializeField] public int intAmstramgram;
+
+    [SerializeField] public int intMagTele;
+    [SerializeField] public int intLiberte;
+    [SerializeField] public int intSVJ;
+
     public enum place
     {
         WhiteMontain,

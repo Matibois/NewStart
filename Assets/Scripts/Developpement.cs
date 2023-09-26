@@ -129,7 +129,6 @@ public class Developpement : MonoBehaviour
 
         return rapport;
     }
-
     private int EvaluateService()
     {
         int rapport;
@@ -149,7 +148,6 @@ public class Developpement : MonoBehaviour
         return rapport;
 
     }
-
     private int EvaluateVelo()
     {
         int rapport;
@@ -168,7 +166,6 @@ public class Developpement : MonoBehaviour
 
         return rapport;
     }
-
     private int EvaluateVetement()
     {
         int rapport;
@@ -193,6 +190,36 @@ public class Developpement : MonoBehaviour
         return rapport;
     }
 
+    private int EvaluateFlyers()
+    {
+        int rapport = 0;
+
+        if (entreprise.intTransport > 0 && Place.AgeMoyen == 1 || entreprise.intTransport > 0 && Place.AgeMoyen == 2) rapport += 2 + entreprise.intTransport;
+        if (entreprise.intNewsLetters > 0 && Place.AgeMoyen == 2) rapport += 2 + entreprise.intNewsLetters;
+        if (entreprise.intBoiteAuLettre > 0 && Place.AgeMoyen == 3 ) rapport += 2 + entreprise.intBoiteAuLettre;
+
+        return rapport;
+    }
+    private int EvaluateReseaux()
+    {
+        int rapport = 0;
+
+        if (entreprise.intFakebook > 0 && Place.AgeMoyen == 2 || entreprise.intFakebook > 0 && Place.AgeMoyen == 3) rapport += 2 + entreprise.intFakebook;
+        if (entreprise.intYourTube > 0 && Place.AgeMoyen == 1 || entreprise.intYourTube > 0 && Place.AgeMoyen == 2) rapport += 2 + entreprise.intYourTube;
+        if (entreprise.intAmstramgram > 0 && Place.AgeMoyen == 1) rapport += 2 + entreprise.intAmstramgram;
+
+        return rapport;
+    }
+    private int EvaluateJournaux()
+    {
+        int rapport = 0;
+
+        if (entreprise.intMagTele > 0 && Place.AgeMoyen == 2) rapport += 2 + entreprise.intMagTele;
+        if (entreprise.intLiberte > 0 && Place.AgeMoyen == 1 || entreprise.intLiberte > 0 && Place.AgeMoyen == 2) rapport += 2 + entreprise.intLiberte;
+        if (entreprise.intSVJ > 0 && Place.AgeMoyen == 3) rapport += 2 + entreprise.intSVJ;
+
+        return rapport;
+    }
 
     private void RapportProfit(int rapport)
     {
