@@ -239,7 +239,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2024647037}
   m_FillRect: {fileID: 535189301}
   m_HandleRect: {fileID: 2024647036}
@@ -15329,6 +15329,15 @@ MonoBehaviour:
   SousMetier1: 0
   SousMetier2: 0
   SousMetier3: 0
+  intTransport: 0
+  intNewsLetters: 0
+  intBoiteAuLettre: 0
+  intFakebook: 0
+  intYourTube: 0
+  intAmstramgram: 0
+  intMagTele: 0
+  intLiberte: 0
+  intSVJ: 0
   saveData: {fileID: 1750439075}
   gestionnaireUI: {fileID: 638446944}
 --- !u!4 &1750439077
@@ -17776,7 +17785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2024647036
 RectTransform:
   m_ObjectHideFlags: 0
