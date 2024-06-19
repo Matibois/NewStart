@@ -6,6 +6,9 @@ using static Entreprise;
 
 public class GameManager : MonoBehaviour
 {
+
+    private string selectedScene;
+
     public static void LoadWhiteMontain()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
@@ -45,4 +48,22 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void SelectWhiteMontain()
+    {
+        selectedScene = "WhiteMontain";
+    }
+    public void SelectUrbanCity()
+    {
+        selectedScene = "UrbanCity";
+    }
+    public void SelectFenzyFarm()
+    {
+        selectedScene = "FenzyFarm";
+    }
+    public void SelectPalmCoconut()
+    {
+        selectedScene = "PalmCoconut";
+    }
+
 }

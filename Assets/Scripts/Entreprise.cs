@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Entreprise;
 using UnityEngine.Rendering.Universal;
+using System;
 
 [System.Serializable]
 public class Entreprise : MonoBehaviour
@@ -17,9 +18,22 @@ public class Entreprise : MonoBehaviour
     [SerializeField] TMP_Text PosText;
     [SerializeField] TMP_Text PlaceText;
     [SerializeField] TMP_Text JobText;
-    [SerializeField] TMP_Text SousMetier1Text;
-    [SerializeField] TMP_Text SousMetier2Text;
-    [SerializeField] TMP_Text SousMetier3Text;
+
+    [SerializeField] TMP_Text SousMetier1Name;
+    [SerializeField] TMP_Text SousMetier2Name;
+    [SerializeField] TMP_Text SousMetier3Name;
+
+    [SerializeField] TMP_Text SousMetier1Points;
+    [SerializeField] TMP_Text SousMetier2Points;
+    [SerializeField] TMP_Text SousMetier3Points;
+
+    private int SousMetier1Price;
+    private int SousMetier2Price;
+    private int SousMetier3Price;
+
+    [SerializeField] Slider SousMetier1Slider;
+    [SerializeField] Slider SousMetier2Slider;
+    [SerializeField] Slider SousMetier3Slider;
 
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
@@ -91,7 +105,32 @@ public class Entreprise : MonoBehaviour
 
     public void Named(string name)
     {
-        UserName = name;
+        if (name != null && name != string.Empty)
+        {
+            UserName = name;
+            NameText.text = UserName;
+        }
+        else
+        {
+            UserName = NameEntry.text;
+            NameText.text = UserName;
+        }
+        Debug.Log("Name : " + UserName);
+    }
+
+    public void EntrepriseNamed(string name)
+    {
+        if (name != null && name != string.Empty)
+        {
+            EntrepriseName = name;
+            EntrepriseNameText.text = EntrepriseName;
+        }
+        else
+        {
+            UserName = EntrepriseNameEntry.text;
+            EntrepriseNameText.text = UserName;
+        }
+        Debug.Log("Entreprise name : " + name);
     }
 
     public void JobChoice()
@@ -103,8 +142,11 @@ public class Entreprise : MonoBehaviour
                 JobText.text = "Magasin alimentaire";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intSurgele;
+                SousMetier1Name.text = "Surgele";
                 SousMetier2 = intBio;
+                SousMetier2Name.text = "Bio";
                 SousMetier3 = intLivraison;
+                SousMetier3Name.text = "Livraison";
                 break;
 
             case 2:
@@ -112,8 +154,11 @@ public class Entreprise : MonoBehaviour
                 JobText.text = "Magasin de Velo";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intVTT;
+                SousMetier1Name.text = "VTT";
                 SousMetier2 = intCourse;
+                SousMetier2Name.text = "Course";
                 SousMetier3 = intVille;
+                SousMetier3Name.text = "Ville";
                 break;
 
             case 3:
@@ -121,8 +166,11 @@ public class Entreprise : MonoBehaviour
                 JobText.text = "Service Personnelle";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intAidePerso;
+                SousMetier1Name.text = "Aide Personnelle";
                 SousMetier2 = intCoachSport;
+                SousMetier2Name.text = "Coach Sportif";
                 SousMetier3 = intProfParticulier;
+                SousMetier3Name.text = "Professeur Particulier";
                 break;
 
             case 4:
@@ -130,8 +178,11 @@ public class Entreprise : MonoBehaviour
                 JobText.text = "Magasin de vetement";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intLuxe;
+                SousMetier1Name.text = "Luxe";
                 SousMetier2 = intSport;
+                SousMetier2Name.text = "Sport";
                 SousMetier3 = intQuotidiens;
+                SousMetier3Name.text = "Quotidiens";
                 break;
 
             case 0:
@@ -152,7 +203,7 @@ public class Entreprise : MonoBehaviour
                     {
                         SousMetier1++;
                         sousMetierPoint--;
-                        SousMetier1Text.text = SousMetier1.ToString();
+                        SousMetier1Points.text = SousMetier1.ToString();
                     }
                     break;
 
@@ -161,7 +212,7 @@ public class Entreprise : MonoBehaviour
                     {
                         SousMetier2++;
                         sousMetierPoint--;
-                        SousMetier2Text.text = SousMetier2.ToString();
+                        SousMetier2Points.text = SousMetier2.ToString();
                     }
                     break;
 
@@ -170,7 +221,7 @@ public class Entreprise : MonoBehaviour
                     {
                         SousMetier3++;
                         sousMetierPoint--;
-                        SousMetier3Text.text = SousMetier3.ToString();
+                        SousMetier3Points.text = SousMetier3.ToString();
                     }
                     break;
             }
@@ -186,7 +237,7 @@ public class Entreprise : MonoBehaviour
                 {
                     SousMetier1--;
                     sousMetierPoint++;
-                    SousMetier1Text.text = SousMetier1.ToString();
+                    SousMetier1Points.text = SousMetier1.ToString();
                 }
                 break;
 
@@ -195,7 +246,7 @@ public class Entreprise : MonoBehaviour
                 {
                     SousMetier2--;
                     sousMetierPoint++;
-                    SousMetier2Text.text = SousMetier2.ToString();
+                    SousMetier2Points.text = SousMetier2.ToString();
                 }
                 break;
 
@@ -204,7 +255,7 @@ public class Entreprise : MonoBehaviour
                 {
                     SousMetier3--;
                     sousMetierPoint++;
-                    SousMetier3Text.text = SousMetier3.ToString();
+                    SousMetier3Points.text = SousMetier3.ToString();
                 }
                 break;
         }
@@ -239,7 +290,15 @@ public class Entreprise : MonoBehaviour
                 break;
         }
     }
-    
+
+    public void setPrice(int sousMetier)
+    {
+        SousMetier1Price = (int)SousMetier1Slider.value;
+        SousMetier2Price = (int)SousMetier2Slider.value;
+        SousMetier3Price = (int)SousMetier3Slider.value;
+    }
+
+
     public void MontainPlace()
     {
         lieu = place.WhiteMontain;
@@ -283,6 +342,11 @@ public class Entreprise : MonoBehaviour
     public int GetCourses() { return intCourse; }
     public int GetVille() { return intVille; }
 
+    public int[] GetPrice()
+    {
+        return new int[] { SousMetier1Price, SousMetier2Price, SousMetier3Price };
+    }
+
     public void RefreshData(SaveData saveData)
     {
         Named(saveData.UserName);
@@ -305,7 +369,7 @@ public class Entreprise : MonoBehaviour
 
         GameManager.LoadPlace(lieu);
         gestionnaireUI.RefreshData();
-       
+
     }
 
     public void Load()
