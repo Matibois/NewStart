@@ -21,16 +21,43 @@ public class FIlesManager : MonoBehaviour
     public GameObject G_Player;
     public GameObject G_Enteprise;
 
+    public GameObject R_Bookmarks;
+    public GameObject B_Bookmarks;
+    public GameObject G_Bookmarks;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool redState = false;
+    private bool blueState = false;
+    private bool greenState = false;
+
+    public void R_Switch()
     {
+        redState = !redState;
+        R_Closed.gameObject.SetActive(!redState);
+        R_Opened.gameObject.SetActive(redState);
+    }
+
+    public void B_Switch()
+    {
+        blueState = !blueState;
+        B_Closed.gameObject.SetActive(!blueState);
+        B_Opened.gameObject.SetActive(blueState);
+    }
+
+    public void G_Switch()
+    {
+        greenState = !greenState;
+        G_Closed.gameObject.SetActive(!greenState);
+        G_Opened.gameObject.SetActive(greenState);
+    }
+
+    public void R_Bookmarks_Out()
+    {
+        R_Bookmarks.GetComponent<Animator>().Play("Bookmark");
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void R_Bookmarks_In()
     {
-        
+        R_Bookmarks.GetComponent<Animator>().Play("B_InMove");
     }
 }
