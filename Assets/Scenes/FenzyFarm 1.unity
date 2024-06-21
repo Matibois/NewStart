@@ -730,9 +730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 732c9075f65458249824f8d500e53ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.1
+  delay: 0.05
   LeTexte: {fileID: 14216046}
-  fullText: Le caca
+  fullText: "Le caca c'est d\xE9licieux. C'est mon tonton albert qui m'a introduit
+    \xE0 cet univers. et qui m'a introduit tout court d'ailleurs. "
 --- !u!1 &22366531
 GameObject:
   m_ObjectHideFlags: 0
