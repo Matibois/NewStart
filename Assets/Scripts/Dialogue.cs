@@ -9,6 +9,7 @@ public class Dialogue : MonoBehaviour
     public TMP_Text LeTexte;
     public string fullText;
     private string currentText = "";
+
     void Start()
     {
         StartCoroutine(ShowText());
@@ -22,7 +23,6 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator ShowText()
     {
-        Debug.Log("ShowText");
         for (int i = 0; i <= fullText.Length; i++)
         {
            
