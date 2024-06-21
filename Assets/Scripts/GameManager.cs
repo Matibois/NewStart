@@ -6,6 +6,18 @@ using static Entreprise;
 
 public class GameManager : MonoBehaviour
 {
+    public static void LoadMainMenu()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.LoadScene("Menu");
+    }
+
+    public static void LoadFileSelection()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.LoadScene("FileSelection");
+    }
+
     public static void LoadWhiteMontain()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());

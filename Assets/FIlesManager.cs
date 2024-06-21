@@ -29,6 +29,11 @@ public class FIlesManager : MonoBehaviour
     private bool blueState = false;
     private bool greenState = false;
 
+    private void Start()
+    {
+        BookSelection(0);
+    }
+
     public void R_Switch()
     {
         redState = !redState;
@@ -50,14 +55,63 @@ public class FIlesManager : MonoBehaviour
         G_Opened.gameObject.SetActive(greenState);
     }
 
-    public void R_Bookmarks_Out()
+    public void BookSelection(int bookSelected)
     {
-        R_Bookmarks.GetComponent<Animator>().Play("Bookmark");
-        
+
+        switch (bookSelected)
+        {
+            case 0:
+                R_Bookmarks.GetComponent<Animator>().Play("B_InStill");
+                redState = false;
+                B_Bookmarks.GetComponent<Animator>().Play("B_InStill");
+                blueState = false;
+                G_Bookmarks.GetComponent<Animator>().Play("B_InStill");
+                greenState = false;
+                break;
+
+            case 1:
+                if (redState == false) R_Bookmarks.GetComponent<Animator>().Play("Bookmark");
+                redState = true;
+                if (blueState == true) B_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+                blueState = false;
+                if (greenState == true) G_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+                greenState = false;
+                break;
+
+            case 2:
+                if (redState == true) R_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+                redState = false;
+                if (blueState == false) B_Bookmarks.GetComponent<Animator>().Play("Bookmark");
+                blueState = true;
+                if (greenState == true) G_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+                greenState = false;
+                break;
+
+            case 3:
+                if (redState == true) R_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+                redState = false;
+                if (blueState == true) B_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+                blueState = false;
+                if (greenState == false) G_Bookmarks.GetComponent<Animator>().Play("Bookmark");
+                greenState = true;
+                break;
+
+        }
+
     }
 
-    public void R_Bookmarks_In()
+    public void R_Selected()
     {
-        R_Bookmarks.GetComponent<Animator>().Play("B_InMove");
+        BookSelection(1);
+    }
+
+    public void B_Selected()
+    {
+        BookSelection(2);
+    }
+
+    public void G_Selected()
+    {
+        BookSelection(3);
     }
 }
