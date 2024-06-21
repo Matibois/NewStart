@@ -22,12 +22,14 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator ShowText()
     {
-        for (int i = 0; i == fullText.Length; i++)
+        Debug.Log("ShowText");
+        for (int i = 0; i <= fullText.Length; i++)
         {
-            currentText = fullText.Substring(0, i);
-            LeTexte.text = currentText;
+           
+            Debug.Log(fullText);
+            LeTexte.text = fullText.Substring(0, i);
 
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(delay);
         }
     }
 }
