@@ -9,6 +9,12 @@ public class GameManager : MonoBehaviour
 
     private string selectedScene;
 
+    public static void LoadMainMenu()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        SceneManager.LoadScene("Menu");
+    }
+
     public static void LoadWhiteMontain()
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
