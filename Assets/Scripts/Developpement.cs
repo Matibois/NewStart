@@ -307,14 +307,14 @@ public class Developpement : MonoBehaviour
     {
         int rapport = 0;
 
-        if (entreprise.intTransport > 0 && Place.AgeMoyen == 1 || entreprise.intTransport > 0 && Place.AgeMoyen == 2)
+        if (entreprise.GetTransport() > 0 && Place.AgeMoyen == 1 || entreprise.GetTransport() > 0 && Place.AgeMoyen == 2)
         {
             rapport += CJeunes;
             rapport += CAdultes;
         }
 
-        if (entreprise.intNewsLetters > 0 && Place.AgeMoyen == 2) rapport += 1 + CAdultes;
-        if (entreprise.intBoiteAuLettre > 0 && Place.AgeMoyen == 3) rapport += CVieux;
+        if (entreprise.GetNewsLetters() > 0 && Place.AgeMoyen == 2) rapport += 1 + CAdultes;
+        if (entreprise.GetBoiteAuLettre() > 0 && Place.AgeMoyen == 3) rapport += CVieux;
 
         return rapport;
     }
@@ -322,19 +322,19 @@ public class Developpement : MonoBehaviour
     {
         int rapport = 0;
 
-        if (entreprise.intFakebook > 0 && Place.AgeMoyen == 2 || entreprise.intFakebook > 0 && Place.AgeMoyen == 3)
+        if (entreprise.GetFakebook() > 0 && Place.AgeMoyen == 2 || entreprise.GetFakebook() > 0 && Place.AgeMoyen == 3)
         {
             rapport += 2 + CAdultes;
             rapport += 2 + CVieux;
         }
 
-        if (entreprise.intYourTube > 0 && Place.AgeMoyen == 1 || entreprise.intYourTube > 0 && Place.AgeMoyen == 2)
+        if (entreprise.GetYourTube() > 0 && Place.AgeMoyen == 1 || entreprise.GetYourTube() > 0 && Place.AgeMoyen == 2)
         {
             rapport += 2 + CJeunes;
             rapport += 2 + CAdultes;
         }
 
-        if (entreprise.intAmstramgram > 0 && Place.AgeMoyen == 1) rapport += 2 + CJeunes;
+        if (entreprise.GetAmstramgram() > 0 && Place.AgeMoyen == 1) rapport += 2 + CJeunes;
 
         return rapport;
     }
@@ -342,25 +342,23 @@ public class Developpement : MonoBehaviour
     {
         int rapport = 0;
 
-        if (entreprise.intMagTele > 0 && Place.AgeMoyen == 2) rapport += 2 + CAdultes;
-        if (entreprise.intLiberte > 0 && Place.AgeMoyen == 1 || entreprise.intLiberte > 0 && Place.AgeMoyen == 2)
+        if (entreprise.GetMagTele() > 0 && Place.AgeMoyen == 2) rapport += 2 + CAdultes;
+        if (entreprise.GetLiberte() > 0 && Place.AgeMoyen == 1 || entreprise.GetLiberte() > 0 && Place.AgeMoyen == 2)
         {
             rapport += 2 + CJeunes;
             rapport += 2 + CAdultes;
         }
-        if (entreprise.intSVJ > 0 && Place.AgeMoyen == 3) rapport += CVieux;
+        if (entreprise.GetSVJ() > 0 && Place.AgeMoyen == 3) rapport += CVieux;
 
         return rapport;
     }
-
-   
     private int EvaluatePrice()
     {
         int rapport = 0;
         int[] prix = entreprise.GetPrice();
         int sousMetier1Prix = prix[0];
         int sousMetier2Prix = prix[1];
-        int sousMetier3Prix = prix[3];
+        int sousMetier3Prix = prix[2];
 
         if (sousMetier1Prix == Place.RPH) rapport += 2;
         if (sousMetier2Prix == Place.RPH) rapport += 2;

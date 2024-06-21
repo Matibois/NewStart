@@ -35,50 +35,63 @@ public class Entreprise : MonoBehaviour
     [SerializeField] Slider SousMetier2Slider;
     [SerializeField] Slider SousMetier3Slider;
 
+    [SerializeField] TMP_Text pubPointText;
+    [SerializeField] TMP_Text newsLetterPointText;
+    [SerializeField] TMP_Text boiteAuLettrePointText;
+
+    [SerializeField] TMP_Text fakebookPointText;
+    [SerializeField] TMP_Text yourTubePointText;
+    [SerializeField] TMP_Text amstramgramPointText;
+
+    [SerializeField] TMP_Text magTelePointText;
+    [SerializeField] TMP_Text libertePointText;
+    [SerializeField] TMP_Text svjPointText;     
+
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
 
-    [SerializeField] public string UserName;
-    [SerializeField] public string EntrepriseName;
-    [SerializeField] public shop job;
-    [SerializeField] public int Money;
-    [SerializeField] public int TypeChoice;
-    [SerializeField] public place lieu;
+    [SerializeField] private GestionnaireUI gestionnaireUI;
 
-    TMP_Dropdown jobtype;
+     private string UserName;
+     private string EntrepriseName;
+     private shop job;
+     private int Money;
+     private int TypeChoice;
+     private place lieu;
 
-    [SerializeField] public int intSurgele;
-    [SerializeField] public int intLivraison;
-    [SerializeField] public int intBio;
-
-    [SerializeField] public int intCourse;
-    [SerializeField] public int intVTT;
-    [SerializeField] public int intVille;
-
-    [SerializeField] public int intAidePerso;
-    [SerializeField] public int intProfParticulier;
-    [SerializeField] public int intCoachSport;
-
-    [SerializeField] public int intLuxe;
-    [SerializeField] public int intSport;
-    [SerializeField] public int intQuotidiens;
-
-    public int SousMetier1;
-    public int SousMetier2;
-    public int SousMetier3;
+    public int intSurgele;
+    public int intLivraison;
+    public int intBio;
+    
+    public int intCourse;
+    public int intVTT;
+    public int intVille;
+    
+    public int intAidePerso;
+    public int intProfParticulier;
+    public int intCoachSport;
+    
+    public int intLuxe;
+    public int intSport;
+    public int intQuotidiens;
+    
     private int sousMetierPoint = 4;
+    private int SousMetier1;
+    private int SousMetier2;
+    private int SousMetier3;
 
-    [SerializeField] public int intTransport;
-    [SerializeField] public int intNewsLetters;
-    [SerializeField] public int intBoiteAuLettre;
-
-    [SerializeField] public int intFakebook;
-    [SerializeField] public int intYourTube;
-    [SerializeField] public int intAmstramgram;
-
-    [SerializeField] public int intMagTele;
-    [SerializeField] public int intLiberte;
-    [SerializeField] public int intSVJ;
+    private int comPoint = 5;
+    private int intTransport;
+    private int intNewsLetters;
+    private int intBoiteAuLettre;
+    
+    private int intFakebook;
+    private int intYourTube;
+    private int intAmstramgram;
+    
+    private int intMagTele;
+    private int intLiberte;
+    private int intSVJ;
 
     public enum place
     {
@@ -96,12 +109,6 @@ public class Entreprise : MonoBehaviour
     }
 
     public SaveData saveData;
-    [SerializeField] private GestionnaireUI gestionnaireUI;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
 
     public void Named(string name)
     {
@@ -117,7 +124,6 @@ public class Entreprise : MonoBehaviour
         }
         Debug.Log("Name : " + UserName);
     }
-
     public void EntrepriseNamed(string name)
     {
         if (name != null && name != string.Empty)
@@ -199,30 +205,21 @@ public class Entreprise : MonoBehaviour
             switch (sousMetier)
             {
                 case 1:
-                    if (SousMetier1 < 3)
-                    {
-                        SousMetier1++;
-                        sousMetierPoint--;
-                        SousMetier1Points.text = SousMetier1.ToString();
-                    }
+                    SousMetier1++;
+                    sousMetierPoint--;
+                    SousMetier1Points.text = SousMetier1.ToString();
                     break;
 
                 case 2:
-                    if (SousMetier2 < 3)
-                    {
-                        SousMetier2++;
-                        sousMetierPoint--;
-                        SousMetier2Points.text = SousMetier2.ToString();
-                    }
+                    SousMetier2++;
+                    sousMetierPoint--;
+                    SousMetier2Points.text = SousMetier2.ToString();
                     break;
 
                 case 3:
-                    if (SousMetier3 < 3)
-                    {
-                        SousMetier3++;
-                        sousMetierPoint--;
-                        SousMetier3Points.text = SousMetier3.ToString();
-                    }
+                    SousMetier3++;
+                    sousMetierPoint--;
+                    SousMetier3Points.text = SousMetier3.ToString();
                     break;
             }
             RefreshMetierPoint();
@@ -291,6 +288,137 @@ public class Entreprise : MonoBehaviour
         }
     }
 
+    public void ComAddPoint(int com)
+    {
+        if (comPoint > 0)
+        {
+            switch (com)
+            {
+                case 1:
+                    intTransport++;
+                    comPoint--;
+                    break;
+
+                case 2:
+                    intNewsLetters++;
+                    comPoint--;
+                    break;
+
+                case 3:
+                    intBoiteAuLettre++;
+                    comPoint--;
+                    break;
+
+                case 4:
+                    intFakebook++;
+                    comPoint--;
+                    break;
+
+                case 5:
+                    intYourTube++;
+                    comPoint--;
+                    break;
+
+                case 6:
+                    intAmstramgram++;
+                    comPoint--;
+                    break;
+
+                case 7:
+                    intMagTele++;
+                    comPoint--;
+                    break;
+
+                case 8:
+                    intLiberte++;
+                    comPoint--;
+                    break;
+
+                case 9:
+                    intSVJ++;
+                    comPoint--;
+                    break;
+            }
+        }
+    }
+    public void ComRemovePoint(int com)
+    {
+        switch (com)
+        {
+            case 1:
+                if (intTransport > 0)
+                {
+                    intTransport--;
+                    comPoint++;
+                }
+                break;
+
+            case 2:
+                if (intNewsLetters > 0)
+                {
+                    intNewsLetters--;
+                    comPoint++;
+                }
+                break;
+
+            case 3:
+                if (intBoiteAuLettre > 0)
+                {
+                    intBoiteAuLettre--;
+                    comPoint++;
+                }
+                break;
+
+            case 4:
+                if (intFakebook > 0)
+                {
+                    intFakebook--;
+                    comPoint++;
+                }
+                break;
+
+            case 5:
+                if (intYourTube > 0)
+                {
+                    intYourTube--;
+                    comPoint++;
+                }
+                break;
+
+            case 6:
+                if (intAmstramgram > 0)
+                {
+                    intAmstramgram--;
+                    comPoint++;
+                }
+                break;
+
+            case 7:
+                if (intMagTele > 0)
+                {
+                    intMagTele--;
+                    comPoint++;
+                }
+                break;
+
+            case 8:
+                if (intLiberte > 0)
+                {
+                    intLiberte--;
+                    comPoint++;
+                }
+                break;
+
+            case 9:
+                if (intSVJ > 0)
+                {
+                    intSVJ--;
+                    comPoint++;
+                }
+                break;
+        }
+    }
+
     public void setPrice(int sousMetier)
     {
         SousMetier1Price = (int)SousMetier1Slider.value;
@@ -320,6 +448,7 @@ public class Entreprise : MonoBehaviour
         PlaceText.text = "Fenzy Farm";
     }
 
+    #region Getters
     public string GetUserName() { return UserName; }
     public string GetEntrepriseName() { return EntrepriseName; }
     public int GetMoney() { return Money; }
@@ -346,6 +475,21 @@ public class Entreprise : MonoBehaviour
     {
         return new int[] { SousMetier1Price, SousMetier2Price, SousMetier3Price };
     }
+
+    public int GetTransport() { return intTransport; }
+    public int GetNewsLetters() { return intNewsLetters; }
+    public int GetBoiteAuLettre() { return intBoiteAuLettre; }
+
+    public int GetFakebook() { return intFakebook; }
+    public int GetYourTube() { return intYourTube; }
+    public int GetAmstramgram() { return intAmstramgram; }
+
+    public int GetMagTele() { return intMagTele; }
+    public int GetLiberte() { return intLiberte; }
+    public int GetSVJ() { return intSVJ; }
+
+
+    #endregion
 
     public void RefreshData(SaveData saveData)
     {
