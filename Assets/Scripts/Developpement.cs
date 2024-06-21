@@ -242,6 +242,7 @@ public class Developpement : MonoBehaviour
             CRiches += entreprise.intCourse;
         }
 
+
         if (entreprise.intVille > 0)
         {
             rapport += 2 + entreprise.intVille; // touche les jeunes les adultes et les vieux

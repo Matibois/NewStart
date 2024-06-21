@@ -10,89 +10,57 @@ using System;
 
 public class GestionnaireUI : MonoBehaviour
 {
-
-    [SerializeField] TMP_InputField NameEntry;
-    [SerializeField] TMP_InputField EntrepriseNameEntry;
     [SerializeField] TMP_Text NameText;
     [SerializeField] TMP_Text EntrepriseNameText;
-    [SerializeField] TMP_Text PosText;
     [SerializeField] TMP_Text PlaceText;
     [SerializeField] TMP_Text JobText;
-    [SerializeField] TMP_Text SousMetier1Text;
-    [SerializeField] TMP_Text SousMetier2Text;
-    [SerializeField] TMP_Text SousMetier3Text;
+
+    [SerializeField] TMP_Text SousMetier1Name;
+    [SerializeField] TMP_Text SousMetier2Name;
+    [SerializeField] TMP_Text SousMetier3Name;
+
+    [SerializeField] TMP_Text SousMetierPoints;
+    [SerializeField] TMP_Text SousMetier1Points;
+    [SerializeField] TMP_Text SousMetier2Points;
+    [SerializeField] TMP_Text SousMetier3Points;
+
+    [SerializeField] TMP_Text pubPointText;
+    [SerializeField] TMP_Text newsLetterPointText;
+    [SerializeField] TMP_Text boiteAuLettrePointText;
+
+    [SerializeField] TMP_Text fakebookPointText;
+    [SerializeField] TMP_Text yourTubePointText;
+    [SerializeField] TMP_Text amstramgramPointText;
+
+    [SerializeField] TMP_Text magTelePointText;
+    [SerializeField] TMP_Text libertePointText;
+    [SerializeField] TMP_Text svjPointText;
+
 
     [SerializeField] private Entreprise entreprise;
-    public string UserName;
-    public string EntrepriseName;
     public shop job;
-    public int Money;
-    public int TypeChoice;
     public place lieu;
-
-    public int intSurgele;
-    public int intLivraison;
-    public int intBio;
-
-    public int intCourse;
-    public int intVTT;
-    public int intVille;
-
-    public int intAidePerso;
-    public int intProfParticulier;
-    public int intCoachSport;
-
-    public int intLuxe;
-    public int intSport;
-    public int intQuotidiens;
 
     public void RefreshData()
     {
-        GetDataToRefresh();
-        GetIntMetier();
-
-        RefreshName();
         RefreshPlace();
         RefreshJob();
     }
 
-    public void Named()
+    public void Named(string name)
     {
-        UserName = NameEntry.text;
-        entreprise.Named(UserName);
-    }
-    private void RefreshName() { NameText.text = UserName; }
-
-    private void GetDataToRefresh()
-    {
-        entreprise = FindObjectOfType<Entreprise>();
-
-        UserName = entreprise.GetUserName();
-        EntrepriseName = entreprise.GetEntrepriseName();
-        Money = entreprise.GetMoney();
-        job = entreprise.GetShop();
-        lieu = entreprise.GetPlace();
+        NameText.text = name;
     }
 
-    private void GetIntMetier()
+    public void EntrepriseNamed(string name)
     {
-        intSurgele = entreprise.GetSurgele();
-        intLivraison = entreprise.GetLivraison();
-        intBio = entreprise.GetBio();
-        intCourse = entreprise.GetCourses();
-        intVTT = entreprise.GetVTT();
-        intVille = entreprise.GetVille();
-        intAidePerso = entreprise.GetAidePerso();
-        intProfParticulier = entreprise.GetProfParticulier();
-        intCoachSport = entreprise.GetCoachSport();
-        intLuxe = entreprise.GetLuxe();
-        intSport = entreprise.GetSport();
-        intQuotidiens = entreprise.GetQuotidiens();
-
+        EntrepriseNameText.text = name;
     }
 
     public void RefreshPlace()
     {
+        lieu = entreprise.GetPlace();
+
         switch (lieu)
         {
             case place.WhiteMontain:
@@ -114,21 +82,43 @@ public class GestionnaireUI : MonoBehaviour
     }
     public void RefreshJob()
     {
+        job = entreprise.GetShop();
+
         switch (job)
         {
             case shop.Aliment:
-                JobText.text = job.ToString();
+                JobText.text = "Magasin alimentaire";
+                SousMetier1Name.text = "Surgele";
+                SousMetier2Name.text = "Bio";
+                SousMetier3Name.text = "Livraison";
                 break;
             case shop.Velo:
-                JobText.text = job.ToString();
+                JobText.text = "Magasin de Velo";
+                SousMetier1Name.text = "VTT";
+                SousMetier2Name.text = "Course";
+                SousMetier3Name.text = "Ville";
                 break;
             case shop.Service:
-                JobText.text = job.ToString();
+                JobText.text = "Service Personnelle";
+                SousMetier1Name.text = "Aide Personnelle";
+                SousMetier2Name.text = "Coach Sportif";
+                SousMetier3Name.text = "Prof Particulier";
                 break;
             case shop.Vetement:
                 JobText.text = job.ToString();
+                SousMetier1Name.text = "Luxe";
+                SousMetier2Name.text = "Sport";
+                SousMetier3Name.text = "Quotidiens";
                 break;
         }
+    }
+
+    public void RefreshSousMetierPoints(int points, int points1, int points2, int points3)
+    {
+        SousMetierPoints.text = points.ToString();
+        SousMetier1Points.text = points1.ToString();
+        SousMetier2Points.text = points2.ToString();
+        SousMetier3Points.text = points3.ToString();
     }
 
     public void ErasePlace() { PlaceText.text = string.Empty; }

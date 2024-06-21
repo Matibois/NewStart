@@ -13,19 +13,6 @@ public class Entreprise : MonoBehaviour
 {
     [SerializeField] TMP_InputField NameEntry;
     [SerializeField] TMP_InputField EntrepriseNameEntry;
-    [SerializeField] TMP_Text NameText;
-    [SerializeField] TMP_Text EntrepriseNameText;
-    [SerializeField] TMP_Text PosText;
-    [SerializeField] TMP_Text PlaceText;
-    [SerializeField] TMP_Text JobText;
-
-    [SerializeField] TMP_Text SousMetier1Name;
-    [SerializeField] TMP_Text SousMetier2Name;
-    [SerializeField] TMP_Text SousMetier3Name;
-
-    [SerializeField] TMP_Text SousMetier1Points;
-    [SerializeField] TMP_Text SousMetier2Points;
-    [SerializeField] TMP_Text SousMetier3Points;
 
     private int SousMetier1Price;
     private int SousMetier2Price;
@@ -35,46 +22,34 @@ public class Entreprise : MonoBehaviour
     [SerializeField] Slider SousMetier2Slider;
     [SerializeField] Slider SousMetier3Slider;
 
-    [SerializeField] TMP_Text pubPointText;
-    [SerializeField] TMP_Text newsLetterPointText;
-    [SerializeField] TMP_Text boiteAuLettrePointText;
-
-    [SerializeField] TMP_Text fakebookPointText;
-    [SerializeField] TMP_Text yourTubePointText;
-    [SerializeField] TMP_Text amstramgramPointText;
-
-    [SerializeField] TMP_Text magTelePointText;
-    [SerializeField] TMP_Text libertePointText;
-    [SerializeField] TMP_Text svjPointText;     
-
     public TMP_Dropdown JobDB;
     [SerializeField] GameObject ValidateJobBtn;
 
     [SerializeField] private GestionnaireUI gestionnaireUI;
 
-     private string UserName;
-     private string EntrepriseName;
-     private shop job;
-     private int Money;
-     private int TypeChoice;
-     private place lieu;
+    private string UserName;
+    private string EntrepriseName;
+    private shop job;
+    private int Money;
+    private int TypeChoice;
+    private place lieu;
 
     public int intSurgele;
     public int intLivraison;
     public int intBio;
-    
+
     public int intCourse;
     public int intVTT;
     public int intVille;
-    
+
     public int intAidePerso;
     public int intProfParticulier;
     public int intCoachSport;
-    
+
     public int intLuxe;
     public int intSport;
     public int intQuotidiens;
-    
+
     private int sousMetierPoint = 4;
     private int SousMetier1;
     private int SousMetier2;
@@ -84,11 +59,11 @@ public class Entreprise : MonoBehaviour
     private int intTransport;
     private int intNewsLetters;
     private int intBoiteAuLettre;
-    
+
     private int intFakebook;
     private int intYourTube;
     private int intAmstramgram;
-    
+
     private int intMagTele;
     private int intLiberte;
     private int intSVJ;
@@ -115,12 +90,12 @@ public class Entreprise : MonoBehaviour
         if (name != null && name != string.Empty)
         {
             UserName = name;
-            NameText.text = UserName;
+            gestionnaireUI.Named(UserName);
         }
         else
         {
             UserName = NameEntry.text;
-            NameText.text = UserName;
+            gestionnaireUI.Named(UserName);
         }
         Debug.Log("Name : " + UserName);
     }
@@ -129,73 +104,58 @@ public class Entreprise : MonoBehaviour
         if (name != null && name != string.Empty)
         {
             EntrepriseName = name;
-            EntrepriseNameText.text = EntrepriseName;
+            gestionnaireUI.EntrepriseNamed(EntrepriseName);
         }
         else
         {
             UserName = EntrepriseNameEntry.text;
-            EntrepriseNameText.text = UserName;
+            gestionnaireUI.EntrepriseNamed(EntrepriseName);
         }
         Debug.Log("Entreprise name : " + name);
     }
 
     public void JobChoice()
     {
+        ValidateJobBtn.SetActive(true);
         switch (JobDB.value)
         {
             case 1:
                 job = shop.Aliment;
-                JobText.text = "Magasin alimentaire";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intSurgele;
-                SousMetier1Name.text = "Surgele";
                 SousMetier2 = intBio;
-                SousMetier2Name.text = "Bio";
                 SousMetier3 = intLivraison;
-                SousMetier3Name.text = "Livraison";
                 break;
 
             case 2:
                 job = shop.Velo;
-                JobText.text = "Magasin de Velo";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intVTT;
-                SousMetier1Name.text = "VTT";
                 SousMetier2 = intCourse;
-                SousMetier2Name.text = "Course";
                 SousMetier3 = intVille;
-                SousMetier3Name.text = "Ville";
                 break;
 
             case 3:
                 job = shop.Service;
-                JobText.text = "Service Personnelle";
                 ValidateJobBtn.SetActive(true);
                 SousMetier1 = intAidePerso;
-                SousMetier1Name.text = "Aide Personnelle";
                 SousMetier2 = intCoachSport;
-                SousMetier2Name.text = "Coach Sportif";
                 SousMetier3 = intProfParticulier;
-                SousMetier3Name.text = "Professeur Particulier";
                 break;
 
             case 4:
                 job = shop.Vetement;
-                JobText.text = "Magasin de vetement";
-                ValidateJobBtn.SetActive(true);
                 SousMetier1 = intLuxe;
-                SousMetier1Name.text = "Luxe";
                 SousMetier2 = intSport;
-                SousMetier2Name.text = "Sport";
                 SousMetier3 = intQuotidiens;
-                SousMetier3Name.text = "Quotidiens";
                 break;
 
             case 0:
                 ValidateJobBtn.SetActive(false);
-                JobText.text = " ";
+                Debug.Log("no job entreprise 180");
                 break;
         }
+        gestionnaireUI.RefreshJob();
     }
 
     public void SousMetierAddPoint(int sousMetier)
@@ -207,19 +167,16 @@ public class Entreprise : MonoBehaviour
                 case 1:
                     SousMetier1++;
                     sousMetierPoint--;
-                    SousMetier1Points.text = SousMetier1.ToString();
                     break;
 
                 case 2:
                     SousMetier2++;
                     sousMetierPoint--;
-                    SousMetier2Points.text = SousMetier2.ToString();
                     break;
 
                 case 3:
                     SousMetier3++;
                     sousMetierPoint--;
-                    SousMetier3Points.text = SousMetier3.ToString();
                     break;
             }
             RefreshMetierPoint();
@@ -234,7 +191,6 @@ public class Entreprise : MonoBehaviour
                 {
                     SousMetier1--;
                     sousMetierPoint++;
-                    SousMetier1Points.text = SousMetier1.ToString();
                 }
                 break;
 
@@ -243,7 +199,6 @@ public class Entreprise : MonoBehaviour
                 {
                     SousMetier2--;
                     sousMetierPoint++;
-                    SousMetier2Points.text = SousMetier2.ToString();
                 }
                 break;
 
@@ -252,7 +207,6 @@ public class Entreprise : MonoBehaviour
                 {
                     SousMetier3--;
                     sousMetierPoint++;
-                    SousMetier3Points.text = SousMetier3.ToString();
                 }
                 break;
         }
@@ -286,6 +240,7 @@ public class Entreprise : MonoBehaviour
                 intLivraison = SousMetier3;
                 break;
         }
+        gestionnaireUI.RefreshSousMetierPoints(sousMetierPoint, SousMetier1, SousMetier2, SousMetier3);
     }
 
     public void ComAddPoint(int com)
@@ -430,22 +385,22 @@ public class Entreprise : MonoBehaviour
     public void MontainPlace()
     {
         lieu = place.WhiteMontain;
-        PlaceText.text = "White Montain";
+        gestionnaireUI.RefreshData();
     }
     public void CityPlace()
     {
         lieu = place.UrbanCity;
-        PlaceText.text = "Urban City";
+        gestionnaireUI.RefreshData();
     }
     public void PalmPlace()
     {
         lieu = place.PalmCoconut;
-        PlaceText.text = "Palm Coconut";
+        gestionnaireUI.RefreshData();
     }
     public void FarmPlace()
     {
         lieu = place.FenzyFarm;
-        PlaceText.text = "Fenzy Farm";
+        gestionnaireUI.RefreshData();
     }
 
     #region Getters
@@ -471,10 +426,7 @@ public class Entreprise : MonoBehaviour
     public int GetCourses() { return intCourse; }
     public int GetVille() { return intVille; }
 
-    public int[] GetPrice()
-    {
-        return new int[] { SousMetier1Price, SousMetier2Price, SousMetier3Price };
-    }
+    public int[] GetPrice() { return new int[] { SousMetier1Price, SousMetier2Price, SousMetier3Price }; }
 
     public int GetTransport() { return intTransport; }
     public int GetNewsLetters() { return intNewsLetters; }
@@ -493,11 +445,10 @@ public class Entreprise : MonoBehaviour
 
     public void RefreshData(SaveData saveData)
     {
-        Named(saveData.UserName);
+        gestionnaireUI.Named(saveData.UserName);
         Money = saveData.Money;
         lieu = saveData.Lieu;
         job = saveData.Shop;
-
         intSurgele = saveData.intSurgele;
         intLivraison = saveData.intLivraison;
         intBio = saveData.intBio;
