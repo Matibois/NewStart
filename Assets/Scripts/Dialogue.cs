@@ -15,37 +15,52 @@ public class Dialogue : MonoBehaviour
     public GameObject Name;
     public GameObject Text;
 
+    public bool dialogDone;
+    public bool skipDialog;
+
+    private void Start()
+    {
+        dialogDone = true;
+        skipDialog = false;
+    }
 
     public void DialogFunction(string text)
     {
         LeTexte.text = "";
-        if(text.Length > 107) //Medium Box
+        if(text.Length > 107 && text.Length < 210) //Medium Box
         {
             BS.DisplayBox(2);
-            Name.GetComponent<RectTransform>().transform.position = new Vector2(-154.7f, 27.2f);
-            Text.transform.position = transform.position + new Vector3(-76.4f, -46.6f, 0f);
+            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 27.2f );
+            Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, -29f);
         }
-        else if (text.Length > 210) //Large Box
+        else if (text.Length >= 210) //Large Box 210
         {
             BS.DisplayBox(3);
-            Name.transform.position = transform.position + new Vector3(-154.7f, 100.3f, 0f);
-            Text.transform.position = transform.position + new Vector3(-76.4f, -31.6f, 0f);
+            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 100.3f);
+            Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, 41.5f);
         }
         else // Small Box 
         {
             BS.DisplayBox(1);
-            Name.transform.position = transform.position + new Vector3(-154.7f, -21.3f, 0f);
-            Text.transform.position = transform.position + new Vector3(-76.4f, -74.2f, 0f);
+            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, -21.3f);
+            Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, -74.2f);
         }
         StartCoroutine(ShowText(text));
+        Debug.Log(text.Length);
     }
 
     IEnumerator ShowText(string text)
     {
+        dialogDone = false;
         for (int i = 0; i <= text.Length; i++)
         {
             LeTexte.text = text.Substring(0, i);
-            yield return new WaitForSeconds(delay);
+            if (skipDialog == false)
+            {
+                yield return new WaitForSeconds(delay);
+            }
         }
+        dialogDone = true;
+        skipDialog = false;
     }
 }
