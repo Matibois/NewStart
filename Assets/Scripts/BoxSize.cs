@@ -8,9 +8,8 @@ public class BoxSize : MonoBehaviour
     public GameObject medium;
     public GameObject large;
 
-    public int size = 1;
 
-    public void DisplayBox() 
+    public void DisplayBox(int size) 
     {
         switch (size)
         {
