@@ -8,10 +8,8 @@ public class Dialogue : MonoBehaviour
     public float delay = 0.1f;
     public TMP_Text LeTexte;
     public string fullText;
-    //private string currentText = "";
 
     public BoxSize BS;
-    public GameObject cv;
     public GameObject Name;
     public GameObject Text;
 
@@ -24,13 +22,14 @@ public class Dialogue : MonoBehaviour
         skipDialog = false;
     }
 
-    public void DialogFunction(string text)
+    public void DialogFunction(string name, string text)
     {
         LeTexte.text = "";
-        if(text.Length > 107 && text.Length < 210) //Medium Box
+        Name.GetComponent<TMP_Text>().text = name;
+        if(text.Length > 93 && text.Length < 210) //Medium Box
         {
             BS.DisplayBox(2);
-            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 27.2f );
+            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 27.2f);
             Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, -29f);
         }
         else if (text.Length >= 210) //Large Box 210
