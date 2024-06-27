@@ -8,6 +8,7 @@ public class AllDialogs : MonoBehaviour
     private int DialogIndex;
     public GameObject SkipButton;
     public GameObject TextInput;
+    public GameObject Enterprise;
 
     private void Start()
     {
@@ -53,7 +54,7 @@ public class AllDialogs : MonoBehaviour
         if (DialogIndex == 9) D.DialogFunction("Bebot", "Avant toute chose, j'aimerais avoir plus d'informations sur celle ci.");
         if (DialogIndex == 10)
         {
-            D.DialogFunction("Bebot", "Dans quel domaine allons-nous nous installer ?");
+            D.DialogFunction("Bebot", "Quelle serait l'entreprise de tes rêves ?");
             TextInput.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
         }
