@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Interact : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class Interact : MonoBehaviour
     Material[] original;
     Material[] outline;
     Material[] mats;
+
+    Ray ray;
+    RaycastHit hit;
+    private bool canInterract = false;
 
     private void Start()
     {
@@ -26,8 +31,9 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            mats = outline;
-
+            parentObject.GetComponent<Renderer>().materials = outline;
+            canInterract = true;
+            print("collide");
         }
     }
 
@@ -35,8 +41,32 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            mats = original;
+            parentObject.GetComponent<Renderer>().materials = original;
+            canInterract = false;
+            print("NO collide");
         }
     }
 
+    /*public void OnMouseDown()
+    {
+        //menu.SetActive(true);
+        //player.SetActive(false);
+        print("click");
+        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
+    }*/
+
+
+    void Update()
+    {
+        if (canInterract)
+        {
+
+            ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                    print(hit.collider.name);
+            }
+        }
+    }
 }

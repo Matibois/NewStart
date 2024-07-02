@@ -52,7 +52,7 @@ public class AllDialogs : MonoBehaviour
         }
         if (DialogIndex == 6)
         {
-            D.DialogFunction("Bebot", "Enchanté " + E.UserName + ".");
+            D.DialogFunction("Bebot", "Enchanté " + E.GetUserName() + ".");
             TextInput.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }

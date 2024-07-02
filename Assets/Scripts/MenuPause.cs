@@ -11,7 +11,7 @@ public class MenuPause : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         //MenuUI = GetComponent<GameObject>();
     }
 
