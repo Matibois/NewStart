@@ -17,13 +17,13 @@ public class MenuPause : MonoBehaviour
 
     public void pause()
     {
-        Time.timeScale = paused ? 1 : 0;
-        paused = !paused;
+        /*Time.timeScale = paused ? 1 : 0;
+        paused = !paused;*/
     }
 
     public void Stop()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void Play()
