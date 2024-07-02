@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class AllDialogs : MonoBehaviour
 {
@@ -8,7 +10,12 @@ public class AllDialogs : MonoBehaviour
     private int DialogIndex;
     public GameObject SkipButton;
     public GameObject TextInput;
+    public TMP_Text TextInput2;
     public GameObject Enterprise;
+    public GameObject ValidatedName;
+
+    public Entreprise E;
+
 
     private void Start()
     {
@@ -45,21 +52,41 @@ public class AllDialogs : MonoBehaviour
         }
         if (DialogIndex == 6)
         {
-            D.DialogFunction("Bebot", "Enchanté Player");
+            D.DialogFunction("Bebot", "Enchanté " + E.UserName + ".");
             TextInput.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }
         if (DialogIndex == 7) D.DialogFunction("Bebot", "Je suis ravi de vous accompagner dans cette aventure.");
         if (DialogIndex == 8) D.DialogFunction("Bebot", "Nous allons travailler ensemble afin de faire la meilleure entreprise possible !");
         if (DialogIndex == 9) D.DialogFunction("Bebot", "Avant toute chose, j'aimerais avoir plus d'informations sur celle ci.");
-        if (DialogIndex == 10)
+        if (DialogIndex == 10) D.DialogFunction("Bebot", "Quelle serait l'entreprise de tes rêves ?");
+        if (DialogIndex == 11)
         {
-            D.DialogFunction("Bebot", "Quelle serait l'entreprise de tes rêves ?");
-            TextInput.gameObject.SetActive(true);
+            Enterprise.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
+            DisableDialog();
+        }
+        if (DialogIndex == 12)
+        {
+            D.DialogFunction("Bebot", "Voilà là t'as choisi ton truc");
+            EnableDialog();
+            Enterprise.gameObject.SetActive(false);
+            SkipButton.gameObject.SetActive(true);
         }
 
         //if (DialogIndex == 4) DisableDialog();
+    }
+
+    public void EmptyNameChecker()
+    {
+        if(TextInput2.text.Length <= 1)
+        {
+            ValidatedName.gameObject.SetActive(false);
+        }
+        else if (TextInput2.text.Length > 1)
+        {
+            ValidatedName.gameObject.SetActive(true);
+        }
     }
 
     public void EnableDialog()

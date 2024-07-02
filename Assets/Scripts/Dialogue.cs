@@ -45,7 +45,6 @@ public class Dialogue : MonoBehaviour
             Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, -74.2f);
         }
         StartCoroutine(ShowText(text));
-        Debug.Log(text.Length);
     }
 
     IEnumerator ShowText(string text)

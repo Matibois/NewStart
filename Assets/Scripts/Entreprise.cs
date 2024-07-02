@@ -52,7 +52,7 @@ public class Entreprise : MonoBehaviour
 
     [SerializeField] private GestionnaireUI gestionnaireUI;
 
-     private string UserName;
+     public string UserName; //Il était en private, je l'ai passé en public pour le récup ailleurs. Si j'ai merdé spam moi?.
      private string EntrepriseName;
      private shop job;
      private int Money;
