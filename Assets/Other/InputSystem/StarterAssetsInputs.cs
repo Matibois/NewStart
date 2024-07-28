@@ -13,6 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool escape;
+		public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -48,6 +49,11 @@ namespace StarterAssets
         public void OnEscape(InputValue value)
         {
             EscapeInput(value.isPressed);
+        }
+
+		public void OnInteract(InputValue value)
+        {
+            InteractInput(value.isPressed);
         }
 #endif
 
@@ -86,6 +92,11 @@ namespace StarterAssets
 		{
 			escape = newEscapeState;
 		}
-	}
+
+		private void InteractInput(bool newInteractState)
+        {
+            interact = newInteractState;
+        }
+    }
 	
 }

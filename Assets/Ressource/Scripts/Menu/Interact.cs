@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using StarterAssets;
+using System;
 
 public class Interact : MonoBehaviour
 {
@@ -14,9 +16,16 @@ public class Interact : MonoBehaviour
     Material[] outline;
     Material[] mats;
 
+    public static Action<bool> canInteractEvent = null;
+
     Ray ray;
     RaycastHit hit;
-    private bool canInterract = false;
+    private bool canInteract = false;
+
+    private void OnDestroy()
+    {
+        ThirdPersonController.MyInteractEvent -= Interaction;
+    }
 
     private void Start()
     {
@@ -25,6 +34,7 @@ public class Interact : MonoBehaviour
         original = new Material[] { outline[0], outline[0] };
         parentObject.GetComponent<Renderer>().materials = original;
         print("oui");
+        ThirdPersonController.MyInteractEvent += Interaction;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,8 +42,9 @@ public class Interact : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             parentObject.GetComponent<Renderer>().materials = outline;
-            canInterract = true;
+            canInteract = true;
             print("collide");
+            canInteractEvent?.Invoke(canInteract);
         }
     }
 
@@ -42,32 +53,17 @@ public class Interact : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             parentObject.GetComponent<Renderer>().materials = original;
-            canInterract = false;
+            canInteract = false;
             print("NO collide");
+            canInteractEvent?.Invoke(canInteract);
         }
     }
 
-
-    /*public void OnMouseDown()
+    private void Interaction()
     {
-        //menu.SetActive(true);
-        //player.SetActive(false);
-        print("click");
-        Time.timeScale = (Time.timeScale == 0) ? 1 : 0;
-    }*/
-
-
-    void Update()
-    {
-        if (canInterract)
+        if (canInteract)
         {
 
-            ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (Mouse.current.leftButton.wasPressedThisFrame)
-                    print(hit.collider.name);
-            }
         }
     }
 }

@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Playground.unity
+    path: Assets/Ressource/Scenes/Playground.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
   - enabled: 1
-    path: Assets/Scenes/UrbanCity.unity
+    path: Assets/Ressource/Scenes/UrbanCity.unity
     guid: 696af70772e106f4192fc4d99a09c7cf
   - enabled: 1
-    path: Assets/Scenes/FenzyFarm.unity
+    path: Assets/Ressource/Scenes/FenzyFarm.unity
     guid: 8fadb7d1805f4ae478be95d1f8c796e4
   - enabled: 1
-    path: Assets/Scenes/PalmCocnut.unity
+    path: Assets/Ressource/Scenes/PalmCocnut.unity
     guid: 09de78ad395e01647aae2ee199b3cf78
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Ressource/Scenes/Menu.unity
     guid: 2dc9f6428ad3fe249b1db50d7494bbca
   - enabled: 1
-    path: Assets/Scenes/WhiteMontain.unity
+    path: Assets/Ressource/Scenes/WhiteMontain.unity
     guid: c0a749fb2334a7c4d97682eaa8881d47
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,

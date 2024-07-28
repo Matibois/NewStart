@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using System;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -117,6 +118,7 @@ namespace StarterAssets
         private bool _hasAnimator;
         [SerializeField] GameObject MenuUI;
 
+        public static event Action MyInteractEvent;
 
         private bool IsCurrentDeviceMouse
         {
@@ -172,6 +174,7 @@ namespace StarterAssets
             Move();
 
             escape();
+            MyInteract();
         }
 
         private void LateUpdate()
@@ -232,6 +235,16 @@ namespace StarterAssets
                 _input.escape = false;
             }
         }
+
+        private void MyInteract()
+        {
+            if (_input.interact)
+            {
+                _input.interact = false;
+                MyInteractEvent?.Invoke();
+            }
+        }
+
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
@@ -400,7 +413,7 @@ namespace StarterAssets
             {
                 if (FootstepAudioClips.Length > 0)
                 {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    var index = UnityEngine.Random.Range(0, FootstepAudioClips.Length);
                     AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
             }
