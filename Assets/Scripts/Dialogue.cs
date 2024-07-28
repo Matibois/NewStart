@@ -5,7 +5,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public float delay = 0.1f;
+    public float delay = 0.05f;
     public TMP_Text LeTexte;
     public string fullText;
 
@@ -15,6 +15,7 @@ public class Dialogue : MonoBehaviour
 
     public bool dialogDone;
     public bool skipDialog;
+    public bool codeChar;
 
     private void Start()
     {
@@ -47,16 +48,33 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(ShowText(text));
     }
 
-    IEnumerator ShowText(string text)
+    IEnumerator ShowText(string text) //Changer la couleur d'un ou plusieurs mots
     {
         dialogDone = false;
+        codeChar = false;
+        
         for (int i = 0; i <= text.Length; i++)
         {
             LeTexte.text = text.Substring(0, i);
-            if (skipDialog == false)
+            
+            /* C'est cassé, pas toucher.
+            Debug.Log(text.Length);
+            
+            if (text[i+1] == '<' && LeTexte.text.Length < text.Length)
+            {
+                codeChar = true;
+            } 
+            else if (text[i+1] == '>' && LeTexte.text.Length < text.Length)
+            {
+                codeChar = false;
+            }
+            */
+            
+            if (skipDialog == false && codeChar == false)
             {
                 yield return new WaitForSeconds(delay);
             }
+            
         }
         dialogDone = true;
         skipDialog = false;

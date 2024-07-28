@@ -42,7 +42,7 @@ public class AllDialogs : MonoBehaviour
     {
         if (DialogIndex == 1) D.DialogFunction("???", "Bonjour !");
         if (DialogIndex == 2) D.DialogFunction("???", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves.");
-        if (DialogIndex == 3) D.DialogFunction("Bebot", "Je me présente, je suis Bebot.");
+        if (DialogIndex == 3) D.DialogFunction("Bebot", "Je me présente, je suis <color=yellow>Bebot.</color>");
         if (DialogIndex == 4) D.DialogFunction("Bebot", "Je suis votre assistant personnel et ma tâche est de vous aider à accomplir cet objectif !");
         if (DialogIndex == 5)
         {
@@ -68,13 +68,21 @@ public class AllDialogs : MonoBehaviour
         }
         if (DialogIndex == 12)
         {
-            D.DialogFunction("Bebot", "Voilà là t'as choisi ton truc");
+            D.DialogFunction("Bebot", "Formidable ! Votre projet à du potentiel.");
             EnableDialog();
             Enterprise.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }
+        if (DialogIndex == 13) D.DialogFunction("Bebot", "Mais avant de créer réellement votre entreprise nous allons d'abord devoir récolter un certain nombre d'informations.");
+        if (DialogIndex == 14) D.DialogFunction("Bebot", "Sur les villes environnantes, leur populations, les clients et concurrents potentiels, les tendances du moment...");
+        if (DialogIndex == 15) D.DialogFunction("Bebot", "On appelle ça, l'étude de marché !");
+        if (DialogIndex == 16) D.DialogFunction("Bebot", "Cette étude à pour objectif d'analyser l'offre et la demande sur notre marché afin de mettre en place une stratégie marketing.");
+        if (DialogIndex == 17) D.DialogFunction("Bebot", "Les informations que nous allons récolter vont nous permettre d'orienter nos choix commerciaux.");
+        if (DialogIndex == 18) D.DialogFunction("Bebot", "Ne vous inquiétez pas, je serai à vos côtés tout au long du processus!");
+        if (DialogIndex == 19) D.DialogFunction("Bebot", "Pour commencer, et si on sortait ? ");
+        if (DialogIndex == 20) D.DialogFunction("Théo", "Et voilà pour l'introduction");
 
-        //if (DialogIndex == 4) DisableDialog();
+        if (DialogIndex == 21) DisableDialog();
     }
 
     public void EmptyNameChecker()
@@ -83,7 +91,7 @@ public class AllDialogs : MonoBehaviour
         {
             ValidatedName.gameObject.SetActive(false);
         }
-        else if (TextInput2.text.Length > 1)
+        else
         {
             ValidatedName.gameObject.SetActive(true);
         }
