@@ -5,13 +5,15 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public float delay = 0.05f;
-    public TMP_Text LeTexte;
-    public string fullText;
+    [SerializeField] private float delay = 0.05f;
+    [SerializeField] private TMP_Text LeTexte;
+    [SerializeField] private string fullText;
 
     public BoxSize BS;
     public GameObject Name;
     public GameObject Text;
+    [SerializeField] private RectTransform textTransform;
+    [SerializeField] private RectTransform nameTransform;
 
     public bool dialogDone;
     public bool skipDialog;
@@ -27,17 +29,17 @@ public class Dialogue : MonoBehaviour
     {
         LeTexte.text = "";
         Name.GetComponent<TMP_Text>().text = name;
-        if(text.Length > 93 && text.Length < 210) //Medium Box
-        {
-            BS.DisplayBox(2);
-            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 27.2f);
-            Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, -29f);
-        }
-        else if (text.Length >= 210) //Large Box 210
+        if (text.Length >= 210) //Large Box 210
         {
             BS.DisplayBox(3);
             Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 100.3f);
             Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, 41.5f);
+        }
+        else if(text.Length > 93) //Medium Box
+        {
+            BS.DisplayBox(2);
+            Name.GetComponent<RectTransform>().anchoredPosition = new Vector2(-154.7f, 27.2f);
+            Text.GetComponent<RectTransform>().anchoredPosition = new Vector2(-76.4f, -29f);
         }
         else // Small Box 
         {
@@ -48,34 +50,35 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(ShowText(text));
     }
 
-    IEnumerator ShowText(string text) //Changer la couleur d'un ou plusieurs mots
+    IEnumerator ShowText(string text) // Changer la couleur d'un ou plusieurs mots
     {
         dialogDone = false;
-        codeChar = false;
-        
-        for (int i = 0; i <= text.Length; i++)
+        LeTexte.text = "";
+
+        bool insideTag = false;
+        string currentText = "";
+
+        for (int i = 0; i < text.Length; i++)
         {
-            LeTexte.text = text.Substring(0, i);
-            
-            /* C'est cassé, pas toucher.
-            Debug.Log(text.Length);
-            
-            if (text[i+1] == '<' && LeTexte.text.Length < text.Length)
+            currentText += text[i];
+
+            if (text[i] == '<')
             {
-                codeChar = true;
-            } 
-            else if (text[i+1] == '>' && LeTexte.text.Length < text.Length)
-            {
-                codeChar = false;
+                insideTag = true;
             }
-            */
-            
-            if (skipDialog == false && codeChar == false)
+            else if (text[i] == '>')
             {
+                insideTag = false;
+            }
+
+            if (!insideTag && !skipDialog)
+            {
+                LeTexte.text = currentText;
                 yield return new WaitForSeconds(delay);
             }
-            
         }
+
+        LeTexte.text = text;
         dialogDone = true;
         skipDialog = false;
     }

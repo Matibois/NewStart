@@ -72,4 +72,25 @@ public class GameManager : MonoBehaviour
         selectedScene = "PalmCoconut";
     }
 
+    public void Quit()
+    {
+        // save the Game ?
+        LoadMainMenu();
+    }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+
+#endif
+    }
+
+    public void OnApplicationQuit()
+    {
+        //save the Game ?
+    }
+
 }

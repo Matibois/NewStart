@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -809,6 +809,8 @@ MonoBehaviour:
   BS: {fileID: 862224409}
   Name: {fileID: 1008989198}
   Text: {fileID: 14216044}
+  textTransform: {fileID: 14216045}
+  nameTransform: {fileID: 1008989199}
   dialogDone: 0
   skipDialog: 0
   codeChar: 0
@@ -11390,6 +11392,7 @@ MonoBehaviour:
   jump: 1
   sprint: 0
   escape: 0
+  interact: 0
   analogMovement: 0
   cursorLocked: 0
   cursorInputForLook: 0
@@ -23064,29 +23067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameEntry: {fileID: 1778045091}
   EntrepriseNameEntry: {fileID: 0}
-  NameText: {fileID: 1857641258}
-  EntrepriseNameText: {fileID: 332712885}
-  PosText: {fileID: 332712885}
-  PlaceText: {fileID: 739535178}
-  JobText: {fileID: 1660267199}
-  SousMetier1Name: {fileID: 92677798}
-  SousMetier2Name: {fileID: 60395993}
-  SousMetier3Name: {fileID: 1899899509}
-  SousMetier1Points: {fileID: 90962378}
-  SousMetier2Points: {fileID: 1206744864}
-  SousMetier3Points: {fileID: 504569074}
   SousMetier1Slider: {fileID: 0}
   SousMetier2Slider: {fileID: 0}
   SousMetier3Slider: {fileID: 0}
-  pubPointText: {fileID: 0}
-  newsLetterPointText: {fileID: 0}
-  boiteAuLettrePointText: {fileID: 0}
-  fakebookPointText: {fileID: 0}
-  yourTubePointText: {fileID: 0}
-  amstramgramPointText: {fileID: 0}
-  magTelePointText: {fileID: 0}
-  libertePointText: {fileID: 0}
-  svjPointText: {fileID: 0}
   JobDB: {fileID: 1976840050}
   ValidateJobBtn: {fileID: 462183441}
   gestionnaireUI: {fileID: 1527090209}
@@ -23575,35 +23558,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df90e852a6100a74ca3c7ac36f9ed37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameEntry: {fileID: 1778045091}
-  EntrepriseNameEntry: {fileID: 0}
   NameText: {fileID: 1857641258}
   EntrepriseNameText: {fileID: 0}
-  PosText: {fileID: 332712885}
   PlaceText: {fileID: 739535178}
   JobText: {fileID: 1660267199}
-  SousMetier1Text: {fileID: 90962378}
-  SousMetier2Text: {fileID: 1206744864}
-  SousMetier3Text: {fileID: 504569074}
+  SousMetier1Name: {fileID: 0}
+  SousMetier2Name: {fileID: 0}
+  SousMetier3Name: {fileID: 0}
+  SousMetierPoints: {fileID: 0}
+  SousMetier1Points: {fileID: 0}
+  SousMetier2Points: {fileID: 0}
+  SousMetier3Points: {fileID: 0}
+  pubPointText: {fileID: 0}
+  newsLetterPointText: {fileID: 0}
+  boiteAuLettrePointText: {fileID: 0}
+  fakebookPointText: {fileID: 0}
+  yourTubePointText: {fileID: 0}
+  amstramgramPointText: {fileID: 0}
+  magTelePointText: {fileID: 0}
+  libertePointText: {fileID: 0}
+  svjPointText: {fileID: 0}
   entreprise: {fileID: 1480826494}
-  UserName: 
-  EntrepriseName: 
   job: 0
-  Money: 0
-  TypeChoice: 0
   lieu: 0
-  intSurgele: 0
-  intLivraison: 0
-  intBio: 0
-  intCourse: 0
-  intVTT: 0
-  intVille: 0
-  intAidePerso: 0
-  intProfParticulier: 0
-  intCoachSport: 0
-  intLuxe: 0
-  intSport: 0
-  intQuotidiens: 0
 --- !u!114 &1527090210
 MonoBehaviour:
   m_ObjectHideFlags: 0

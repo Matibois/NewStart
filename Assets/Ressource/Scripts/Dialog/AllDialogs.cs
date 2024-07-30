@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class AllDialogs : MonoBehaviour
 {
+
+
     public Dialogue D;
-    private int DialogIndex;
+    private int DialogIndex = 0;
     public GameObject SkipButton;
     public GameObject TextInput;
     public TMP_Text TextInput2;
@@ -16,12 +19,43 @@ public class AllDialogs : MonoBehaviour
 
     public Entreprise E;
 
+    private Dictionary<int, Dictionary<string, string>> dialogues;
 
     private void Start()
     {
+        InitDictionnary();
         EnableDialog();
-        DialogIndex = 1;
         DialogList();
+    }
+
+    private void InitDictionnary()
+    {
+        dialogues = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Bonjour ! " } } },
+            { 1, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves. " } } },
+            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je me présente, je suis <color=yellow>Bebot.</color> " } } },
+            { 3, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je suis votre assistant personnel et ma tâche est de vous aider à accomplir cet objectif ! " } } },
+            { 4, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et d'ailleurs, quel est votre nom ? " } } },
+            { 5, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", $"Enchanté " } } },
+            { 6, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je suis ravi de vous accompagner dans cette aventure. " } } },
+            { 7, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Nous allons travailler ensemble afin de faire la meilleure entreprise possible ! " } } },
+            { 8, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Avant toute chose, j'aimerais avoir plus d'informations sur celle ci. " } } },
+            { 9, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Quelle serait l'entreprise de tes rêves ? " } } },
+            { 10, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // c'est là où on va mettre le nom de l'entreprise
+            { 11, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Formidable ! Votre projet à du potentiel. " } } },
+            { 12, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Mais avant de créer réellement votre entreprise nous allons d'abord devoir récolter un certain nombre d'informations. " } } },
+            { 13, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sur les villes environnantes, leur populations, les clients et concurrents potentiels, les tendances du moment... " } } },
+            { 14, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "On appelle ça, l'étude de marché ! " } } },
+            { 15, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette étude à pour objectif d'analyser l'offre et la demande sur notre marché afin de mettre en place une stratégie marketing. " } } },
+            { 16, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Les informations que nous allons récolter vont nous permettre d'orienter nos choix commerciaux. " } } },
+            { 17, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ne vous inquiétez pas, je serai à vos côtés tout au long du processus! " } } },
+            { 18, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour commencer, et si on sortait ? " } } },
+            { 19, new Dictionary<string, string> { { "speaker", "Théo" }, { "dialogue", "Et voilà pour l'introduction " } } },
+            { 20, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "s'ma bite " } } },
+            { 21, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "quand tu veux rajouter du dialogue, copie  colle la derniere ligne, rajoute lui une virgule, et change le nombre au début de ta ligne, et voilaaa " } } },
+            { 22, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "et si tu veux accéder à un dialogue en particulier depuis le code, regarde comment j'ai fais pour rajouter l'username dans la fonction dialoglist à l'index 5" } } }
+        };
     }
 
     public void DialogTrigger()
@@ -38,56 +72,51 @@ public class AllDialogs : MonoBehaviour
     }
 
 
-   public void DialogList()
+    public void DialogList()
     {
-        if (DialogIndex == 1) D.DialogFunction("???", "Bonjour !");
-        if (DialogIndex == 2) D.DialogFunction("???", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves.");
-        if (DialogIndex == 3) D.DialogFunction("Bebot", "Je me présente, je suis <color=yellow>Bebot.</color>");
-        if (DialogIndex == 4) D.DialogFunction("Bebot", "Je suis votre assistant personnel et ma tâche est de vous aider à accomplir cet objectif !");
-        if (DialogIndex == 5)
+        if (DialogIndex == 4)
         {
-            D.DialogFunction("Bebot", "Et d'ailleurs, quel est votre nom ?");
             TextInput.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
         }
-        if (DialogIndex == 6)
+        else if (DialogIndex == 5)
         {
-            D.DialogFunction("Bebot", "Enchanté " + E.GetUserName() + ".");
+            var dictionnaryIndex = dialogues[DialogIndex]; 
+            dictionnaryIndex["dialogue"] += E.GetUserName() + "! ";
             TextInput.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }
-        if (DialogIndex == 7) D.DialogFunction("Bebot", "Je suis ravi de vous accompagner dans cette aventure.");
-        if (DialogIndex == 8) D.DialogFunction("Bebot", "Nous allons travailler ensemble afin de faire la meilleure entreprise possible !");
-        if (DialogIndex == 9) D.DialogFunction("Bebot", "Avant toute chose, j'aimerais avoir plus d'informations sur celle ci.");
-        if (DialogIndex == 10) D.DialogFunction("Bebot", "Quelle serait l'entreprise de tes rêves ?");
-        if (DialogIndex == 11)
+        else if (DialogIndex == 10)
         {
             Enterprise.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
             DisableDialog();
         }
-        if (DialogIndex == 12)
+        else if (DialogIndex == 11)
         {
-            D.DialogFunction("Bebot", "Formidable ! Votre projet à du potentiel.");
             EnableDialog();
             Enterprise.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }
-        if (DialogIndex == 13) D.DialogFunction("Bebot", "Mais avant de créer réellement votre entreprise nous allons d'abord devoir récolter un certain nombre d'informations.");
-        if (DialogIndex == 14) D.DialogFunction("Bebot", "Sur les villes environnantes, leur populations, les clients et concurrents potentiels, les tendances du moment...");
-        if (DialogIndex == 15) D.DialogFunction("Bebot", "On appelle ça, l'étude de marché !");
-        if (DialogIndex == 16) D.DialogFunction("Bebot", "Cette étude à pour objectif d'analyser l'offre et la demande sur notre marché afin de mettre en place une stratégie marketing.");
-        if (DialogIndex == 17) D.DialogFunction("Bebot", "Les informations que nous allons récolter vont nous permettre d'orienter nos choix commerciaux.");
-        if (DialogIndex == 18) D.DialogFunction("Bebot", "Ne vous inquiétez pas, je serai à vos côtés tout au long du processus!");
-        if (DialogIndex == 19) D.DialogFunction("Bebot", "Pour commencer, et si on sortait ? ");
-        if (DialogIndex == 20) D.DialogFunction("Théo", "Et voilà pour l'introduction");
+        else if (DialogIndex == 19)
+        {
+            EnableDialog();
+            Enterprise.gameObject.SetActive(false);
+            SkipButton.gameObject.SetActive(true);
+        }
 
-        if (DialogIndex == 21) DisableDialog();
+        if (DialogIndex > dialogues.Count -1) { DisableDialog(); }
+        else
+        {
+            var dictionnaryIndex = dialogues[DialogIndex];
+            D.DialogFunction(dictionnaryIndex["speaker"], dictionnaryIndex["dialogue"]);
+        }
+
     }
 
     public void EmptyNameChecker()
     {
-        if(TextInput2.text.Length <= 1)
+        if (TextInput2.text.Length <= 1)
         {
             ValidatedName.gameObject.SetActive(false);
         }
