@@ -33,7 +33,6 @@ public class Interact : MonoBehaviour
         outline = mats;
         original = new Material[] { outline[0], outline[0] };
         parentObject.GetComponent<Renderer>().materials = original;
-        print("oui");
         ThirdPersonController.MyInteractEvent += Interaction;
     }
 
@@ -43,7 +42,6 @@ public class Interact : MonoBehaviour
         {
             parentObject.GetComponent<Renderer>().materials = outline;
             canInteract = true;
-            print("collide");
             canInteractEvent?.Invoke(canInteract);
         }
     }
@@ -54,7 +52,6 @@ public class Interact : MonoBehaviour
         {
             parentObject.GetComponent<Renderer>().materials = original;
             canInteract = false;
-            print("NO collide");
             canInteractEvent?.Invoke(canInteract);
         }
     }
@@ -63,7 +60,7 @@ public class Interact : MonoBehaviour
     {
         if (canInteract)
         {
-
+            parentObject.GetComponent<Renderer>().materials = original;
         }
     }
 }
