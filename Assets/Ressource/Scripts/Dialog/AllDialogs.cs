@@ -5,30 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class AllDialogs : MonoBehaviour
+public class AllDialogs 
 {
 
+    public Dictionary<int, Dictionary<string, string>> dialogues;
 
-    public Dialogue D;
-    private int DialogIndex = 0;
-    public GameObject SkipButton;
-    public GameObject TextInput;
-    public TMP_Text TextInput2;
-    public GameObject Enterprise;
-    public GameObject ValidatedName;
 
-    public Entreprise E;
-
-    private Dictionary<int, Dictionary<string, string>> dialogues;
-
-    private void Start()
-    {
-        InitDictionnary();
-        EnableDialog();
-        DialogList();
-    }
-
-    private void InitDictionnary()
+    public void InitDictionnary()
     {
         dialogues = new Dictionary<int, Dictionary<string, string>>
         {
@@ -58,91 +41,4 @@ public class AllDialogs : MonoBehaviour
         };
     }
 
-    public void DialogTrigger()
-    {
-        if (D.dialogDone == true)
-        {
-            DialogIndex++;
-            DialogList();
-        }
-        else if (D.dialogDone == false)
-        {
-            D.skipDialog = true;
-        }
-    }
-
-    public void DialogList()
-    {
-        if (DialogIndex == 4) // Bebot demande notre blaze
-        {
-            TextInput.gameObject.SetActive(true);
-            SkipButton.gameObject.SetActive(false);
-        }
-        else if (DialogIndex == 5) // Te prends pas la tête à comprendre, je t'explique en appel, ou en IRL
-        {  
-            var dictionnaryIndex = dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
-            dictionnaryIndex["dialogue"] += E.GetUserName() + " ! "; //  dictionnaryIndex["dialogue"] c'est le dialogue, c'est une string
-            TextInput.gameObject.SetActive(false);
-            SkipButton.gameObject.SetActive(true);
-        }
-        else if (DialogIndex == 10) // On enlève le dialogue pour rentrer le nom de l'entrepriser et l'activité
-        {   
-            Enterprise.gameObject.SetActive(true);
-            SkipButton.gameObject.SetActive(false);
-            DisableDialog();
-        }
-        else if (DialogIndex == 11)
-        {
-            EnableDialog();
-            Enterprise.gameObject.SetActive(false);
-            SkipButton.gameObject.SetActive(true);
-        }
-        else if (DialogIndex == 19)
-        {
-            EnableDialog();
-            Enterprise.gameObject.SetActive(false);
-            SkipButton.gameObject.SetActive(true);
-        }
-
-        if (DialogIndex - 1 == dialogues.Count ) 
-        {
-            DisableDialog(); 
-
-
-        }
-        else
-        {
-            var dictionnaryIndex = dialogues[DialogIndex];
-            D.DialogFunction(dictionnaryIndex["speaker"], dictionnaryIndex["dialogue"]);
-        }
-
-    }
-
-    public void EmptyNameChecker()
-    {
-        if (TextInput2.text.Length <= 1)
-        {
-            ValidatedName.gameObject.SetActive(false);
-        }
-        else
-        {
-            ValidatedName.gameObject.SetActive(true);
-        }
-    }
-
-    public void EnableDialog()
-    {
-        D.Name.gameObject.SetActive(true);
-        D.Text.gameObject.SetActive(true);
-        D.BS.gameObject.SetActive(true);
-        SkipButton.gameObject.SetActive(true);
-    }
-
-    public void DisableDialog()
-    {
-        D.Name.gameObject.SetActive(false);
-        D.Text.gameObject.SetActive(false);
-        D.BS.gameObject.SetActive(false);
-        SkipButton.gameObject.SetActive(false);
-    }
 }
