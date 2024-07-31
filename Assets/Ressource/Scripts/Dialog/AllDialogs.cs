@@ -71,23 +71,22 @@ public class AllDialogs : MonoBehaviour
         }
     }
 
-
     public void DialogList()
     {
-        if (DialogIndex == 4)
+        if (DialogIndex == 4) // Bebot demande notre blaze
         {
             TextInput.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
         }
-        else if (DialogIndex == 5)
-        {
-            var dictionnaryIndex = dialogues[DialogIndex]; 
-            dictionnaryIndex["dialogue"] += E.GetUserName() + "! ";
+        else if (DialogIndex == 5) // Te prends pas la tête à comprendre, je t'explique en appel, ou en IRL
+        {  
+            var dictionnaryIndex = dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
+            dictionnaryIndex["dialogue"] += E.GetUserName() + " ! "; //  dictionnaryIndex["dialogue"] c'est le dialogue, c'est une string
             TextInput.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }
-        else if (DialogIndex == 10)
-        {
+        else if (DialogIndex == 10) // On enlève le dialogue pour rentrer le nom de l'entrepriser et l'activité
+        {   
             Enterprise.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
             DisableDialog();
@@ -105,7 +104,12 @@ public class AllDialogs : MonoBehaviour
             SkipButton.gameObject.SetActive(true);
         }
 
-        if (DialogIndex > dialogues.Count -1) { DisableDialog(); }
+        if (DialogIndex - 1 == dialogues.Count ) 
+        {
+            DisableDialog(); 
+
+
+        }
         else
         {
             var dictionnaryIndex = dialogues[DialogIndex];
