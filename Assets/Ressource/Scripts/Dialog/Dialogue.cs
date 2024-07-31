@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject SkipButton;
     [SerializeField] private GameObject EnterpriseChoice;
     [SerializeField] private GameObject ValidatedName;
+    [SerializeField] private GameObject darkBackground;
 
     public BoxSize BS;
     [SerializeField] private GameObject nameGO;
@@ -159,12 +160,10 @@ public class Dialogue : MonoBehaviour
         }
         else if (DialogIndex == 19)
         {
-            EnableDialog();
-            EnterpriseChoice.gameObject.SetActive(false);
-            SkipButton.gameObject.SetActive(true);
+            darkBackground.SetActive(false);
         }
 
-        if (DialogIndex - 1 == AD.dialogues.Count)
+        if (DialogIndex + 1 == AD.dialogues.Count)
         {
             DisableDialog();
 
@@ -182,12 +181,9 @@ public class Dialogue : MonoBehaviour
     public void EmptyNameChecker( )
     {
         
-        if (nameInput.text.Length <= 1)
-        {
-            ValidatedName.gameObject.SetActive(false);
-        }
-        else
-        {
+        if (!string.IsNullOrWhiteSpace(nameInput.text))
+        { 
+            nameInput.text = nameInput.text.Trim();
             ValidatedName.gameObject.SetActive(true);
         }
     }

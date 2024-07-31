@@ -807,6 +807,7 @@ MonoBehaviour:
   SkipButton: {fileID: 335126280}
   EnterpriseChoice: {fileID: 1612956649}
   ValidatedName: {fileID: 882623984}
+  darkBackground: {fileID: 1214875338}
   BS: {fileID: 862224409}
   nameGO: {fileID: 1008989198}
   dialogueGO: {fileID: 14216044}
@@ -27836,8 +27837,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AllDialogs, Assembly-CSharp
+      - m_Target: {fileID: 17701851}
+        m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: DialogTrigger
         m_Mode: 1
         m_Arguments:
