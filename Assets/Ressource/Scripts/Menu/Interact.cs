@@ -9,30 +9,24 @@ using System;
 public class Interact : MonoBehaviour
 {
     [SerializeField] GameObject menu;
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject parentObject;
+    [SerializeField] Renderer parentObject;
 
-    Material[] original;
-    Material[] outline;
-    Material[] mats;
+    private Material[] original;
+    private Material[] outline;
+    private Material[] mats;
 
     public static Action<bool> canInteractEvent = null;
+    public static Action interactEvent;
 
-    Ray ray;
-    RaycastHit hit;
     private bool canInteract = false;
 
-    private void OnDestroy()
-    {
-        ThirdPersonController.MyInteractEvent -= Interaction;
-    }
 
     private void Start()
     {
-        Material[] mats = parentObject.GetComponent<Renderer>().materials;
+        Material[] mats = parentObject.materials;
         outline = mats;
         original = new Material[] { outline[0], outline[0] };
-        parentObject.GetComponent<Renderer>().materials = original;
+        parentObject.materials = original;
         ThirdPersonController.MyInteractEvent += Interaction;
     }
 
@@ -40,7 +34,7 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentObject.GetComponent<Renderer>().materials = outline;
+            parentObject.materials = outline;
             canInteract = true;
             canInteractEvent?.Invoke(canInteract);
         }
@@ -50,7 +44,7 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentObject.GetComponent<Renderer>().materials = original;
+            parentObject.materials = original;
             canInteract = false;
             canInteractEvent?.Invoke(canInteract);
         }
@@ -61,6 +55,11 @@ public class Interact : MonoBehaviour
         if (canInteract)
         {
             parentObject.GetComponent<Renderer>().materials = original;
+            interactEvent?.Invoke();
         }
+    }
+    private void OnDestroy()
+    {
+        ThirdPersonController.MyInteractEvent -= Interaction;
     }
 }

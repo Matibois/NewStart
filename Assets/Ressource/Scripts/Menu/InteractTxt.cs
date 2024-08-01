@@ -13,7 +13,8 @@ public class InteractTxt : MonoBehaviour
     void Start()
     {
         angle = transform.rotation;
-        Interact.canInteractEvent += Interaction;
+        Interact.canInteractEvent += CanInteract;
+        Interact.interactEvent += InteractionDone;
         ThirdPersonController.MyInteractEvent += InteractionDone;
     }
 
@@ -28,13 +29,13 @@ public class InteractTxt : MonoBehaviour
         interactText.SetActive(false);
     }
 
-    private void Interaction(bool visible)
+    private void CanInteract(bool visible)
     {
         interactText.SetActive(visible);
     }
 
     private void OnDestroy()
     {
-        Interact.canInteractEvent -= Interaction;
+        Interact.canInteractEvent -= CanInteract;
     }
 }
