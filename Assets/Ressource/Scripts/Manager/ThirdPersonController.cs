@@ -233,6 +233,7 @@ namespace StarterAssets
             {
                 MenuUI.SetActive(true);
                 _input.escape = false;
+                //event
             }
         }
 
@@ -242,6 +243,7 @@ namespace StarterAssets
             {
                 _input.interact = false;
                 MyInteractEvent?.Invoke();
+                print("lol");
             }
         }
 
