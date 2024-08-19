@@ -167,7 +167,6 @@ public class Dialogue : MonoBehaviour
         {
             DisableDialog();
 
-
         }
         else
         {

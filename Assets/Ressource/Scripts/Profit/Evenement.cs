@@ -15,6 +15,13 @@ public class Evenement : MonoBehaviour
 
     private string[] vetementPositive;
     private string[] vetementNegative;
+
+    #region event_text
+
+    public const string titreSurgelePositifEvent = "Pénurie de Frais";
+    public const string titreSurgeleNegatifEvent = "Surgelé vs Écologie";
+
+    #endregion
     void Start()
     {
         InitFoodArray();
@@ -63,9 +70,9 @@ public class Evenement : MonoBehaviour
     private void InitFoodArray()
     {
         alimentairePositive = new string[] {
-            "Pomme",
-            "Banane",
-            "Orange",
+            "Crise de production de produit frais",
+            "Excellente récolte grâce à une météo propice",
+            "Confinement",
             };
 
         alimentaireNegative= new string[] {
