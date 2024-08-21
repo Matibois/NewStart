@@ -8,6 +8,8 @@ public class Tuto : MonoBehaviour
     [SerializeField] GameObject tutoGO;
     [SerializeField] TMP_Text tutoTMP;
 
+    private int i = 0;
+
     string[] tutoTexts = new string[]
     {
         "Appuyez sur ↑ pour avancer",
@@ -25,13 +27,27 @@ public class Tuto : MonoBehaviour
 
     };
 
-    private void Start()
+    public void StartTuto()
     {
-        
+        tutoGO.SetActive(true);
+        tutoTMP.text = tutoTexts[i];
+        i++;
+    }
+
+    public void Next()
+    {
+        if (i < tutoTexts.Length) MoveTuto();
+        else StopTuto();
     }
 
     private void MoveTuto()
     {
+         tutoTMP.text = tutoTexts[i];
+         i++;  
+    }
 
+    private void StopTuto()
+    {
+        tutoGO.SetActive(false);
     }
 }
