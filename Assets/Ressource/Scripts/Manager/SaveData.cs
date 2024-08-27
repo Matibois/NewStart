@@ -13,8 +13,8 @@ public class SaveData : MonoBehaviour
     public string UserName;
     public string EntrepriseName;
     public int Money;
-    public place Lieu;
-    public shop Shop;
+    public Place Lieu;
+    public Shop Shop;
 
     [SerializeField] public Worket worket;
     [SerializeField] public Marche WhiteMontain;

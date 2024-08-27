@@ -18,6 +18,7 @@ public class EntepriseChoiceUI : MonoBehaviour
     public GameObject H_Bike;
 
 
+
     public void NameValidation()
     {
         if (eName.text.Length <= 1)

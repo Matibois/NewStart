@@ -83,14 +83,9 @@ public class Evenement : MonoBehaviour
 
     #endregion
 
-    private int RandomNumber()
-    {
-        return Random.Range(0,3);
-    }
 
-    public void GetFoodPositive()
+    public void GetFoodPositive(int value)
     {
-        int value = RandomNumber();
         switch (value)
         {
             case 0:
@@ -107,9 +102,8 @@ public class Evenement : MonoBehaviour
                 break;
         }
     }
-    public void GetFoodNegative()
-    {
-        int value = RandomNumber();
+    public void GetFoodNegative(int value)
+    {        
         switch (value)
         {
             case 0:
@@ -127,96 +121,91 @@ public class Evenement : MonoBehaviour
         }
     }
 
-
-    public void GetServicePositive()
-    {
-        int value = Random.Range(0, 3);
+    public void GetServicePositive(int value)
+    {        
         switch (value)
         {
             case 0:
-                activeEvent = titreProfParticulierPositifEvent;
-                activeEventDescription = descriptionProfParticulierPositifEvent;
+                activeEvent = titreAidePersonnePositifEvent;
+                activeEventDescription = descriptionAidePersonnePositifEvent;
                 break;
             case 1:
                 activeEvent = titreCoachSportifPositifEvent;
                 activeEventDescription = descriptionCoachSportifPositifEvent;
                 break;
             case 2:
-                activeEvent = titreAidePersonnePositifEvent;
-                activeEventDescription = descriptionAidePersonnePositifEvent;
+                activeEvent = titreProfParticulierPositifEvent;
+                activeEventDescription = descriptionProfParticulierPositifEvent;
                 break;
         }
     }
-    public void GetServiceNegative()
-    {
-        int value = Random.Range(0, 3);
+    public void GetServiceNegative(int value)
+    {        
         switch (value)
         {
             case 0:
-                activeEvent = titreProfParticulierNegatifEvent;
-                activeEventDescription = descriptionProfParticulierNegatifEvent;
+                activeEvent = titreAidePersonneNegatifEvent;
+                activeEventDescription = descriptionAidePersonneNegatifEvent;
                 break;
             case 1:
                 activeEvent = titreCoachSportifNegatifEvent;
                 activeEventDescription = descriptionCoachSportifNegatifEvent;
                 break;
             case 2:
-                activeEvent = titreAidePersonneNegatifEvent;
-                activeEventDescription = descriptionAidePersonneNegatifEvent;
-                break;
-        }
-    }
-    public void GetVeloPositive()
-    {
-        int value = RandomNumber();
-        switch (value)
-        {
-            case 0:
-                activeEvent = titreCoursePositifEvent;
-                activeEventDescription = descriptionCoursePositifEvent;
-                break;
-            case 1:
-                activeEvent = titreVTTBMXPositifEvent;
-                activeEventDescription = descriptionVTTBMXPositifEvent;
-                break;
-            case 2:
-                activeEvent = titreSportPositifEvent;
-                activeEventDescription = descriptionSportPositifEvent;
-                break;
-        }
-    }
-    public void GetVeloNegative()
-    {
-        int value = RandomNumber();
-        switch (value)
-        {
-            case 0:
-                activeEvent = titreCourseNegatifEvent;
-                activeEventDescription = descriptionCourseNegatifEvent;
-                break;
-            case 1:
-                activeEvent = titreVTTBMXNegatifEvent;
-                activeEventDescription = descriptionVTTBMXNegatifEvent;
-                break;
-            case 2:
-                activeEvent = titreSportNegatifEvent;
-                activeEventDescription = descriptionSportNegatifEvent;
+                activeEvent = titreProfParticulierNegatifEvent;
+                activeEventDescription = descriptionProfParticulierNegatifEvent;
                 break;
         }
     }
 
-    public void GetVetementPositive()
-    {
-        int value = RandomNumber();
+    public void GetVeloPositive(int value)
+    {        
         switch (value)
         {
             case 0:
+                activeEvent = titreVTTBMXPositifEvent;
+                activeEventDescription = descriptionVTTBMXPositifEvent;
+                break;
+            case 1:
+                activeEvent = titreCoursePositifEvent;
+                activeEventDescription = descriptionCoursePositifEvent;
+                break;
+            case 2:
                 activeEvent = titreVillePositifEvent;
                 activeEventDescription = descriptionVillePositifEvent;
                 break;
+        }
+    }
+    public void GetVeloNegative(int value)
+    {        
+        switch (value)
+        {
+            case 0:
+                activeEvent = titreVTTBMXNegatifEvent;
+                activeEventDescription = descriptionVTTBMXNegatifEvent;
+                break;
             case 1:
+                activeEvent = titreCourseNegatifEvent;
+                activeEventDescription = descriptionCourseNegatifEvent;
+                break;
+            case 2:
+                activeEvent = titreVillePositifEvent;
+                activeEventDescription = descriptionVillePositifEvent;
+                break;
+        }
+    }
+
+    public void GetVetementPositive(int value)
+    {        
+        switch (value)
+        {
+            case 0:
                 activeEvent = titreLuxePositifEvent;
                 activeEventDescription = descriptionLuxePositifEvent;
+                break;
+            case 1:
+                activeEvent = titreSportPositifEvent;
+                activeEventDescription = descriptionSportPositifEvent;
                 break;
             case 2:
                 activeEvent = titreQuotidiensPositifEvent;
@@ -224,18 +213,17 @@ public class Evenement : MonoBehaviour
                 break;
         }
     }
-    public void GetVetementNegative()
-    {
-        int value = RandomNumber();
+    public void GetVetementNegative(int value)
+    {        
         switch (value)
         {
             case 0:
-                activeEvent = titreVilleNegatifEvent;
-                activeEventDescription = descriptionVilleNegatifEvent;
-                break;
-            case 1:
                 activeEvent = titreLuxeNegatifEvent;
                 activeEventDescription = descriptionLuxeNegatifEvent;
+                break;
+            case 1:
+                activeEvent = titreVilleNegatifEvent;
+                activeEventDescription = descriptionVilleNegatifEvent;
                 break;
             case 2:
                 activeEvent = titreQuotidiensNegatifEvent;

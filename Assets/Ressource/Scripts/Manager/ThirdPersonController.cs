@@ -165,7 +165,7 @@ namespace StarterAssets
 
             menu = new MenuPause();
 
-            GameLoop.canMoveEvent += CanMove;
+            MenuPause.canMoveEvent += CanMove;
 
         }
 
@@ -439,7 +439,7 @@ namespace StarterAssets
 
         private void OnDestroy()
         {
-            GameLoop.canMoveEvent -= CanMove;
+            MenuPause.canMoveEvent -= CanMove;
         }
 
     }

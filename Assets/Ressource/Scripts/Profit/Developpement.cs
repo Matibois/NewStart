@@ -18,11 +18,12 @@ public class Developpement : MonoBehaviour
     [SerializeField] public Marche PalmCoconut;
     [SerializeField] public Marche FenzyFarm;
     [SerializeField] public Marche UrbanCity;
-    private Marche Place;
-    private Marche Concurrent;
 
-    private place lieu;
-    private shop job;
+    private Marche marketPlace;
+    private Marche concurrent;
+
+    private Place lieu;
+    private Shop job;
 
     private int CJeunes = 0;
     private int CAdultes = 0;
@@ -73,19 +74,19 @@ public class Developpement : MonoBehaviour
 
         switch (job)
         {
-            case shop.Aliment:
+            case Shop.Aliment:
                 rapport = EvaluateAliment();
                 break;
 
-            case shop.Service:
+            case Shop.Service:
                 rapport = EvaluateService();
                 break;
 
-            case shop.Velo:
+            case Shop.Velo:
                 rapport = EvaluateVelo();
                 break;
 
-            case shop.Vetement:
+            case Shop.Vetement:
                 rapport = EvaluateVetement();
 
                 break;
@@ -102,6 +103,8 @@ public class Developpement : MonoBehaviour
 
         rapport += EvaluatePrice();
 
+        
+
         //max ici 43 ?
         RapportProfit(rapport);
     }
@@ -110,20 +113,20 @@ public class Developpement : MonoBehaviour
     {
         switch (lieu)
         {
-            case place.WhiteMontain:
-                Place = WhiteMontain;
+            case Place.WhiteMontain:
+                marketPlace = WhiteMontain;
                 break;
 
-            case place.UrbanCity:
-                Place = UrbanCity;
+            case Place.UrbanCity:
+                marketPlace = UrbanCity;
                 break;
 
-            case place.FenzyFarm:
-                Place = FenzyFarm;
+            case Place.FenzyFarm:
+                marketPlace = FenzyFarm;
                 break;
 
-            case place.PalmCoconut:
-                Place = PalmCoconut;
+            case Place.PalmCoconut:
+                marketPlace = PalmCoconut;
                 break;
         }
     }
@@ -131,16 +134,16 @@ public class Developpement : MonoBehaviour
     private int EvaluateAliment() // (Population - commerce) * invest point
     {
         int rapport;
-        rapport = ((Place.Habitants - Place.AlimentSurgele) * entreprise.intSurgele);
-        rapport += ((Place.Habitants - Place.AlimentLivraison) * entreprise.intLivraison);
-        rapport += ((Place.Habitants - Place.AlimentBio) * entreprise.intBio);
+        rapport = ((marketPlace.Habitants - marketPlace.AlimentSurgele) * entreprise.intSurgele);
+        rapport += ((marketPlace.Habitants - marketPlace.AlimentLivraison) * entreprise.intLivraison);
+        rapport += ((marketPlace.Habitants - marketPlace.AlimentBio) * entreprise.intBio);
         //Max ici : 8
         //min ici : -8
 
         if (entreprise.intSurgele > 0)
         {
-            if (Place.AgeMoyen == 1 || Place.AgeMoyen == 2) rapport += 2 + entreprise.intSurgele;
-            if (Place.RPH == 1 || Place.RPH == 2) rapport += 2 + entreprise.intSurgele;
+            if (marketPlace.AgeMoyen == 1 || marketPlace.AgeMoyen == 2) rapport += 2 + entreprise.intSurgele;
+            if (marketPlace.RPH == 1 || marketPlace.RPH == 2) rapport += 2 + entreprise.intSurgele;
 
             CJeunes += entreprise.intSurgele;
             CAdultes += entreprise.intSurgele;
@@ -150,8 +153,8 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intLivraison > 0)
         {
-            if (Place.AgeMoyen == 1 || Place.AgeMoyen == 2) rapport += 2 + entreprise.intLivraison;
-            if (Place.RPH == 2 || Place.RPH == 3) rapport += 2 + entreprise.intLivraison;
+            if (marketPlace.AgeMoyen == 1 || marketPlace.AgeMoyen == 2) rapport += 2 + entreprise.intLivraison;
+            if (marketPlace.RPH == 2 || marketPlace.RPH == 3) rapport += 2 + entreprise.intLivraison;
 
             CJeunes += entreprise.intLivraison;
             CAdultes += entreprise.intLivraison;
@@ -161,8 +164,8 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intBio > 0)
         {
-            if (Place.AgeMoyen == 2 || Place.AgeMoyen == 3) rapport += 2 + entreprise.intSurgele;
-            if (Place.RPH == 2 || Place.RPH == 3) rapport += 2 + entreprise.intBio;
+            if (marketPlace.AgeMoyen == 2 || marketPlace.AgeMoyen == 3) rapport += 2 + entreprise.intSurgele;
+            if (marketPlace.RPH == 2 || marketPlace.RPH == 3) rapport += 2 + entreprise.intBio;
 
             CAdultes += entreprise.intBio;
             CVieux += entreprise.intBio;
@@ -178,15 +181,15 @@ public class Developpement : MonoBehaviour
     private int EvaluateService()
     {
         int rapport;
-        rapport = ((Place.Habitants - Place.ServiceAidePerso) * entreprise.intAidePerso);
-        rapport += ((Place.Habitants - Place.ServiceProfParticulier) * entreprise.intProfParticulier);
-        rapport += ((Place.Habitants - Place.ServiceCoachSport) * entreprise.intCoachSport);
+        rapport = ((marketPlace.Habitants - marketPlace.ServiceAidePerso) * entreprise.intAidePerso);
+        rapport += ((marketPlace.Habitants - marketPlace.ServiceProfParticulier) * entreprise.intProfParticulier);
+        rapport += ((marketPlace.Habitants - marketPlace.ServiceCoachSport) * entreprise.intCoachSport);
         Debug.Log(rapport + "  : eval commerce service done");
 
         if (entreprise.intCoachSport > 0)
         {
-            if (Place.AgeMoyen == 2) rapport += 2 + entreprise.intCoachSport;
-            if (Place.RPH == 2 || Place.RPH == 3) rapport += 2 + entreprise.intCoachSport;
+            if (marketPlace.AgeMoyen == 2) rapport += 2 + entreprise.intCoachSport;
+            if (marketPlace.RPH == 2 || marketPlace.RPH == 3) rapport += 2 + entreprise.intCoachSport;
 
             CAdultes += entreprise.intCoachSport;
             CMoyens += entreprise.intCoachSport;
@@ -195,8 +198,8 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intProfParticulier > 0)
         {
-            if (Place.AgeMoyen == 1) rapport += 2 + entreprise.intProfParticulier;
-            if (Place.RPH == 2 || Place.RPH == 3) rapport += 2 + entreprise.intProfParticulier;
+            if (marketPlace.AgeMoyen == 1) rapport += 2 + entreprise.intProfParticulier;
+            if (marketPlace.RPH == 2 || marketPlace.RPH == 3) rapport += 2 + entreprise.intProfParticulier;
 
             CJeunes += entreprise.intProfParticulier;
             CMoyens += entreprise.intProfParticulier;
@@ -205,7 +208,7 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intAidePerso > 0)
         {
-            if (Place.AgeMoyen == 3) rapport += 2 + entreprise.intAidePerso;
+            if (marketPlace.AgeMoyen == 3) rapport += 2 + entreprise.intAidePerso;
             rapport += 2 + entreprise.intAidePerso;
 
             CVieux += entreprise.intAidePerso;
@@ -221,15 +224,15 @@ public class Developpement : MonoBehaviour
     private int EvaluateVelo()
     {
         int rapport;
-        rapport = ((Place.Habitants - Place.VeloVTT) * entreprise.intVTT);
-        rapport += ((Place.Habitants - Place.VeloVille) * entreprise.intVille);
-        rapport += ((Place.Habitants - Place.VeloCourse) * entreprise.intCourse);
+        rapport = ((marketPlace.Habitants - marketPlace.VeloVTT) * entreprise.intVTT);
+        rapport += ((marketPlace.Habitants - marketPlace.VeloVille) * entreprise.intVille);
+        rapport += ((marketPlace.Habitants - marketPlace.VeloCourse) * entreprise.intCourse);
         Debug.Log("Velo 1 : " + rapport);
 
         if (entreprise.intVTT > 0)
         {
-            if (Place.AgeMoyen == 1) rapport += 2 + entreprise.intVTT;
-            if (Place.RPH == 2 || Place.RPH == 3) rapport += 2 + entreprise.intVTT;
+            if (marketPlace.AgeMoyen == 1) rapport += 2 + entreprise.intVTT;
+            if (marketPlace.RPH == 2 || marketPlace.RPH == 3) rapport += 2 + entreprise.intVTT;
 
             CJeunes += entreprise.intVTT;
             CMoyens += entreprise.intVTT;
@@ -238,8 +241,8 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intCourse > 0)
         {
-            if (Place.AgeMoyen == 2) rapport += 2 + entreprise.intCourse;
-            if (Place.RPH == 2 || Place.RPH == 3) rapport += 2 + entreprise.intCourse;
+            if (marketPlace.AgeMoyen == 2) rapport += 2 + entreprise.intCourse;
+            if (marketPlace.RPH == 2 || marketPlace.RPH == 3) rapport += 2 + entreprise.intCourse;
 
             CAdultes += entreprise.intCourse;
             CMoyens += entreprise.intCourse;
@@ -250,7 +253,7 @@ public class Developpement : MonoBehaviour
         if (entreprise.intVille > 0)
         {
             rapport += 2 + entreprise.intVille; // touche les jeunes les adultes et les vieux
-            if (Place.RPH == 1 || Place.RPH == 2) rapport += 2 + entreprise.intVille;
+            if (marketPlace.RPH == 1 || marketPlace.RPH == 2) rapport += 2 + entreprise.intVille;
 
             CJeunes += entreprise.intVille;
             CAdultes += entreprise.intVille;
@@ -264,9 +267,9 @@ public class Developpement : MonoBehaviour
     private int EvaluateVetement()
     {
         int rapport;
-        rapport = ((Place.Habitants - Place.VetementLuxe) * entreprise.intLuxe);
-        rapport += ((Place.Habitants - Place.VetementSport) * entreprise.intSport);
-        rapport += ((Place.Habitants - Place.VetementQuotidiens) * entreprise.intQuotidiens);
+        rapport = ((marketPlace.Habitants - marketPlace.VetementLuxe) * entreprise.intLuxe);
+        rapport += ((marketPlace.Habitants - marketPlace.VetementSport) * entreprise.intSport);
+        rapport += ((marketPlace.Habitants - marketPlace.VetementQuotidiens) * entreprise.intQuotidiens);
 
         Debug.Log("vetement 1 : " + rapport);
         //Max ici : 8
@@ -274,8 +277,8 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intLuxe > 0)
         {
-            if (Place.AgeMoyen == 1 || Place.AgeMoyen == 2) rapport += 2 + entreprise.intLuxe;
-            if (Place.RPH == 3) rapport += 2 + entreprise.intLuxe;
+            if (marketPlace.AgeMoyen == 1 || marketPlace.AgeMoyen == 2) rapport += 2 + entreprise.intLuxe;
+            if (marketPlace.RPH == 3) rapport += 2 + entreprise.intLuxe;
             // max ici 18
             // min ici -8
 
@@ -286,8 +289,8 @@ public class Developpement : MonoBehaviour
 
         if (entreprise.intSport > 0)
         {
-            if (Place.AgeMoyen == 1) rapport += 2 + entreprise.intSport;
-            if (Place.RPH == 1 || Place.RPH == 2) rapport += 2 + entreprise.intSport;
+            if (marketPlace.AgeMoyen == 1) rapport += 2 + entreprise.intSport;
+            if (marketPlace.RPH == 1 || marketPlace.RPH == 2) rapport += 2 + entreprise.intSport;
 
             CJeunes += entreprise.intSport;
             CPauvres += entreprise.intSport;
@@ -297,7 +300,7 @@ public class Developpement : MonoBehaviour
         if (entreprise.intQuotidiens > 0)
         {
             rapport += 2 + entreprise.intQuotidiens; // touche les jeunes les adultes et les vieux
-            if (Place.RPH == 1 || Place.RPH == 2) rapport += 2 + entreprise.intQuotidiens;
+            if (marketPlace.RPH == 1 || marketPlace.RPH == 2) rapport += 2 + entreprise.intQuotidiens;
 
             CJeunes += entreprise.intQuotidiens;
             CAdultes += entreprise.intQuotidiens;
@@ -312,14 +315,14 @@ public class Developpement : MonoBehaviour
     {
         int rapport = 0;
 
-        if (entreprise.GetTransport() > 0 && Place.AgeMoyen == 1 || entreprise.GetTransport() > 0 && Place.AgeMoyen == 2)
+        if (entreprise.GetTransport() > 0 && marketPlace.AgeMoyen == 1 || entreprise.GetTransport() > 0 && marketPlace.AgeMoyen == 2)
         {
             rapport += CJeunes;
             rapport += CAdultes;
         }
 
-        if (entreprise.GetNewsLetters() > 0 && Place.AgeMoyen == 2) rapport += 1 + CAdultes;
-        if (entreprise.GetBoiteAuLettre() > 0 && Place.AgeMoyen == 3) rapport += CVieux;
+        if (entreprise.GetNewsLetters() > 0 && marketPlace.AgeMoyen == 2) rapport += 1 + CAdultes;
+        if (entreprise.GetBoiteAuLettre() > 0 && marketPlace.AgeMoyen == 3) rapport += CVieux;
 
         return rapport;
     }
@@ -327,19 +330,19 @@ public class Developpement : MonoBehaviour
     {
         int rapport = 0;
 
-        if (entreprise.GetFakebook() > 0 && Place.AgeMoyen == 2 || entreprise.GetFakebook() > 0 && Place.AgeMoyen == 3)
+        if (entreprise.GetFakebook() > 0 && marketPlace.AgeMoyen == 2 || entreprise.GetFakebook() > 0 && marketPlace.AgeMoyen == 3)
         {
             rapport += 2 + CAdultes;
             rapport += 2 + CVieux;
         }
 
-        if (entreprise.GetYourTube() > 0 && Place.AgeMoyen == 1 || entreprise.GetYourTube() > 0 && Place.AgeMoyen == 2)
+        if (entreprise.GetYourTube() > 0 && marketPlace.AgeMoyen == 1 || entreprise.GetYourTube() > 0 && marketPlace.AgeMoyen == 2)
         {
             rapport += 2 + CJeunes;
             rapport += 2 + CAdultes;
         }
 
-        if (entreprise.GetAmstramgram() > 0 && Place.AgeMoyen == 1) rapport += 2 + CJeunes;
+        if (entreprise.GetAmstramgram() > 0 && marketPlace.AgeMoyen == 1) rapport += 2 + CJeunes;
 
         return rapport;
     }
@@ -347,13 +350,13 @@ public class Developpement : MonoBehaviour
     {
         int rapport = 0;
 
-        if (entreprise.GetMagTele() > 0 && Place.AgeMoyen == 2) rapport += 2 + CAdultes;
-        if (entreprise.GetLiberte() > 0 && Place.AgeMoyen == 1 || entreprise.GetLiberte() > 0 && Place.AgeMoyen == 2)
+        if (entreprise.GetMagTele() > 0 && marketPlace.AgeMoyen == 2) rapport += 2 + CAdultes;
+        if (entreprise.GetLiberte() > 0 && marketPlace.AgeMoyen == 1 || entreprise.GetLiberte() > 0 && marketPlace.AgeMoyen == 2)
         {
             rapport += 2 + CJeunes;
             rapport += 2 + CAdultes;
         }
-        if (entreprise.GetSVJ() > 0 && Place.AgeMoyen == 3) rapport += CVieux;
+        if (entreprise.GetSVJ() > 0 && marketPlace.AgeMoyen == 3) rapport += CVieux;
 
         return rapport;
     }
@@ -366,9 +369,9 @@ public class Developpement : MonoBehaviour
         int sousMetier2Prix = prix[1];
         int sousMetier3Prix = prix[2];
 
-        if (sousMetier1Prix == Place.RPH) rapport += 2;
-        if (sousMetier2Prix == Place.RPH) rapport += 2;
-        if (sousMetier3Prix == Place.RPH) rapport += 2;
+        if (sousMetier1Prix == marketPlace.RPH) rapport += 2;
+        if (sousMetier2Prix == marketPlace.RPH) rapport += 2;
+        if (sousMetier3Prix == marketPlace.RPH) rapport += 2;
 
         if (sousMetier1Prix == 1 || sousMetier2Prix == 1 || sousMetier3Prix == 1) rapport += CPauvres;
         if (sousMetier1Prix == 2 || sousMetier2Prix == 2 || sousMetier3Prix == 2) rapport += CMoyens;
@@ -378,11 +381,16 @@ public class Developpement : MonoBehaviour
 
     }
 
+    public void EventImpact(int rapport)
+    {
+       Profit += rapport;
+    }
+
     private void RapportProfit(int rapport)
     {
         //Max : 43 / Minimum : -8
         Debug.Log("Profit actuelle : " + rapport + "\nMétier : " + job);
-        ProfitSlider.value = rapport;
+        Profit = rapport;
 
         //Gérer texte robot ?
     }

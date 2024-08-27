@@ -36,20 +36,20 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("PalmCoconut");
     }
 
-    public static void LoadPlace(place lieu)
+    public static void LoadPlace(Place lieu)
     {
         switch (lieu)
         {
-            case place.PalmCoconut:
+            case Place.PalmCoconut:
                 LoadPalmCoconut();
                 break;
-            case place.FenzyFarm:
+            case Place.FenzyFarm:
                 LoadFenzyFarm();
                 break;
-            case place.UrbanCity:
+            case Place.UrbanCity:
                 LoadUrbanCity();
                 break;
-            case place.WhiteMontain:
+            case Place.WhiteMontain:
                 LoadWhiteMontain();
                 break;
         }

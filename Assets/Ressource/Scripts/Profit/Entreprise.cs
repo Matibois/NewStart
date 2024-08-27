@@ -29,10 +29,10 @@ public class Entreprise : MonoBehaviour
 
     private string UserName;
     private string EntrepriseName;
-    private shop job;
+    private Shop job;
     private int Money;
     private int TypeChoice;
-    private place lieu;
+    private Place lieu;
 
     public int intSurgele;
     public int intLivraison;
@@ -68,14 +68,14 @@ public class Entreprise : MonoBehaviour
     private int intLiberte;
     private int intSVJ;
 
-    public enum place
+    public enum Place
     {
         WhiteMontain,
         PalmCoconut,
         UrbanCity,
         FenzyFarm,
     }
-    public enum shop
+    public enum Shop
     {
         Aliment,
         Velo,
@@ -114,7 +114,7 @@ public class Entreprise : MonoBehaviour
         Debug.Log("Entreprise name : " + name);
     }
 
-    public void JobChoice()
+    /*public void JobChoice()
     {
         ValidateJobBtn.SetActive(true);
         switch (JobDB.value)
@@ -156,6 +156,35 @@ public class Entreprise : MonoBehaviour
                 break;
         }
         gestionnaireUI.RefreshJob();
+    }*/
+
+    public void ChooseAlimentJob()
+    {
+        job = Shop.Aliment;
+        SousMetier1 = intSurgele;
+        SousMetier2 = intBio;
+        SousMetier3 = intLivraison;
+    }
+    public void ChooseVeloJob()
+    {
+        job = Shop.Velo;
+        SousMetier1 = intVTT;
+        SousMetier2 = intCourse;
+        SousMetier3 = intVille;
+    }
+    public void ChooseServiceJob()
+    {
+        job = Shop.Service;
+        SousMetier1 = intAidePerso;
+        SousMetier2 = intCoachSport;
+        SousMetier3 = intProfParticulier;
+    }
+    public void ChooseVetementJob()
+    {
+        job = Shop.Vetement;
+        SousMetier1 = intLuxe;
+        SousMetier2 = intSport;
+        SousMetier3 = intQuotidiens;
     }
 
     public void SousMetierAddPoint(int sousMetier)
@@ -216,25 +245,25 @@ public class Entreprise : MonoBehaviour
     {
         switch (job)
         {
-            case shop.Vetement:
+            case Shop.Vetement:
                 intLuxe = SousMetier1;
                 intSport = SousMetier2;
                 intQuotidiens = SousMetier3;
                 break;
 
-            case shop.Service:
+            case Shop.Service:
                 intAidePerso = SousMetier1;
                 intCoachSport = SousMetier2;
                 intProfParticulier = SousMetier3;
                 break;
 
-            case shop.Velo:
+            case Shop.Velo:
                 intVTT = SousMetier1;
                 intCourse = SousMetier2;
                 intVille = SousMetier3;
                 break;
 
-            case shop.Aliment:
+            case Shop.Aliment:
                 intSurgele = SousMetier1;
                 intBio = SousMetier2;
                 intLivraison = SousMetier3;
@@ -384,22 +413,22 @@ public class Entreprise : MonoBehaviour
 
     public void MontainPlace()
     {
-        lieu = place.WhiteMontain;
+        lieu = Place.WhiteMontain;
         gestionnaireUI.RefreshData();
     }
     public void CityPlace()
     {
-        lieu = place.UrbanCity;
+        lieu = Place.UrbanCity;
         gestionnaireUI.RefreshData();
     }
     public void PalmPlace()
     {
-        lieu = place.PalmCoconut;
+        lieu = Place.PalmCoconut;
         gestionnaireUI.RefreshData();
     }
     public void FarmPlace()
     {
-        lieu = place.FenzyFarm;
+        lieu = Place.FenzyFarm;
         gestionnaireUI.RefreshData();
     }
 
@@ -407,8 +436,8 @@ public class Entreprise : MonoBehaviour
     public string GetUserName() { return UserName; }
     public string GetEntrepriseName() { return EntrepriseName; }
     public int GetMoney() { return Money; }
-    public shop GetShop() { return job; }
-    public place GetPlace() { return lieu; }
+    public Shop GetShop() { return job; }
+    public Place GetPlace() { return lieu; }
 
     public int GetLuxe() { return intLuxe; }
     public int GetSport() { return intSport; }

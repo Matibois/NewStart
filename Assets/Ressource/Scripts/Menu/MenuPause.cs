@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class MenuPause : MonoBehaviour
 {
-    
+
+    static public Action<bool> canMoveEvent;
+    private bool canMove;
 
     //private GameObject MenuUI;
     private bool paused = false;
@@ -31,6 +34,18 @@ public class MenuPause : MonoBehaviour
     public void Play()
     {
         Time.timeScale = 1;
+    }
+
+    private void StopMovement()
+    {
+        canMove = false;
+        canMoveEvent?.Invoke(canMove);
+    }
+
+    private void PlayMovement()
+    {
+        canMove = true;
+        canMoveEvent?.Invoke(canMove);
     }
 
 }

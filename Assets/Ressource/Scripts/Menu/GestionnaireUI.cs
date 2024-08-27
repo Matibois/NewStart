@@ -38,8 +38,8 @@ public class GestionnaireUI : MonoBehaviour
 
 
     [SerializeField] private Entreprise entreprise;
-    public shop job;
-    public place lieu;
+    public Shop job;
+    public Place lieu;
 
     public void RefreshData()
     {
@@ -63,19 +63,19 @@ public class GestionnaireUI : MonoBehaviour
 
         switch (lieu)
         {
-            case place.WhiteMontain:
+            case Place.WhiteMontain:
                 PlaceText.text = "White Montain";
                 break;
 
-            case place.PalmCoconut:
+            case Place.PalmCoconut:
                 PlaceText.text = "Palm Coconut";
                 break;
 
-            case place.UrbanCity:
+            case Place.UrbanCity:
                 PlaceText.text = "Urban City";
                 break;
 
-            case place.FenzyFarm:
+            case Place.FenzyFarm:
                 PlaceText.text = "Fenzy Farm";
                 break;
         }
@@ -86,25 +86,25 @@ public class GestionnaireUI : MonoBehaviour
 
         switch (job)
         {
-            case shop.Aliment:
+            case Shop.Aliment:
                 JobText.text = "Magasin alimentaire";
                 SousMetier1Name.text = "Surgele";
                 SousMetier2Name.text = "Bio";
                 SousMetier3Name.text = "Livraison";
                 break;
-            case shop.Velo:
+            case Shop.Velo:
                 JobText.text = "Magasin de Velo";
                 SousMetier1Name.text = "VTT";
                 SousMetier2Name.text = "Course";
                 SousMetier3Name.text = "Ville";
                 break;
-            case shop.Service:
+            case Shop.Service:
                 JobText.text = "Service Personnelle";
                 SousMetier1Name.text = "Aide Personnelle";
                 SousMetier2Name.text = "Coach Sportif";
                 SousMetier3Name.text = "Prof Particulier";
                 break;
-            case shop.Vetement:
+            case Shop.Vetement:
                 JobText.text = job.ToString();
                 SousMetier1Name.text = "Luxe";
                 SousMetier2Name.text = "Sport";
