@@ -120,6 +120,8 @@ namespace StarterAssets
 
         public static event Action MyInteractEvent;
 
+        private bool canMove = false;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -163,15 +165,17 @@ namespace StarterAssets
 
             menu = new MenuPause();
 
+            GameLoop.canMoveEvent += CanMove;
+
         }
 
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            /*JumpAndGravity();
+            GroundedCheck();*/
+            if (canMove) Move();
 
             escape();
             MyInteract();
@@ -227,14 +231,18 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
+        private void CanMove(bool canmove)
+        {
+            canMove = canmove;
+        }
+
         private void escape()
         {
             if (_input.escape)
             {
                 MenuUI.SetActive(true);
                 _input.escape = false;
-                MenuPause.Stop();
-
+                menu.Stop();
             }
         }
 
@@ -343,7 +351,7 @@ namespace StarterAssets
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
-                    _verticalVelocity = Mathf.Sqrt(JumpHeight *  0f * Gravity); // -2f pour jump
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight * 0f * Gravity); // -2f pour jump
 
                     // update animator if using character
                     if (_hasAnimator)
@@ -428,5 +436,12 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+
+        private void OnDestroy()
+        {
+            GameLoop.canMoveEvent -= CanMove;
+        }
+
     }
+
 }

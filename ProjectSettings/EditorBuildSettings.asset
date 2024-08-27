@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Ressource/Scenes/FenzyFarm.unity
     guid: 8fadb7d1805f4ae478be95d1f8c796e4
   - enabled: 1
-    path: Assets/Ressource/Scenes/PalmCocnut.unity
+    path: Assets/Ressource/Scenes/PalmCoconut.unity
     guid: 09de78ad395e01647aae2ee199b3cf78
   - enabled: 1
     path: Assets/Ressource/Scenes/Menu.unity

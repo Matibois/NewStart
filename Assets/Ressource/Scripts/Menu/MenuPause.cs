@@ -23,12 +23,12 @@ public class MenuPause : MonoBehaviour
         paused = !paused;
     }
 
-    static public void Stop()
+    public void Stop()
     {
         Time.timeScale = 0;
     }
 
-    static public void Play()
+    public void Play()
     {
         Time.timeScale = 1;
     }
