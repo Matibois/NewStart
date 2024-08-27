@@ -96,13 +96,13 @@ public class Developpement : MonoBehaviour
                 break;
         }
 
-        rapport += EvaluateFlyers();
+        rapport += EvaluateTransportPub();
         rapport += EvaluateReseaux();
         rapport += EvaluateJournaux();
 
         rapport += EvaluatePrice();
 
-        //max ici
+        //max ici 43 ?
         RapportProfit(rapport);
     }
 
@@ -134,6 +134,8 @@ public class Developpement : MonoBehaviour
         rapport = ((Place.Habitants - Place.AlimentSurgele) * entreprise.intSurgele);
         rapport += ((Place.Habitants - Place.AlimentLivraison) * entreprise.intLivraison);
         rapport += ((Place.Habitants - Place.AlimentBio) * entreprise.intBio);
+        //Max ici : 8
+        //min ici : -8
 
         if (entreprise.intSurgele > 0)
         {
@@ -167,9 +169,11 @@ public class Developpement : MonoBehaviour
             CMoyens += entreprise.intBio;
             CRiches += entreprise.intBio;
         }
-
+        
         Debug.Log("aliment 2 : " + rapport);
         return rapport;
+        //max ici : 28
+        //min ici : -8
     }
     private int EvaluateService()
     {
@@ -304,7 +308,7 @@ public class Developpement : MonoBehaviour
         return rapport;
     }
 
-    private int EvaluateFlyers()
+    private int EvaluateTransportPub()
     {
         int rapport = 0;
 
@@ -353,6 +357,7 @@ public class Developpement : MonoBehaviour
 
         return rapport;
     }
+
     private int EvaluatePrice()
     {
         int rapport = 0;
@@ -368,14 +373,14 @@ public class Developpement : MonoBehaviour
         if (sousMetier1Prix == 1 || sousMetier2Prix == 1 || sousMetier3Prix == 1) rapport += CPauvres;
         if (sousMetier1Prix == 2 || sousMetier2Prix == 2 || sousMetier3Prix == 2) rapport += CMoyens;
         if (sousMetier1Prix == 3 || sousMetier2Prix == 3 || sousMetier3Prix == 3) rapport += CRiches;
-
+        // +15 max ici
         return rapport;
 
     }
 
     private void RapportProfit(int rapport)
     {
-        //rapport += 8; // Car minimum = -8
+        //Max : 43 / Minimum : -8
         Debug.Log("Profit actuelle : " + rapport + "\nMétier : " + job);
         ProfitSlider.value = rapport;
 

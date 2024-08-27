@@ -37,7 +37,8 @@ public class AllDialogs
             { 19, new Dictionary<string, string> { { "speaker", "Théo" }, { "dialogue", "Et voilà pour l'introduction " } } },
             { 20, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "s'ma bite " } } },
             { 21, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "quand tu veux rajouter du dialogue, copie  colle la derniere ligne, rajoute lui une virgule, et change le nombre au début de ta ligne, et voilaaa " } } },
-            { 22, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "et si tu veux accéder à un dialogue en particulier depuis le code, regarde comment j'ai fais pour rajouter l'username dans la fonction dialoglist à l'index 5" } } }
+            { 22, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "et si tu veux accéder à un dialogue en particulier depuis le code, regarde comment j'ai fais pour rajouter l'username dans la fonction dialoglist à l'index 5" } } },
+            { 23, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "bite" } } },
         };
     }
 

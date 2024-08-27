@@ -163,10 +163,9 @@ public class Dialogue : MonoBehaviour
             darkBackground.SetActive(false);
         }
 
-        if (DialogIndex + 1 == AD.dialogues.Count)
+        if (DialogIndex == AD.dialogues.Count)
         {
             DisableDialog();
-
         }
         else
         {
