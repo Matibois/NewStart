@@ -29,16 +29,15 @@ public class AllDialogs
             { 11, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Formidable ! Votre projet à du potentiel. " } } },
             { 12, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Mais avant de créer réellement votre entreprise nous allons d'abord devoir récolter un certain nombre d'informations. " } } },
             { 13, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sur les villes environnantes, leur populations, les clients et concurrents potentiels, les tendances du moment... " } } },
-            { 14, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "On appelle ça, l'étude de marché ! " } } },
+            { 14, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "On appelle ça, <color=yellow>l'étude de marché !</color> " } } },
             { 15, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette étude à pour objectif d'analyser l'offre et la demande sur notre marché afin de mettre en place une stratégie marketing. " } } },
             { 16, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Les informations que nous allons récolter vont nous permettre d'orienter nos choix commerciaux. " } } },
             { 17, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ne vous inquiétez pas, je serai à vos côtés tout au long du processus! " } } },
             { 18, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour commencer, et si on sortait ? " } } },
-            { 19, new Dictionary<string, string> { { "speaker", "Théo" }, { "dialogue", "Et voilà pour l'introduction " } } },
-            { 20, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "s'ma bite " } } },
-            { 21, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "quand tu veux rajouter du dialogue, copie  colle la derniere ligne, rajoute lui une virgule, et change le nombre au début de ta ligne, et voilaaa " } } },
-            { 22, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "et si tu veux accéder à un dialogue en particulier depuis le code, regarde comment j'ai fais pour rajouter l'username dans la fonction dialoglist à l'index 5" } } },
-            { 23, new Dictionary<string, string> { { "speaker", "Matt" }, { "dialogue", "bite" } } },
+            { 19, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Fin de l'intro
+
+            { 20, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Hein ? Qui me parles ?" } } },
+            { 21, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Dégage blanc bec" } } },
         };
     }
 

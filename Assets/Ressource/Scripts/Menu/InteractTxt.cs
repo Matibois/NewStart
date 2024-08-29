@@ -8,6 +8,8 @@ public class InteractTxt : MonoBehaviour
 {
     [SerializeField] GameObject interactText;
 
+    public Dialogue D;
+
     Quaternion angle;
 
     void Start()
@@ -27,6 +29,7 @@ public class InteractTxt : MonoBehaviour
     private void InteractionDone()
     {
         interactText.SetActive(false);
+        D.EnableDialog();
     }
 
     private void CanInteract(bool visible)
