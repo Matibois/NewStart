@@ -3,12 +3,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractTxt : MonoBehaviour
 {
     [SerializeField] GameObject interactText;
 
     public Dialogue D;
+
+    public UnityEvent cacaquipue;
 
     Quaternion angle;
 
@@ -29,7 +32,7 @@ public class InteractTxt : MonoBehaviour
     private void InteractionDone()
     {
         interactText.SetActive(false);
-        D.EnableDialog();
+        //cacaquipue.Invoke();
     }
 
     private void CanInteract(bool visible)
