@@ -173,13 +173,12 @@ public class Dialogue : MonoBehaviour
     public void Dialog()
     {
         if (activeDialog == AllDialog.intro) IntroDialog();
-        else DefaultDialog();
+        else MairieDialog();
 
     }
 
     public void EnableDialog()
     {
-        print("enable");
         nameGO.SetActive(true);
         dialogueGO.SetActive(true);
         BS.gameObject.SetActive(true);
@@ -243,7 +242,7 @@ public class Dialogue : MonoBehaviour
     }
     private void MairieDialog()
     {
-        if (DialogIndex == activeDialog.Count)
+        if (DialogIndex == AllDialog.mairie.Count) 
         {
             DisableDialog();
             DialogIndex = 0;
@@ -276,7 +275,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void DefaultDialog()
+    /*private void DefaultDialog()
     {
         if (DialogIndex == activeDialog.Count)
         {
@@ -291,6 +290,12 @@ public class Dialogue : MonoBehaviour
             BoxSizeChoice(dictionnaryIndex["dialogue"]);
             StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
+    }*/
+
+    private void OnDestroy()
+    {
+        Interact.interactEvent -= interaction;
+        StopAllCoroutines();
     }
 
 
