@@ -28,7 +28,7 @@ public class MenuPause : MonoBehaviour
 
     public void Stop()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void Play()

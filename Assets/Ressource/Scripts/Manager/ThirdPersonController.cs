@@ -175,7 +175,7 @@ namespace StarterAssets
 
             /*JumpAndGravity();
             GroundedCheck();*/
-            if (canMove) Move();
+            if (true) Move();
 
             escape();
             MyInteract();
