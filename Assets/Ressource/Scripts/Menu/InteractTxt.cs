@@ -8,8 +8,6 @@ public class InteractTxt : MonoBehaviour
 {
     [SerializeField] GameObject interactText;
 
-    public Dialogue D;
-
     Quaternion angle;
 
     void Start()
@@ -17,7 +15,7 @@ public class InteractTxt : MonoBehaviour
         angle = transform.rotation;
         Interact.canInteractEvent += CanInteract;
         Interact.interactEvent += InteractionDone;
-        ThirdPersonController.MyInteractEvent += InteractionDone;
+        //ThirdPersonController.MyInteractEvent += InteractionDone;
     }
 
 
@@ -26,10 +24,9 @@ public class InteractTxt : MonoBehaviour
     {
         transform.rotation = angle;
     }
-    private void InteractionDone()
+    private void InteractionDone(Interact.ID id)
     {
         interactText.SetActive(false);
-        D.EnableDialog();
     }
 
     private void CanInteract(bool visible)

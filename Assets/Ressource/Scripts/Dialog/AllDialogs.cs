@@ -8,12 +8,16 @@ using System;
 public class AllDialogs 
 {
 
-    public Dictionary<int, Dictionary<string, string>> dialogues;
+    public Dictionary<int, Dictionary<string, string>> intro;
+    public Dictionary<int, Dictionary<string, string>> mairie;
+    public Dictionary<int, Dictionary<string, string>> kiosque;
+    public Dictionary<int, Dictionary<string, string>> commerçant;
+    public Dictionary<int, Dictionary<string, string>> maire;
 
 
-    public void InitDictionnary()
+    public void InitIntro()
     {
-        dialogues = new Dictionary<int, Dictionary<string, string>>
+        intro = new Dictionary<int, Dictionary<string, string>>
         {
             { 0, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Bonjour ! " } } },
             { 1, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves. " } } },
@@ -38,6 +42,26 @@ public class AllDialogs
 
             { 20, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Hein ? Qui me parles ?" } } },
             { 21, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Dégage blanc bec" } } },
+        };
+    }
+
+    public void InitMairie()
+    {
+        mairie = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "voici la mairie" } } },
+            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici,ekufhezriuhfuiehfuehfuhefhuefhuehfhefuheufhuehfuehfuheufhuehfuehufheufhuehfuehfuhefuhe'uhfu tu peux trouver des infos sur les gens" } } },
+            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "mais aussi allez te faire enculer sec" } } },
+        };
+    }
+
+    public void InitMaire()
+    {
+        maire = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je suis le maire" } } },
+            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "va te faire foutre" } } },
+            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "sale merde" } } },
         };
     }
 

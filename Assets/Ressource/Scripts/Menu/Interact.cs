@@ -16,10 +16,19 @@ public class Interact : MonoBehaviour
     private Material[] mats;
 
     public static Action<bool> canInteractEvent = null;
-    public static Action interactEvent;
+    public static Action<ID> interactEvent;
 
     private bool canInteract = false;
 
+    public enum ID
+    {
+        Bebot,
+        Commerçant, 
+        Kiosque,
+        Mairie
+    }
+
+    public ID id;
 
     private void Start()
     {
@@ -55,7 +64,8 @@ public class Interact : MonoBehaviour
         if (canInteract)
         {
             parentObject.GetComponent<Renderer>().materials = original;
-            interactEvent?.Invoke();
+            interactEvent?.Invoke(id);
+            canInteract = false;
         }
     }
     private void OnDestroy()
