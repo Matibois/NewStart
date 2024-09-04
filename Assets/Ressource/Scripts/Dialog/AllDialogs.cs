@@ -39,9 +39,12 @@ public class AllDialogs
             { 17, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ne vous inquiétez pas, je serai à vos côtés tout au long du processus! " } } },
             { 18, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour commencer, et si on sortait ? " } } },
             { 19, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Fin de l'intro
-
             { 20, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Hein ? Qui me parles ?" } } },
-            { 21, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Dégage blanc bec" } } },
+            { 21, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Roh ptn tu veux tester les dialogues à choix ?" } } },
+            { 22, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Tsk tsk tsk..." } } },
+            { 23, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Bon c'est vraiment parce que c'est toi alors." } } },
+            { 24, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Vas y, pose moi une question." } } },
+            { 25, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
         };
     }
 

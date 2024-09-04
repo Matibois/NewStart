@@ -221,7 +221,7 @@ public class Dialogue : MonoBehaviour
         else if (DialogIndex == 19)
         {
             darkBackground.SetActive(false);
-            DisableDialog();
+            //DisableDialog();
         }
         else if (DialogIndex == 20)
         {
