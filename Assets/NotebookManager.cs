@@ -18,6 +18,8 @@ public class NotebookManager : MonoBehaviour
     public GameObject BM_Beach2;
     public GameObject BM_Mountain2;
 
+    public GameObject BM_Postcards;
+
     private void Start()
     {
         isOpened = false;
@@ -38,6 +40,7 @@ public class NotebookManager : MonoBehaviour
             BM_City2.SetActive(false);
             BM_Beach2.SetActive(false);
             BM_Mountain2.SetActive(false);
+            BM_Postcards.SetActive(true);
         }
     }
 
@@ -51,6 +54,7 @@ public class NotebookManager : MonoBehaviour
         BM_City2.SetActive(false);
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
+        BM_Postcards.SetActive(false);
     }
     public void City() // C'est hyper crade, mais vas y je veux juste que ça fonctionne
     {
@@ -62,6 +66,7 @@ public class NotebookManager : MonoBehaviour
         BM_City2.SetActive(true);
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
+        BM_Postcards.SetActive(false);
     }
     public void Beach() // C'est hyper crade, mais vas y je veux juste que ça fonctionne
     {
@@ -73,6 +78,7 @@ public class NotebookManager : MonoBehaviour
         BM_City2.SetActive(false);
         BM_Beach2.SetActive(true);
         BM_Mountain2.SetActive(false);
+        BM_Postcards.SetActive(false);
     }
     public void Mountain() // C'est hyper crade, mais vas y je veux juste que ça fonctionne
     {
@@ -84,10 +90,19 @@ public class NotebookManager : MonoBehaviour
         BM_City2.SetActive(false);
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(true);
+        BM_Postcards.SetActive(false);
     }
 
-    public void Debugging()
+    public void Map()
     {
-        Debug.Log("Connard");
+        BM_Farm.SetActive(true);
+        BM_City.SetActive(true);
+        BM_Beach.SetActive(true);
+        BM_Mountain.SetActive(true);
+        BM_Farm2.SetActive(false);
+        BM_City2.SetActive(false);
+        BM_Beach2.SetActive(false);
+        BM_Mountain2.SetActive(false);
+        BM_Postcards.SetActive(true);
     }
 }
