@@ -17,8 +17,12 @@ public class NotebookManager : MonoBehaviour
     public GameObject BM_City2;
     public GameObject BM_Beach2;
     public GameObject BM_Mountain2;
-
     public GameObject BM_Postcards;
+
+    public GameObject P_Farm;
+    public GameObject P_City;
+    public GameObject P_Beach;
+    public GameObject P_Mountain;
 
     private void Start()
     {
@@ -40,6 +44,10 @@ public class NotebookManager : MonoBehaviour
             BM_City2.SetActive(false);
             BM_Beach2.SetActive(false);
             BM_Mountain2.SetActive(false);
+            P_Farm.SetActive(false);
+            P_City.SetActive(false);
+            P_Beach.SetActive(false);
+            P_Mountain.SetActive(false);
             BM_Postcards.SetActive(true);
         }
     }
@@ -55,6 +63,10 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(false);
+        P_Farm.SetActive(true);
+        P_City.SetActive(false);
+        P_Beach.SetActive(false);
+        P_Mountain.SetActive(false);
     }
     public void City() // C'est hyper crade, mais vas y je veux juste que ça fonctionne
     {
@@ -67,6 +79,10 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(false);
+        P_Farm.SetActive(false);
+        P_City.SetActive(true);
+        P_Beach.SetActive(false);
+        P_Mountain.SetActive(false);
     }
     public void Beach() // C'est hyper crade, mais vas y je veux juste que ça fonctionne
     {
@@ -79,6 +95,10 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(true);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(false);
+        P_Farm.SetActive(false);
+        P_City.SetActive(false);
+        P_Beach.SetActive(true);
+        P_Mountain.SetActive(false);
     }
     public void Mountain() // C'est hyper crade, mais vas y je veux juste que ça fonctionne
     {
@@ -91,6 +111,10 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(true);
         BM_Postcards.SetActive(false);
+        P_Farm.SetActive(false);
+        P_City.SetActive(false);
+        P_Beach.SetActive(false);
+        P_Mountain.SetActive(true);
     }
 
     public void Map()
@@ -104,5 +128,9 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(true);
+        P_Farm.SetActive(false);
+        P_City.SetActive(false);
+        P_Beach.SetActive(false);
+        P_Mountain.SetActive(false);
     }
 }
