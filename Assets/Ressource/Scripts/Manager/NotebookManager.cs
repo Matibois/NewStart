@@ -37,24 +37,29 @@ public class NotebookManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false)
         {
-            isOpened = !isOpened;
-            Notebook.SetActive(isOpened);
-
-            BM_Farm.SetActive(true);
-            BM_City.SetActive(true);
-            BM_Beach.SetActive(true);
-            BM_Mountain.SetActive(true);
-            BM_Farm2.SetActive(false);
-            BM_City2.SetActive(false);
-            BM_Beach2.SetActive(false);
-            BM_Mountain2.SetActive(false);
-            BM_Glossary.SetActive(false);
-            P_Farm.SetActive(false);
-            P_City.SetActive(false);
-            P_Beach.SetActive(false);
-            P_Mountain.SetActive(false);
-            BM_Postcards.SetActive(true);
+            OpenNotebook();
         }
+    }
+
+    public void OpenNotebook()
+    {
+        isOpened = !isOpened;
+        Notebook.SetActive(isOpened);
+
+        BM_Farm.SetActive(true);
+        BM_City.SetActive(true);
+        BM_Beach.SetActive(true);
+        BM_Mountain.SetActive(true);
+        BM_Farm2.SetActive(false);
+        BM_City2.SetActive(false);
+        BM_Beach2.SetActive(false);
+        BM_Mountain2.SetActive(false);
+        BM_Glossary.SetActive(false);
+        P_Farm.SetActive(false);
+        P_City.SetActive(false);
+        P_Beach.SetActive(false);
+        P_Mountain.SetActive(false);
+        BM_Postcards.SetActive(true);
     }
 
     public void Farm() // C'est hyper crade, mais vas y je veux juste que ça fonctionne

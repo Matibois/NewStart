@@ -32,6 +32,8 @@ public class Dialogue : MonoBehaviour
     private int DialogIndex = 0;
     private readonly AllDialogs AD = new();
 
+    public GameObject NotebookT;
+
     private new string name = "chips";
     private string entrepriseName;
 
@@ -173,6 +175,7 @@ public class Dialogue : MonoBehaviour
         {
             DisableDialog();
             isIntro = false;
+            NotebookT.GetComponent<Animator>().Play("Sliding");
         }
         else if (DialogIndex == 26)
         {
