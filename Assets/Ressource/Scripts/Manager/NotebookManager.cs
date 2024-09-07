@@ -17,7 +17,9 @@ public class NotebookManager : MonoBehaviour
     public GameObject BM_City2;
     public GameObject BM_Beach2;
     public GameObject BM_Mountain2;
+
     public GameObject BM_Postcards;
+    public GameObject BM_Glossary;
 
     public GameObject P_Farm;
     public GameObject P_City;
@@ -46,6 +48,7 @@ public class NotebookManager : MonoBehaviour
             BM_City2.SetActive(false);
             BM_Beach2.SetActive(false);
             BM_Mountain2.SetActive(false);
+            BM_Glossary.SetActive(false);
             P_Farm.SetActive(false);
             P_City.SetActive(false);
             P_Beach.SetActive(false);
@@ -65,6 +68,7 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(false);
+        BM_Glossary.SetActive(false);
         P_Farm.SetActive(true);
         P_City.SetActive(false);
         P_Beach.SetActive(false);
@@ -81,6 +85,7 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(false);
+        BM_Glossary.SetActive(false);
         P_Farm.SetActive(false);
         P_City.SetActive(true);
         P_Beach.SetActive(false);
@@ -97,6 +102,7 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(true);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(false);
+        BM_Glossary.SetActive(false);
         P_Farm.SetActive(false);
         P_City.SetActive(false);
         P_Beach.SetActive(true);
@@ -113,6 +119,7 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(true);
         BM_Postcards.SetActive(false);
+        BM_Glossary.SetActive(false);
         P_Farm.SetActive(false);
         P_City.SetActive(false);
         P_Beach.SetActive(false);
@@ -130,9 +137,29 @@ public class NotebookManager : MonoBehaviour
         BM_Beach2.SetActive(false);
         BM_Mountain2.SetActive(false);
         BM_Postcards.SetActive(true);
+        BM_Glossary.SetActive(false);
         P_Farm.SetActive(false);
         P_City.SetActive(false);
         P_Beach.SetActive(false);
         P_Mountain.SetActive(false);
     }
+
+    public void Glossary()
+    {
+        BM_Farm.SetActive(true);
+        BM_City.SetActive(true);
+        BM_Beach.SetActive(true);
+        BM_Mountain.SetActive(true);
+        BM_Farm2.SetActive(false);
+        BM_City2.SetActive(false);
+        BM_Beach2.SetActive(false);
+        BM_Mountain2.SetActive(false);
+        BM_Postcards.SetActive(false);
+        BM_Glossary.SetActive(true);
+        P_Farm.SetActive(false);
+        P_City.SetActive(false);
+        P_Beach.SetActive(false);
+        P_Mountain.SetActive(false);
+    }
+    
 }
