@@ -27,6 +27,7 @@ public class Dialogue : MonoBehaviour
     private bool dialogDone = true;
     private bool skipDialog = false;
     private bool codeChar;
+    public bool isIntro = true;
 
     private int DialogIndex = 0;
     private readonly AllDialogs AD = new();
@@ -160,10 +161,20 @@ public class Dialogue : MonoBehaviour
         }
         else if (DialogIndex == 19)
         {
-            darkBackground.SetActive(false);
-            //DisableDialog();
+            
+            darkBackground.GetComponent<Animator>().Play("FadeOut");
+            DisableDialog();
         }
         else if (DialogIndex == 20)
+        {
+            EnableDialog();
+        }
+        else if (DialogIndex == 25)
+        {
+            DisableDialog();
+            isIntro = false;
+        }
+        else if (DialogIndex == 26)
         {
             EnableDialog();
         }

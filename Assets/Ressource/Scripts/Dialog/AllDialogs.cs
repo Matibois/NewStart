@@ -35,12 +35,16 @@ public class AllDialogs
             { 17, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ne vous inquiétez pas, je serai à vos côtés tout au long du processus! " } } },
             { 18, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour commencer, et si on sortait ? " } } },
             { 19, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Fin de l'intro
-            { 20, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Hein ? Qui me parles ?" } } },
-            { 21, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Roh ptn tu veux tester les dialogues à choix ?" } } },
-            { 22, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Tsk tsk tsk..." } } },
-            { 23, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Bon c'est vraiment parce que c'est toi alors." } } },
-            { 24, new Dictionary<string, string> { { "speaker", "Cube" }, { "dialogue", "Vas y, pose moi une question." } } },
-            { 25, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+            { 20, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Oooh ! Alors tu habites à <color=yellow>Fenzy Farm</color>." } } }, // Fenzy Farm est visible
+            { 21, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Un petit village, c'est parfait pour faire notre étude de marché." } } },
+            { 22, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Il y a plusieurs manières de récupérer des informations." } } },
+            { 23, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu peux aller au kiosque, à la mairie ou parler avec le commerçant du coin." } } },
+            { 24, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et tiens ! Je pense que ça te seras utile." } } },
+            { 25, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur reçoit le carnet 
+            { 26, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Dans ce carnet tu peux prendre en note toutes les informations utiles à notre recherche." } } }, //Le joueur ouvre le carnet
+            { 27, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je le remplirai également avec des commentaires et des données que je vais aller récupérer de mon côté." } } },
+            { 28, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu trouveras également un glossaire  dans les dernières pages" } } },
+            { 29, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pendant que je commence mes sondages en ligne, fais le tour de la ville et récupère un maximum d'informations." } } },
         };
     }
 

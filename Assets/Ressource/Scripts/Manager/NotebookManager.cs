@@ -24,6 +24,8 @@ public class NotebookManager : MonoBehaviour
     public GameObject P_Beach;
     public GameObject P_Mountain;
 
+    public Dialogue d;
+
     private void Start()
     {
         isOpened = false;
@@ -31,7 +33,7 @@ public class NotebookManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false)
         {
             isOpened = !isOpened;
             Notebook.SetActive(isOpened);
