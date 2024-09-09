@@ -11,7 +11,7 @@ public class AllDialogs
     public Dictionary<int, Dictionary<string, string>> dialogues;
 
 
-    public void InitDictionnary()
+    public void InitDictionnary() // Liste des dialogues
     {
         dialogues = new Dictionary<int, Dictionary<string, string>>
         {
@@ -41,7 +41,7 @@ public class AllDialogs
             { 23, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu peux aller au <color=yellow>kiosque</color>, à la <color=yellow>mairie</color> ou parler avec le <color=yellow>commerçant</color> du coin." } } },
             { 24, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et tiens ! Je pense que ça te seras utile." } } },
             { 25, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur reçoit le carnet 
-            { 26, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Voici ton <color=yellow>carnet de notes</color> !" } } }, //Le joueur ouvre le carnet
+            { 26, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Voici ton <color=yellow>carnet de notes</color> !" } } }, // Le joueur ouvre le carnet
             { 27, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici tu es sur la <color=yellow>carte</color>. En cliquant sur les cartes postales tu peux te rendre vers différentes destinations." } } },
             { 28, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Appuie sur l'intercalaire orange, sur la droite." } } },
             { 29, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Dans ce carnet tu peux prendre en note toutes les informations utiles à notre recherche." } } }, // Le joueur appuie sur l'intercalaire Orange

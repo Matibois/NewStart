@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public static void LoadPlace(Place lieu)
     {
+        
         switch (lieu)
         {
             case Place.PalmCoconut:

@@ -90,6 +90,7 @@ public class Dialogue : MonoBehaviour
         
     }
 
+
     IEnumerator ShowText(string text)  
     {
         dialogDone = false;
@@ -122,6 +123,7 @@ public class Dialogue : MonoBehaviour
         dialogDone = true;
         skipDialog = false;
     }
+
 
     public void DialogTrigger()
     {

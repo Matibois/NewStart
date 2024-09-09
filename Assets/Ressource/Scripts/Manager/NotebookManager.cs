@@ -41,10 +41,12 @@ public class NotebookManager : MonoBehaviour
         isOpened = false;
         firstTime = true;
         firstTimeF = true;
+        
         A.interactable = false;
         B.interactable = false;
         C.interactable = false;
         D.interactable = false;
+        
     }
 
     void Update()
