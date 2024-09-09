@@ -16,7 +16,7 @@ public class AllDialogs
         dialogues = new Dictionary<int, Dictionary<string, string>>
         {
             { 0, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Bonjour ! " } } },
-            { 1, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves. " } } },
+            { 1, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves." } } },
             { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je me présente, je suis <color=yellow>Bebot.</color> " } } },
             { 3, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je suis votre assistant personnel et ma tâche est de vous aider à accomplir cet objectif ! " } } },
             { 4, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et d'ailleurs, quel est votre nom ? " } } },
@@ -38,13 +38,22 @@ public class AllDialogs
             { 20, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Oooh ! Alors tu habites à <color=yellow>Fenzy Farm</color>." } } }, // Fenzy Farm est visible
             { 21, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Un petit village, c'est parfait pour faire notre étude de marché." } } },
             { 22, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Il y a plusieurs manières de récupérer des informations." } } },
-            { 23, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu peux aller au kiosque, à la mairie ou parler avec le commerçant du coin." } } },
+            { 23, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu peux aller au <color=yellow>kiosque</color>, à la <color=yellow>mairie</color> ou parler avec le <color=yellow>commerçant</color> du coin." } } },
             { 24, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et tiens ! Je pense que ça te seras utile." } } },
             { 25, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur reçoit le carnet 
-            { 26, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Dans ce carnet tu peux prendre en note toutes les informations utiles à notre recherche." } } }, //Le joueur ouvre le carnet
-            { 27, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je le remplirai également avec des commentaires et des données que je vais aller récupérer de mon côté." } } },
-            { 28, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu trouveras également un glossaire  dans les dernières pages" } } },
-            { 29, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pendant que je commence mes sondages en ligne, fais le tour de la ville et récupère un maximum d'informations." } } },
+            { 26, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Voici ton <color=yellow>carnet de notes</color> !" } } }, //Le joueur ouvre le carnet
+            { 27, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici tu es sur la <color=yellow>carte</color>. En cliquant sur les cartes postales tu peux te rendre vers différentes destinations." } } },
+            { 28, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Appuie sur l'intercalaire orange, sur la droite." } } },
+            { 29, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Dans ce carnet tu peux prendre en note toutes les informations utiles à notre recherche." } } }, // Le joueur appuie sur l'intercalaire Orange
+            { 30, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Il va donc falloir que tu penses à <color=yellow>prendre en note</color> ce que l'on te dit ou ce que tu lis." } } },
+            { 31, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Nous sommes à Fenzy Farm, donc tu peux retrouver les informations que tu récupèreras ici." } } },
+            { 32, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je le remplirai également avec des commentaires et des données que je vais aller récupérer de mon côté." } } },
+            { 33, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu trouveras également un <color=green>glossaire</color>, accessible avec le marque-page vert." } } },
+            { 34, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et enfin, avec le marque page rouge, j'ai repertorié tes <color=red>objectifs</color>." } } },
+            { 35, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si jamais tu ne sais plus quoi faire, ou que tu veux savoir où tu en es, n'hésite pas à consulter ces pages." } } },
+            { 36, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je vais maintenant commencer à faire mes sondages en ligne." } } },
+            { 37, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "De ton côté, fais le tour de la ville et récupère un maximum d'informations." } } },
+            { 38, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } },
         };
     }
 

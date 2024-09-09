@@ -33,6 +33,7 @@ public class Dialogue : MonoBehaviour
     private readonly AllDialogs AD = new();
 
     public GameObject NotebookT;
+    public NotebookManager NM;
 
     private new string name = "chips";
     private string entrepriseName;
@@ -74,7 +75,7 @@ public class Dialogue : MonoBehaviour
             nameTransform.anchoredPosition = new Vector2(-154.7f, 100.3f);
             dialogueTransform.anchoredPosition = new Vector2(-76.4f, 41.5f);
         }
-        else if (text.Length > 93) //Medium Box
+        else if (text.Length > 105) //Medium Box
         {
             BS.DisplayBox(2);
             nameTransform.anchoredPosition  = new Vector2(-154.7f, 27.2f);
@@ -180,6 +181,15 @@ public class Dialogue : MonoBehaviour
         else if (DialogIndex == 26)
         {
             EnableDialog();
+        }
+        else if (DialogIndex == 28)
+        {
+            SkipButton.gameObject.SetActive(false);
+            NM.A.interactable = true;
+        }
+        else if (DialogIndex == 29)
+        {
+            SkipButton.gameObject.SetActive(true);
         }
         if (DialogIndex == AD.dialogues.Count)
         {
