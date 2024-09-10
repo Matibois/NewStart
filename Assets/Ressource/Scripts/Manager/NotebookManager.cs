@@ -9,7 +9,9 @@ public class NotebookManager : MonoBehaviour
     public GameObject Notebook;
     private bool isOpened;
     private bool firstTime;
+    public int secondTime;
     private bool firstTimeF;
+    public bool canClose;
 
     // Intercalaires
     public Button A, B, C, D;
@@ -41,6 +43,8 @@ public class NotebookManager : MonoBehaviour
         isOpened = false;
         firstTime = true;
         firstTimeF = true;
+        secondTime = 0;
+        canClose = true;
         
         A.interactable = false;
         B.interactable = false;
@@ -51,9 +55,10 @@ public class NotebookManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false) // Ouvrir le carnet avec T
+        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false && canClose == true) // Ouvrir le carnet avec T
         {
             OpenNotebook();
+            
         }
     }
 
@@ -63,6 +68,15 @@ public class NotebookManager : MonoBehaviour
         {
             d.DialogTrigger();
             firstTime = false;
+
+            canClose = false;
+        }
+
+        if(secondTime<4) secondTime += 1;
+        if (secondTime == 2) // Quand le joueur ferme le carnet pour la première fois
+        {
+            d.DialogTrigger();
+            secondTime += 5;
         }
 
         isOpened = !isOpened;

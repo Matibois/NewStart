@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private float delay = 0.05f;
+    [SerializeField] private float delay = 0.03f;
     [SerializeField] private TMP_Text LeTexte;
     [SerializeField] private string fullText;
     [SerializeField] private GameObject SkipButton;
@@ -183,15 +183,28 @@ public class Dialogue : MonoBehaviour
         else if (DialogIndex == 26)
         {
             EnableDialog();
+            NotebookT.GetComponent<Button>().enabled = false;
         }
         else if (DialogIndex == 28)
         {
             SkipButton.gameObject.SetActive(false);
+            delay = 0.01f;
             NM.A.interactable = true;
         }
         else if (DialogIndex == 29)
         {
+            delay = 0.03f;
             SkipButton.gameObject.SetActive(true);
+        }
+        else if (DialogIndex == 36)
+        {
+            DisableDialog();
+            NotebookT.GetComponent<Button>().enabled = true;
+            NM.canClose = true;
+        }
+        else if (DialogIndex == 37)
+        {
+            EnableDialog();
         }
         if (DialogIndex == AD.dialogues.Count)
         {

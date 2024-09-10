@@ -51,9 +51,10 @@ public class AllDialogs
             { 33, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Tu trouveras également un <color=green>glossaire</color>, accessible avec le marque-page vert." } } },
             { 34, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et enfin, avec le marque page rouge, j'ai repertorié tes <color=red>objectifs</color>." } } },
             { 35, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si jamais tu ne sais plus quoi faire, ou que tu veux savoir où tu en es, n'hésite pas à consulter ces pages." } } },
-            { 36, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je vais maintenant commencer à faire mes sondages en ligne." } } },
-            { 37, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "De ton côté, fais le tour de la ville et récupère un maximum d'informations." } } },
-            { 38, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } },
+            { 36, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur referme son carnet
+            { 37, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je vais maintenant commencer à faire mes sondages en ligne." } } }, 
+            { 38, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "De ton côté, fais le tour de la ville et récupère un maximum d'informations." } } },
+            { 39, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } }, // Le joueur commence sa recherche
         };
     }
 

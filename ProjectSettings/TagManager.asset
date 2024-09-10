@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Board
   - PlayerCam
+  - PostPro
   layers:
   - Default
   - TransparentFX
