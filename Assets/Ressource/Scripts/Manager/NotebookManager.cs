@@ -34,9 +34,8 @@ public class NotebookManager : MonoBehaviour
     public GameObject P_Beach;
     public GameObject P_Mountain;
 
-    
-
     public Dialogue d;
+
 
     private void Start()
     {

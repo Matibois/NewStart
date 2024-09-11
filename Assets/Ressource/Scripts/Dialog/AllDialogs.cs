@@ -15,6 +15,7 @@ public class AllDialogs
     {
         dialogues = new Dictionary<int, Dictionary<string, string>>
         {
+            //Introduction
             { 0, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Bonjour ! " } } },
             { 1, new Dictionary<string, string> { { "speaker", "???" }, { "dialogue", "Je vois que vous êtes un jeune entrepreneur ambitieux qui cherche à lancer l'entreprise de ses rêves." } } },
             { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je me présente, je suis <color=yellow>Bebot.</color> " } } },
@@ -54,7 +55,16 @@ public class AllDialogs
             { 36, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur referme son carnet
             { 37, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je vais maintenant commencer à faire mes sondages en ligne." } } }, 
             { 38, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "De ton côté, fais le tour de la ville et récupère un maximum d'informations." } } },
-            { 39, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } }, // Le joueur commence sa recherche
+            { 39, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } }, 
+            { 40, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur commence sa recherche
+
+            //Kiosk Tuto
+            { 50, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici, c'est le <color=yellow>kiosque</color>." } } },
+            { 51, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Comme tu peux le voir, il y a plein d'articles et d'autres annonces diverses affichées." } } },
+            { 52, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour <color=yellow>prendre en note</color> une affiche dans ton carnet, il te suffit de cliquer dessus." } } },
+            { 53, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Mais fais attention ! Toutes les informations ne sont pas utiles pour notre étude de marché." } } },
+            { 54, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sélectionne seulement celles qui te semblent utiles." } } },
+            { 55, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, 
         };
     }
 

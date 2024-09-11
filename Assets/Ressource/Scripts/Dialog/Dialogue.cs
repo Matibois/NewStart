@@ -29,7 +29,7 @@ public class Dialogue : MonoBehaviour
     private bool codeChar;
     public bool isIntro = true;
 
-    private int DialogIndex = 0;
+    public int DialogIndex = 0;
     private readonly AllDialogs AD = new();
 
     public GameObject NotebookT;
@@ -206,6 +206,22 @@ public class Dialogue : MonoBehaviour
         {
             EnableDialog();
         }
+        else if (DialogIndex == 40)
+        {
+            DisableDialog();
+        }
+
+
+        if (DialogIndex == 50)
+        {
+            var dictionnaryIndex = AD.dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
+        }
+        if (DialogIndex == 55)
+        {
+            DisableDialog();
+        }
+
+
         if (DialogIndex == AD.dialogues.Count)
         {
             DisableDialog();
@@ -218,6 +234,7 @@ public class Dialogue : MonoBehaviour
         }
 
     }
+
 
     public void EmptyNameChecker( )
     {
