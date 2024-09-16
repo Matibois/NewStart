@@ -16,6 +16,8 @@ public class KiosManager : MonoBehaviour
 
     public GameObject Note_Agr;
 
+    public GameObject Done1;
+
     private void Start()
     {
         firstTime = true;
@@ -50,6 +52,7 @@ public class KiosManager : MonoBehaviour
         if (Note_Agr.activeSelf == false)
         {
             Note_Agr.SetActive(true);
+            Done1.SetActive(true);
             d.DialogIndex = 59;
             NM.PopUp_Noting();
         }
