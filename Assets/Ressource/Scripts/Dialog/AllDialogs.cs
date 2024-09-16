@@ -65,6 +65,19 @@ public class AllDialogs
             { 53, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Mais fais attention ! Toutes les informations ne sont pas utiles pour notre étude de marché." } } },
             { 54, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sélectionne seulement celles qui te semblent utiles." } } },
             { 55, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, 
+
+            //Note agriculture
+            { 60, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Oui, cette information peut servir !" } } },
+            { 61, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Note là dans ton carnet." } } },
+            { 62, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+            { 63, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information est déjà dans ton carnet." } } },
+            { 64, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+
+            //Note inutile
+            { 65, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi cette information nous aiderait." } } },
+            { 66, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+            { 67, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information n'est pas utile pour notre étude de marché." } } },
+            { 68, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
         };
     }
 

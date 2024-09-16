@@ -216,7 +216,12 @@ public class Dialogue : MonoBehaviour
         {
             var dictionnaryIndex = AD.dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
         }
-        if (DialogIndex == 55)
+
+        if (DialogIndex == 60)
+        {
+            var dictionnaryIndex = AD.dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
+        }
+        if (DialogIndex == 55 || DialogIndex == 62 || DialogIndex == 64 || DialogIndex == 66 || DialogIndex == 68)
         {
             DisableDialog();
         }

@@ -6,10 +6,13 @@ public class KiosManager : MonoBehaviour
 {
 
     public GameObject Board;
+    public GameObject Notebook;
     private bool isOpened;
     private bool firstTime;
 
     public Dialogue d;
+
+    public GameObject Note_Agr;
 
     private void Start()
     {
@@ -20,7 +23,7 @@ public class KiosManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K)) // Ouvrir le kiosque avec K
+        if (Input.GetKeyDown(KeyCode.K) && (Notebook.activeSelf == false)) // Ouvrir le kiosque avec K
         {
             OpenKiosk();
         }
@@ -38,5 +41,34 @@ public class KiosManager : MonoBehaviour
 
         isOpened = !isOpened;
         Board.SetActive(isOpened);
+    }
+
+    public void Note_Agriculture ()
+    {
+        if (Note_Agr.activeSelf == false)
+        {
+            Note_Agr.SetActive(true);
+            d.DialogIndex = 59;
+        }
+        else
+        {
+            d.DialogIndex = 62;
+        }
+        d.EnableDialog();
+        d.DialogTrigger();
+    }
+
+    public void Note_Inutile_1()
+    {
+        d.DialogIndex = 64;
+        d.EnableDialog();
+        d.DialogTrigger();
+    }
+
+    public void Note_Inutile_2()
+    {
+        d.DialogIndex = 66;
+        d.EnableDialog();
+        d.DialogTrigger();
     }
 }

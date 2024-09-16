@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class NotebookManager : MonoBehaviour
 {
     public GameObject Notebook;
+    public GameObject Kiosk;
+
     private bool isOpened;
     private bool firstTime;
     public int secondTime;
@@ -54,7 +56,7 @@ public class NotebookManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false && canClose == true) // Ouvrir le carnet avec T
+        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false && canClose == true && Kiosk.activeSelf == false) // Ouvrir le carnet avec T
         {
             OpenNotebook();
             
