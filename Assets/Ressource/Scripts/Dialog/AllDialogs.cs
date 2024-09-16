@@ -61,14 +61,14 @@ public class AllDialogs
             //Kiosk Tuto
             { 50, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici, c'est le <color=yellow>kiosque</color>." } } },
             { 51, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Comme tu peux le voir, il y a plein d'articles et d'autres annonces diverses affichées." } } },
-            { 52, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour <color=yellow>prendre en note</color> une affiche dans ton carnet, il te suffit de cliquer dessus." } } },
+            { 52, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour <color=yellow>prendre en note</color> une affiche dans ton carnet, il te suffit de <color=yellow>cliquer dessus</color>." } } },
             { 53, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Mais fais attention ! Toutes les informations ne sont pas utiles pour notre étude de marché." } } },
             { 54, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sélectionne seulement celles qui te semblent utiles." } } },
             { 55, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, 
 
             //Note agriculture
             { 60, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Oui, cette information peut servir !" } } },
-            { 61, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Note là dans ton carnet." } } },
+            { 61, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Elle est notée dans ton <color=yellow>carnet</color>." } } },
             { 62, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
             { 63, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information est déjà dans ton carnet." } } },
             { 64, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },

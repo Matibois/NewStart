@@ -17,7 +17,7 @@ public class NotebookManager : MonoBehaviour
 
     // Intercalaires
     public Button A, B, C, D;
-    public GameObject BM_Farm; 
+    public GameObject BM_Farm;
     public GameObject BM_City;
     public GameObject BM_Beach;
     public GameObject BM_Mountain;
@@ -38,6 +38,8 @@ public class NotebookManager : MonoBehaviour
 
     public Dialogue d;
 
+    public GameObject PopUp_Note;
+
 
     private void Start()
     {
@@ -46,12 +48,12 @@ public class NotebookManager : MonoBehaviour
         firstTimeF = true;
         secondTime = 0;
         canClose = true;
-        
+
         A.interactable = false;
         B.interactable = false;
         C.interactable = false;
         D.interactable = false;
-        
+
     }
 
     void Update()
@@ -59,12 +61,12 @@ public class NotebookManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false && canClose == true && Kiosk.activeSelf == false) // Ouvrir le carnet avec T
         {
             OpenNotebook();
-            
+
         }
     }
 
     public void OpenNotebook() //Ouvrir le carnet
-    { 
+    {
         if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
         {
             d.DialogTrigger();
@@ -73,7 +75,7 @@ public class NotebookManager : MonoBehaviour
             canClose = false;
         }
 
-        if(secondTime<4) secondTime += 1;
+        if (secondTime < 4) secondTime += 1;
         if (secondTime == 2) // Quand le joueur ferme le carnet pour la première fois
         {
             d.DialogTrigger();
@@ -108,7 +110,7 @@ public class NotebookManager : MonoBehaviour
             firstTimeF = false;
         }
 
-        BM_Farm.SetActive(false); 
+        BM_Farm.SetActive(false);
         BM_City.SetActive(true);
         BM_Beach.SetActive(true);
         BM_Mountain.SetActive(true);
@@ -236,4 +238,8 @@ public class NotebookManager : MonoBehaviour
         BM_Objectives.SetActive(true);
     }
 
+    public void PopUp_Noting()
+    {
+        PopUp_Note.GetComponent<Animator>().Play("PopUp_Noting");
+    }
 }

@@ -10,6 +10,8 @@ public class KiosManager : MonoBehaviour
     private bool isOpened;
     private bool firstTime;
 
+
+    public NotebookManager NM;
     public Dialogue d;
 
     public GameObject Note_Agr;
@@ -49,6 +51,7 @@ public class KiosManager : MonoBehaviour
         {
             Note_Agr.SetActive(true);
             d.DialogIndex = 59;
+            NM.PopUp_Noting();
         }
         else
         {
