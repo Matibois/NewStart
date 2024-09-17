@@ -8,6 +8,7 @@ public class NotebookManager : MonoBehaviour
 {
     public GameObject Notebook;
     public GameObject Kiosk;
+    public GameObject Computer;
 
     private bool isOpened;
     private bool firstTime;
@@ -40,6 +41,9 @@ public class NotebookManager : MonoBehaviour
 
     public GameObject PopUp_Note;
 
+    public GameObject Note1, Note2A, Note2B, Note3;
+    public GameObject Validate1, Validate2, Validate3;
+
 
     private void Start()
     {
@@ -58,7 +62,7 @@ public class NotebookManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false && canClose == true && Kiosk.activeSelf == false) // Ouvrir le carnet avec T
+        if (Input.GetKeyDown(KeyCode.T) && d.isIntro == false && canClose == true && Kiosk.activeSelf == false && Computer.activeSelf == false) // Ouvrir le carnet avec T
         {
             OpenNotebook();
 
@@ -81,6 +85,8 @@ public class NotebookManager : MonoBehaviour
             d.DialogTrigger();
             secondTime += 5;
         }
+
+        Objectif_Update();
 
         isOpened = !isOpened;
         Notebook.SetActive(isOpened);
@@ -241,5 +247,17 @@ public class NotebookManager : MonoBehaviour
     public void PopUp_Noting()
     {
         PopUp_Note.GetComponent<Animator>().Play("PopUp_Noting");
+    }
+
+    public void Objectif_Update()
+    {
+        if (Note1.activeSelf == true)
+        {
+            Validate1.SetActive(true);
+        }
+        if (Note2A.activeSelf == true && Note2B.activeSelf == true)
+        {
+            Validate2.SetActive(true);
+        }
     }
 }

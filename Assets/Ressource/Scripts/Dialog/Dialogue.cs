@@ -212,25 +212,40 @@ public class Dialogue : MonoBehaviour
         }
 
 
-        if (DialogIndex == 50)
+        
+        if (DialogIndex == 60)
         {
-            var dictionnaryIndex = AD.dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
+            NM.PopUp_Noting();
+        }
+        if (DialogIndex == 55 || DialogIndex == 62 || DialogIndex == 64 || DialogIndex == 66 || DialogIndex == 68 || DialogIndex == 76 || DialogIndex == 80 || DialogIndex == 83)
+        {
+            DisableDialog();
+
+        }
+
+        if (DialogIndex == 50 )
+        {
+            var dictionnaryIndex = AD.dialogues[DialogIndex];
+            Debug.Log("Kiosque");
         }
 
         if (DialogIndex == 60)
         {
-            var dictionnaryIndex = AD.dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
+            var dictionnaryIndex = AD.dialogues[DialogIndex];
         }
-        if (DialogIndex == 55 || DialogIndex == 62 || DialogIndex == 64 || DialogIndex == 66 || DialogIndex == 68)
+
+        if (DialogIndex == 70)
         {
-            DisableDialog();
+            var dictionnaryIndex = AD.dialogues[DialogIndex];
+            Debug.Log("Mairie");
         }
 
-
+        /*
         if (DialogIndex == AD.dialogues.Count)
         {
             DisableDialog();
         }
+        */
         else
         {
             var dictionnaryIndex = AD.dialogues[DialogIndex];

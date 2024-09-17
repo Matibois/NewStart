@@ -16,8 +16,6 @@ public class KiosManager : MonoBehaviour
 
     public GameObject Note_Agr;
 
-    public GameObject Done1;
-
     private void Start()
     {
         firstTime = true;
@@ -27,7 +25,7 @@ public class KiosManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && (Notebook.activeSelf == false)) // Ouvrir le kiosque avec K
+        if (Input.GetKeyDown(KeyCode.K) && Notebook.activeSelf == false && d.isIntro == false) // Ouvrir le kiosque avec K
         {
             OpenKiosk();
         }
@@ -52,9 +50,7 @@ public class KiosManager : MonoBehaviour
         if (Note_Agr.activeSelf == false)
         {
             Note_Agr.SetActive(true);
-            Done1.SetActive(true);
             d.DialogIndex = 59;
-            NM.PopUp_Noting();
         }
         else
         {

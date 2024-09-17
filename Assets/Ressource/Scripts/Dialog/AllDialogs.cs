@@ -66,18 +66,37 @@ public class AllDialogs
             { 54, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sélectionne seulement celles qui te semblent utiles." } } },
             { 55, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, 
 
-            //Note agriculture
+            //Note utile
+            { 59, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
             { 60, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Oui, cette information peut servir !" } } },
             { 61, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Elle est notée dans ton <color=yellow>carnet</color>." } } },
             { 62, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
             { 63, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information est déjà dans ton carnet." } } },
             { 64, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
-
+            
             //Note inutile
             { 65, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi cette information nous aiderait." } } },
             { 66, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
             { 67, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information n'est pas utile pour notre étude de marché." } } },
             { 68, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+
+            //Mairie Tuto
+            { 70, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Te voilà sur <color=yellow>l'ordinateur de la mairie</color>." } } },
+            { 71, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici tu peux consulter à volonté des documents pour te renseigner sur la ville et ses habitants." } } },
+            { 72, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmm. Je vois qu'il y a beaucoup de tableaux et de données." } } },
+            { 73, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si tu veux prendre en note un document, <color=yellow>clique dessus</color> et je le consulterai en détail." } } },
+            { 74, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si les informations que tu m'envoies sont utiles nous les ajouteront au carnet." } } },
+            { 75, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Sélectionne seulement celles qui te semblent utiles." } } },
+            { 76, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+
+
+            //Note inutile
+            { 78, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
+            { 79, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi ces informations nous aideraient." } } },
+            { 80, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
+            { 81, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
+            { 82, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information n'est pas utile pour notre étude de marché." } } },
+            { 83, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
         };
     }
 
