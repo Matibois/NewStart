@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a26b5b50-1a6d-4bb4-990c-9ee583c5aeec}">
+		<property name="assetPath">
+			<value>MiniPopUp.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.78367346938775506</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{34788016-7ca4-400c-995d-9274e8c9e0c1}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -17,13 +17,45 @@ MonoBehaviour:
   - {fileID: 1201587689895803874}
   EditorEvents:
   - {fileID: 8948354559169300097}
+  - {fileID: 2642750568391150481}
+  - {fileID: 8005370496710225023}
+  - {fileID: 1873672833564838299}
+  - {fileID: 7603251742917372651}
+  - {fileID: 536652212727997077}
   EditorParameters: []
   MasterBanks:
   - {fileID: 1201587689895803874}
   StringsBanks:
   - {fileID: 4484159832082847771}
-  cacheTime: 638596771092371819
+  cacheTime: 638623587574517839
   cacheVersion: 131618
+--- !u!114 &536652212727997077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notebook/NoteTaken
+  m_EditorClassIdentifier: 
+  Path: event:/Notebook/NoteTaken
+  Guid:
+    Data1: 1826712304
+    Data2: 1281755079
+    Data3: 2055437219
+    Data4: 10514047
+  Banks:
+  - {fileID: 1201587689895803874}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1306
 --- !u!114 &1201587689895803874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,11 +71,65 @@ MonoBehaviour:
   Path: Assets/NewStart_Fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638596771092361824
+  lastModified: 638623587574472278
   FileSizes:
   - Name: Desktop
-    Value: 1730
+    Value: 687968
   Exists: 1
+--- !u!114 &1873672833564838299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Talking Noises/Bebot Noises
+  m_EditorClassIdentifier: 
+  Path: event:/Talking Noises/Bebot Noises
+  Guid:
+    Data1: 1761223524
+    Data2: 1126725928
+    Data3: -211348333
+    Data4: 613870772
+  Banks:
+  - {fileID: 1201587689895803874}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 77
+--- !u!114 &2642750568391150481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notebook/Intercalaire
+  m_EditorClassIdentifier: 
+  Path: event:/Notebook/Intercalaire
+  Guid:
+    Data1: -724370110
+    Data2: 1301983409
+    Data3: 814758054
+    Data4: -1782084491
+  Banks:
+  - {fileID: 1201587689895803874}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 330
 --- !u!114 &4484159832082847771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,11 +145,65 @@ MonoBehaviour:
   Path: Assets/NewStart_Fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638596771092371819
+  lastModified: 638623587574517839
   FileSizes:
   - Name: Desktop
-    Value: 754
+    Value: 1004
   Exists: 1
+--- !u!114 &7603251742917372651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notebook/Closing
+  m_EditorClassIdentifier: 
+  Path: event:/Notebook/Closing
+  Guid:
+    Data1: 861615015
+    Data2: 1141541769
+    Data3: -1870564732
+    Data4: -234582650
+  Banks:
+  - {fileID: 1201587689895803874}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 450
+--- !u!114 &8005370496710225023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Notebook/Opening
+  m_EditorClassIdentifier: 
+  Path: event:/Notebook/Opening
+  Guid:
+    Data1: 1311107139
+    Data2: 1232040480
+    Data3: 679294094
+    Data4: 2095231469
+  Banks:
+  - {fileID: 1201587689895803874}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 490
 --- !u!114 &8948354559169300097
 MonoBehaviour:
   m_ObjectHideFlags: 0

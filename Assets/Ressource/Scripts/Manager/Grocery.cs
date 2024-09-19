@@ -5,9 +5,15 @@ using UnityEngine;
 public class Grocery : MonoBehaviour
 {
     public GameObject Notebook;
+    public GameObject VendorSprite;
+
+    private bool firstTime;
+    private bool isOpened;
 
     private void Start()
     {
+        isOpened = false;
+
         Interact.interactEvent += OpenGrocery;
     }
 
@@ -15,7 +21,13 @@ public class Grocery : MonoBehaviour
     {
         if (!Notebook.activeSelf)
         {
-            Debug.Log("Groceryyy");
+            isOpened = !isOpened;
+            VendorSprite.SetActive(isOpened);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Interact.interactEvent -= OpenGrocery;
     }
 }
