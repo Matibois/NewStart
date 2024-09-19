@@ -50,7 +50,7 @@ public class Dialogue : MonoBehaviour
         AllDialog.InitIntro();
         AllDialog.InitMairie();
 
-        activeDialog = AllDialog.mairie;
+        activeDialog = AllDialog.intro;
 
         speakerTMP = nameGO.GetComponent<TMP_Text>();
         dialogueTMP = dialogueGO.GetComponent<TMP_Text>();
