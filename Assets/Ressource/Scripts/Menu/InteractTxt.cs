@@ -20,7 +20,7 @@ public class InteractTxt : MonoBehaviour
         angle = transform.rotation;
         Interact.canInteractEvent += CanInteract;
         Interact.interactEvent += InteractionDone;
-        ThirdPersonController.MyInteractEvent += InteractionDone;
+        //ThirdPersonController.MyInteractEvent += InteractionDone;
     }
 
 
@@ -29,7 +29,7 @@ public class InteractTxt : MonoBehaviour
     {
         transform.rotation = angle;
     }
-    private void InteractionDone()
+    private void InteractionDone(Interact.ID id)
     {
         interactText.SetActive(false);
         //cacaquipue.Invoke();
