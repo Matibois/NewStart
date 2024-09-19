@@ -394,4 +394,9 @@ public class Developpement : MonoBehaviour
 
         //Gérer texte robot ?
     }
+
+    public int GetProfit()
+    {
+        return Profit;
+    }
 }

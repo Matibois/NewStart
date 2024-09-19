@@ -39,31 +39,22 @@ public class ComputerManager : MonoBehaviour
     }
     */
 
-    public void OpenComputer() // Quand le joueur ouvre l'ordinateur
+    public void OpenComputer(Interact.ID id) // Quand le joueur ouvre l'ordinateur
     {
-        if (!Notebook.activeSelf)
+        if (!Notebook.activeSelf && id == Interact.ID.Mairie)
         {
-            if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
-            {
-                d.DialogIndex = 70;
-                d.EnableDialog();
-                d.Dialog();
-                firstTime = false;
-            }
+            isOpened = !isOpened;
+            Browser.SetActive(isOpened);
+            ErrorMessage.SetActive(false);
+            ErrorMessage2.SetActive(false);
+
+            DocInt.transform.position = Pos1.transform.position;
+            Fin.transform.position = Pos2.transform.position;
+            ListeRev.transform.position = Pos3.transform.position;
+            ListeCit.transform.position = Pos4.transform.position;
+            ListeElect.transform.position = Pos5.transform.position;
+            AnnFenz.transform.position = Pos6.transform.position;
         }
-
-
-        isOpened = !isOpened;
-        Browser.SetActive(isOpened);
-        ErrorMessage.SetActive(false);
-        ErrorMessage2.SetActive(false);
-
-        DocInt.transform.position = Pos1.transform.position;
-        Fin.transform.position = Pos2.transform.position;
-        ListeRev.transform.position = Pos3.transform.position;
-        ListeCit.transform.position = Pos4.transform.position;
-        ListeElect.transform.position = Pos5.transform.position;
-        AnnFenz.transform.position = Pos6.transform.position;
     }
 
 
@@ -100,15 +91,10 @@ public class ComputerManager : MonoBehaviour
         if (Note_Rev.activeSelf == false)
         {
             Note_Rev.SetActive(true);
-            d.DialogIndex = 58;
+            d.DialogInfoMairie(true);
         }
-        else
-        {
-            d.DialogIndex = 62;
-        }
+        else d.DialogDejanote();
 
-        d.EnableDialog();
-        d.DialogTrigger();
     }
 
     public void Open_Population()
@@ -116,28 +102,15 @@ public class ComputerManager : MonoBehaviour
         if (Note_Pop.activeSelf == false)
         {
             Note_Pop.SetActive(true);
-            d.DialogIndex = 58;
+            d.DialogInfoMairie(true);
         }
-        else
-        {
-            d.DialogIndex = 62;
-        }
-        d.EnableDialog();
-        d.DialogTrigger();
+        else d.DialogDejanote();
+        
     }
 
     public void Open_Useless()
     {
-        d.DialogIndex = 77;
-        d.EnableDialog();
-        d.DialogTrigger();
-    }
-
-    public void Open_Useless2()
-    {
-        d.DialogIndex = 80;
-        d.EnableDialog();
-        d.DialogTrigger();
+        d.DialogInfoMairie(false);
     }
 
     public void OpenError()

@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using static System.Net.Mime.MediaTypeNames;
+using System.Collections.Generic;
+using System;
 
 public class Dialogue : MonoBehaviour
 {
@@ -28,9 +30,14 @@ public class Dialogue : MonoBehaviour
     private bool skipDialog = false;
     private bool codeChar;
     public bool isIntro = true;
+    private bool tutoMairie = true;
+    private bool tutoKiosk = true;
+    private bool randomInText = false;
 
-    public int DialogIndex = 0;
-    private readonly AllDialogs AD = new();
+    private int DialogIndex = 0;
+    private readonly AllDialogs AllDialog = new();
+    private Dictionary<int, Dictionary<string, string>> activeDialog;
+
 
     public GameObject NotebookT;
     public NotebookManager NM;
@@ -40,7 +47,10 @@ public class Dialogue : MonoBehaviour
 
     private void Start()
     {
-        AD.InitDictionnary();
+        AllDialog.InitIntro();
+        AllDialog.InitMairie();
+
+        activeDialog = AllDialog.mairie;
 
         speakerTMP = nameGO.GetComponent<TMP_Text>();
         dialogueTMP = dialogueGO.GetComponent<TMP_Text>();
@@ -49,49 +59,106 @@ public class Dialogue : MonoBehaviour
 
         dialogDone = true;
         skipDialog = false;
-        
+
+        Interact.interactEvent += interaction;
+
         EnableDialog();
         Dialog();
     }
+
 
     public void Named()
     {
         name = nameInput.text;
         print("named " + name + " from dialogue");
     }
-
     public void EnterpriseNamed()
     {
         entrepriseName = entrepriseNameInput.text;
     }
-
-    public void BoxSizeChoice(string name, string text)
+    public void EmptyNameChecker()
     {
-        LeTexte.text = "";
-        speakerTMP.text = name;
-        if (text.Length >= 210) //Large Box 210
+
+        if (!string.IsNullOrWhiteSpace(nameInput.text))
         {
-            BS.DisplayBox(3);
-            nameTransform.anchoredPosition = new Vector2(-154.7f, 100.3f);
-            dialogueTransform.anchoredPosition = new Vector2(-76.4f, 41.5f);
+            nameInput.text = nameInput.text.Trim();
+            ValidatedName.gameObject.SetActive(true);
         }
-        else if (text.Length > 105) //Medium Box
-        {
-            BS.DisplayBox(2);
-            nameTransform.anchoredPosition  = new Vector2(-154.7f, 27.2f);
-            dialogueTransform.anchoredPosition = new Vector2(-76.4f, -29f);
-        }
-        else // Small Box 
-        {
-            BS.DisplayBox(1);
-            nameTransform.anchoredPosition  = new Vector2(-154.7f, -21.3f);
-            dialogueTransform.anchoredPosition = new Vector2(-76.4f, -74.2f);
-        }
-        
     }
 
+    private void interaction(Interact.ID id)
+    {
+        print("interaction dialogue");
+        switch (id)
+        {
+            case Interact.ID.Bebot:
+                break;
 
-    IEnumerator ShowText(string text)  
+            case Interact.ID.Commercant:
+                break;
+
+            case Interact.ID.Kiosque:
+                activeDialog = AllDialog.kiosk;
+                if (!tutoKiosk)
+                {
+                    tutoKiosk = false;
+                }
+                else return;
+                break;
+
+            case Interact.ID.Mairie:
+                print("mairie");
+                activeDialog = AllDialog.mairie;
+                if (!tutoMairie)
+                {
+                    tutoMairie = false;
+                }
+                else return;
+
+                break;
+
+        }
+
+        EnableDialog();
+        Dialog();
+    }
+
+    public void DialogTrigger()
+    {
+        if (dialogDone == true)
+        {
+            Dialog();
+            DialogIndex++;
+        }
+        else if (dialogDone == false)
+        {
+            skipDialog = true;
+        }
+    }
+
+    public void BoxSizeChoice(string text)
+    {
+        int boxsize = BS.BoxSizeChoice(text);
+
+        switch (boxsize)
+        {
+            case 1:
+                nameTransform.anchoredPosition = new Vector2(-154.7f, -21.3f);
+                dialogueTransform.anchoredPosition = new Vector2(-76.4f, -74.2f);
+                break;
+            case 2:
+                nameTransform.anchoredPosition = new Vector2(-154.7f, 27.2f);
+                dialogueTransform.anchoredPosition = new Vector2(-76.4f, -29f);
+                break;
+            case 3:
+                nameTransform.anchoredPosition = new Vector2(-154.7f, 100.3f);
+                dialogueTransform.anchoredPosition = new Vector2(-76.4f, 41.5f);
+                break;
+        }
+
+    }
+
+    IEnumerator ShowText(string text)
     {
         dialogDone = false;
         LeTexte.text = "";
@@ -125,7 +192,7 @@ public class Dialogue : MonoBehaviour
     }
 
 
-    public void DialogTrigger()
+    /*public void DialogTrigger()
     {
         if (dialogDone == true)
         {
@@ -136,23 +203,90 @@ public class Dialogue : MonoBehaviour
         {
             skipDialog = true;
         }
+    }*/
+
+    public void DialogInfoMairie(bool usefull)
+    {
+        if (usefull)
+        {
+            activeDialog = AllDialog.mairieUtile;
+        }
+        else
+        {
+            if (randomInText) activeDialog = AllDialog.mairieInutile1;
+            else activeDialog = AllDialog.mairieInutile2;
+            randomInText = !randomInText;
+        }
+
+        EnableDialog();
+        Dialog();
+    }
+
+    public void DialogInfoKiosk(bool usefull)
+    {
+        if (usefull)
+        {
+            activeDialog = AllDialog.kioskUtile;
+        }
+        else
+        {
+            if (randomInText) activeDialog = AllDialog.kioskInutile1;
+            else activeDialog = AllDialog.kioskInutile2;
+            randomInText = !randomInText;
+        }
+
+        EnableDialog();
+        Dialog();
+    }
+
+    public void DialogDejanote()
+    {
+        activeDialog = AllDialog.dejaNote;
+
+        EnableDialog();
+        Dialog();
     }
 
     public void Dialog()
     {
+        if (activeDialog == AllDialog.intro) IntroDialog();
+        else if (activeDialog == AllDialog.mairie) MairieDialog();
+        else if (activeDialog == AllDialog.kiosk) KioskDialog();
+        
+
+    }
+
+    public void EnableDialog()
+    {
+        nameGO.SetActive(true);
+        dialogueGO.SetActive(true);
+        BS.gameObject.SetActive(true);
+        SkipButton.gameObject.SetActive(true);
+    }
+    public void DisableDialog()
+    {
+        nameGO.SetActive(false);
+        dialogueGO.SetActive(false);
+        BS.gameObject.SetActive(false);
+        SkipButton.gameObject.SetActive(false);
+    }
+
+    private void IntroDialog()
+    {
+        print("intro");
         if (DialogIndex == 4) // Bebot demande notre blaze
         {
             nameInput.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
         }
-        else if (DialogIndex == 5) // Te prends pas la tête à comprendre, je t'explique en appel, ou en IRL
+        else if (DialogIndex == 5) // Te prends pas la tï¿½te ï¿½ comprendre, je t'explique en appel, ou en IRL
         {
-            var dictionnaryIndex = AD.dialogues[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
+            var dictionnaryIndex = AllDialog.intro[DialogIndex]; // copie colle ces deux lignes, remplace DialogIndex par l'index du dialogue que tu veux
             dictionnaryIndex["dialogue"] += name + " ! "; //  dictionnaryIndex["dialogue"] c'est le dialogue, c'est une string
             nameInput.gameObject.SetActive(false);
             SkipButton.gameObject.SetActive(true);
         }
-        else if (DialogIndex == 10) // On enlève le dialogue pour rentrer le nom de l'entrepriser et l'activité
+        else if (DialogIndex == 10) // On enlï¿½ve le dialogue pour rentrer le nom de l'entrepriser et l'activitï¿½
         {
             EnterpriseChoice.gameObject.SetActive(true);
             SkipButton.gameObject.SetActive(false);
@@ -166,7 +300,7 @@ public class Dialogue : MonoBehaviour
         }
         else if (DialogIndex == 19)
         {
-            
+
             darkBackground.GetComponent<Animator>().Play("FadeOut");
             DisableDialog();
         }
@@ -212,7 +346,7 @@ public class Dialogue : MonoBehaviour
         }
 
 
-        
+
         if (DialogIndex == 60)
         {
             NM.PopUp_Noting();
@@ -223,62 +357,78 @@ public class Dialogue : MonoBehaviour
 
         }
 
-        if (DialogIndex == 50 )
-        {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-            Debug.Log("Kiosque");
-        }
-
-        if (DialogIndex == 60)
-        {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-        }
-
-        if (DialogIndex == 70)
-        {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-            Debug.Log("Mairie");
-        }
-
         /*
-        if (DialogIndex == AD.dialogues.Count)
+        if (DialogIndex == AllDialog.intro.Count)
         {
             DisableDialog();
+            DialogIndex = 0;
+
         }
         */
         else
         {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-            BoxSizeChoice(dictionnaryIndex["speaker"], dictionnaryIndex["dialogue"]);
+            var dictionnaryIndex = AllDialog.intro[DialogIndex];
+            BoxSizeChoice(dictionnaryIndex["dialogue"]);
             StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
-
     }
 
-
-    public void EmptyNameChecker( )
+    private void MairieDialog()
     {
-        
-        if (!string.IsNullOrWhiteSpace(nameInput.text))
-        { 
-            nameInput.text = nameInput.text.Trim();
-            ValidatedName.gameObject.SetActive(true);
+        if (DialogIndex == AllDialog.mairie.Count)
+        {
+            DisableDialog();
+            DialogIndex = 0;
+            print("dialog end 0");
+
+        }
+        else
+        {
+            print("outro");
+            var dictionnaryIndex = AllDialog.mairie[DialogIndex];
+            BoxSizeChoice(dictionnaryIndex["dialogue"]);
+            StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
     }
 
-    public void EnableDialog()
+    private void KioskDialog()
     {
-        nameGO.SetActive(true);
-        dialogueGO.SetActive(true);
-        BS.gameObject.SetActive(true);
-        SkipButton.gameObject.SetActive(true);
+        if (DialogIndex == AllDialog.kiosk.Count)
+        {
+            DisableDialog();
+            DialogIndex = 0;
+            print("dialog end 0");
+
+        }
+        else
+        {
+            var dictionnaryIndex = AllDialog.kiosk[DialogIndex];
+            BoxSizeChoice(dictionnaryIndex["dialogue"]);
+            StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
+        }
     }
 
-    public void DisableDialog()
+    /*private void DefaultDialog()
     {
-        nameGO.SetActive(false);
-        dialogueGO.SetActive(false);
-        BS.gameObject.SetActive(false);
-        SkipButton.gameObject.SetActive(false);
+        if (DialogIndex == activeDialog.Count)
+        {
+            DisableDialog();
+            DialogIndex = 0;
+            print("dialog end 0");
+
+        }
+        else
+        {
+            var dictionnaryIndex = activeDialog[DialogIndex];
+            BoxSizeChoice(dictionnaryIndex["dialogue"]);
+            StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
+        }
+    }*/
+
+    private void OnDestroy()
+    {
+        Interact.interactEvent -= interaction;
+        StopAllCoroutines();
     }
+
 }

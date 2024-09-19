@@ -9,7 +9,23 @@ public class BoxSize : MonoBehaviour
     public GameObject large;
 
 
-    public void DisplayBox(int size) 
+    public int BoxSizeChoice(string text)
+    {
+        if (text.Length >= 210) //Large Box 210
+        {
+            DisplayBox(3);
+            return 3;
+        }
+        if (text.Length > 93) //Medium Box
+        {
+            DisplayBox(2);
+            return 2;
+        }
+        DisplayBox(1);
+        return 1;
+    }
+
+    public void DisplayBox(int size)
     {
         switch (size)
         {
