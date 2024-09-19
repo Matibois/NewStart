@@ -20,29 +20,25 @@ public class KiosManager : MonoBehaviour
     {
         firstTime = true;
         isOpened = false;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K) && Notebook.activeSelf == false && d.isIntro == false) // Ouvrir le kiosque avec K
-        {
-            OpenKiosk();
-        }
+        Interact.interactEvent += OpenKiosk;
     }
 
     public void OpenKiosk()
     {
-        if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
+        if(!Notebook.activeSelf)
         {
-            d.DialogIndex = 49;
-            d.EnableDialog();
-            d.DialogTrigger();
-            firstTime = false;
-        }
+            if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
+            {
+                d.DialogIndex = 49;
+                d.EnableDialog();
+                d.DialogTrigger();
+                firstTime = false;
+            }
 
-        isOpened = !isOpened;
-        Board.SetActive(isOpened);
+            isOpened = !isOpened;
+            Board.SetActive(isOpened);
+        }
     }
 
     public void Note_Agriculture ()
@@ -72,5 +68,10 @@ public class KiosManager : MonoBehaviour
         d.DialogIndex = 66;
         d.EnableDialog();
         d.DialogTrigger();
+    }
+
+    private void OnDestroy()
+    {
+        Interact.interactEvent -= OpenKiosk;
     }
 }

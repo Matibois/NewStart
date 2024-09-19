@@ -25,9 +25,11 @@ public class ComputerManager : MonoBehaviour
     {
         firstTime = true;
         isOpened = false;
+
+        Interact.interactEvent += OpenComputer;
     }
 
-
+    /*
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L) && Notebook.activeSelf == false && d.isIntro == false) // Consulter l'ordinateur de la mairie avec L
@@ -35,16 +37,21 @@ public class ComputerManager : MonoBehaviour
             OpenComputer();
         }
     }
+    */
 
     public void OpenComputer() // Quand le joueur ouvre l'ordinateur
     {
-        if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
+        if (!Notebook.activeSelf)
         {
-            d.DialogIndex = 70;
-            d.EnableDialog();
-            d.Dialog();
-            firstTime = false;
+            if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
+            {
+                d.DialogIndex = 70;
+                d.EnableDialog();
+                d.Dialog();
+                firstTime = false;
+            }
         }
+
 
         isOpened = !isOpened;
         Browser.SetActive(isOpened);
@@ -152,5 +159,10 @@ public class ComputerManager : MonoBehaviour
     public void Deconnexion()
     {
         Browser.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        Interact.interactEvent -= OpenComputer;
     }
 }
