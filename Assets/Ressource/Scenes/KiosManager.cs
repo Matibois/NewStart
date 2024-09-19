@@ -10,7 +10,6 @@ public class KiosManager : MonoBehaviour
     private bool isOpened;
     private bool firstTime;
 
-
     public NotebookManager NM;
     public Dialogue d;
 
