@@ -11,9 +11,9 @@ public class Grocery : MonoBehaviour
         Interact.interactEvent += OpenGrocery;
     }
 
-    public void OpenGrocery()
+    public void OpenGrocery(Interact.ID id )
     {
-        if (!Notebook.activeSelf)
+        if (!Notebook.activeSelf && id == Interact.ID.Commercant)
         {
             Debug.Log("Groceryyy");
         }
