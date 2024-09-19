@@ -24,18 +24,10 @@ public class KiosManager : MonoBehaviour
         Interact.interactEvent += OpenKiosk;
     }
 
-    public void OpenKiosk()
+    public void OpenKiosk(Interact.ID id)
     {
-        if(!Notebook.activeSelf)
+        if(!Notebook.activeSelf && id == Interact.ID.Kiosque)
         {
-            if (firstTime) // Quand le joueur ouvre le carnet pour la première fois
-            {
-                d.DialogIndex = 49;
-                d.EnableDialog();
-                d.DialogTrigger();
-                firstTime = false;
-            }
-
             isOpened = !isOpened;
             Board.SetActive(isOpened);
         }
@@ -46,26 +38,13 @@ public class KiosManager : MonoBehaviour
         if (Note_Agr.activeSelf == false)
         {
             Note_Agr.SetActive(true);
-            d.DialogIndex = 59;
         }
-        else
-        {
-            d.DialogIndex = 62;
-        }
-        d.EnableDialog();
-        d.DialogTrigger();
+        else d.DialogDejanote();
     }
 
-    public void Note_Inutile_1()
+    public void Note_Inutile()
     {
-        d.DialogIndex = 64;
-        d.EnableDialog();
-        d.DialogTrigger();
-    }
-
-    public void Note_Inutile_2()
-    {
-        d.DialogIndex = 66;
+        d.DialogInfoKiosk(false);
         d.EnableDialog();
         d.DialogTrigger();
     }

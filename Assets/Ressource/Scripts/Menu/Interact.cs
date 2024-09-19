@@ -23,7 +23,7 @@ public class Interact : MonoBehaviour
     public enum ID
     {
         Bebot,
-        Commerçant, 
+        Commercant, 
         Kiosque,
         Mairie
     }

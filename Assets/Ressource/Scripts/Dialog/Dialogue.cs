@@ -30,6 +30,9 @@ public class Dialogue : MonoBehaviour
     private bool skipDialog = false;
     private bool codeChar;
     public bool isIntro = true;
+    private bool tutoMairie = true;
+    private bool tutoKiosk = true;
+    private bool randomInText = false;
 
     private int DialogIndex = 0;
     private readonly AllDialogs AllDialog = new();
@@ -46,7 +49,6 @@ public class Dialogue : MonoBehaviour
     {
         AllDialog.InitIntro();
         AllDialog.InitMairie();
-        AllDialog.InitMaire();
 
         activeDialog = AllDialog.mairie;
 
@@ -90,29 +92,43 @@ public class Dialogue : MonoBehaviour
         switch (id)
         {
             case Interact.ID.Bebot:
-
                 break;
-            case Interact.ID.Commer�ant:
 
+            case Interact.ID.Commercant:
                 break;
+
             case Interact.ID.Kiosque:
-
+                activeDialog = AllDialog.kiosk;
+                if (!tutoKiosk)
+                {
+                    tutoKiosk = false;
+                }
+                else return;
                 break;
+
             case Interact.ID.Mairie:
                 print("mairie");
-                activeDialog = AllDialog.maire;
+                activeDialog = AllDialog.mairie;
+                if (!tutoMairie)
+                {
+                    tutoMairie = false;
+                }
+                else return;
+
                 break;
 
         }
+
         EnableDialog();
         Dialog();
     }
+
     public void DialogTrigger()
     {
         if (dialogDone == true)
         {
-            DialogIndex++;
             Dialog();
+            DialogIndex++;
         }
         else if (dialogDone == false)
         {
@@ -141,6 +157,7 @@ public class Dialogue : MonoBehaviour
         }
 
     }
+
     IEnumerator ShowText(string text)
     {
         dialogDone = false;
@@ -175,7 +192,7 @@ public class Dialogue : MonoBehaviour
     }
 
 
-    public void DialogTrigger()
+    /*public void DialogTrigger()
     {
         if (dialogDone == true)
         {
@@ -186,12 +203,56 @@ public class Dialogue : MonoBehaviour
         {
             skipDialog = true;
         }
+    }*/
+
+    public void DialogInfoMairie(bool usefull)
+    {
+        if (usefull)
+        {
+            activeDialog = AllDialog.mairieUtile;
+        }
+        else
+        {
+            if (randomInText) activeDialog = AllDialog.mairieInutile1;
+            else activeDialog = AllDialog.mairieInutile2;
+            randomInText = !randomInText;
+        }
+
+        EnableDialog();
+        Dialog();
+    }
+
+    public void DialogInfoKiosk(bool usefull)
+    {
+        if (usefull)
+        {
+            activeDialog = AllDialog.kioskUtile;
+        }
+        else
+        {
+            if (randomInText) activeDialog = AllDialog.kioskInutile1;
+            else activeDialog = AllDialog.kioskInutile2;
+            randomInText = !randomInText;
+        }
+
+        EnableDialog();
+        Dialog();
+    }
+
+    public void DialogDejanote()
+    {
+        activeDialog = AllDialog.dejaNote;
+
+        EnableDialog();
+        Dialog();
     }
 
     public void Dialog()
     {
         if (activeDialog == AllDialog.intro) IntroDialog();
-        else MairieDialog();
+        else if (activeDialog == AllDialog.mairie) MairieDialog();
+        else if (activeDialog == AllDialog.kiosk) KioskDialog();
+        
 
     }
 
@@ -209,6 +270,7 @@ public class Dialogue : MonoBehaviour
         BS.gameObject.SetActive(false);
         SkipButton.gameObject.SetActive(false);
     }
+
     private void IntroDialog()
     {
         print("intro");
@@ -238,7 +300,7 @@ public class Dialogue : MonoBehaviour
         }
         else if (DialogIndex == 19)
         {
-            
+
             darkBackground.GetComponent<Animator>().Play("FadeOut");
             DisableDialog();
         }
@@ -284,7 +346,7 @@ public class Dialogue : MonoBehaviour
         }
 
 
-        
+
         if (DialogIndex == 60)
         {
             NM.PopUp_Noting();
@@ -293,23 +355,6 @@ public class Dialogue : MonoBehaviour
         {
             DisableDialog();
 
-        }
-
-        if (DialogIndex == 50 )
-        {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-            Debug.Log("Kiosque");
-        }
-
-        if (DialogIndex == 60)
-        {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-        }
-
-        if (DialogIndex == 70)
-        {
-            var dictionnaryIndex = AD.dialogues[DialogIndex];
-            Debug.Log("Mairie");
         }
 
         /*
@@ -327,9 +372,10 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
     }
+
     private void MairieDialog()
     {
-        if (DialogIndex == AllDialog.mairie.Count) 
+        if (DialogIndex == AllDialog.mairie.Count)
         {
             DisableDialog();
             DialogIndex = 0;
@@ -344,9 +390,10 @@ public class Dialogue : MonoBehaviour
             StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
     }
-    private void MaireDialog()
+
+    private void KioskDialog()
     {
-        if (DialogIndex == activeDialog.Count)
+        if (DialogIndex == AllDialog.kiosk.Count)
         {
             DisableDialog();
             DialogIndex = 0;
@@ -355,8 +402,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            print("outro");
-            var dictionnaryIndex = AllDialog.mairie[DialogIndex];
+            var dictionnaryIndex = AllDialog.kiosk[DialogIndex];
             BoxSizeChoice(dictionnaryIndex["dialogue"]);
             StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
@@ -384,11 +430,5 @@ public class Dialogue : MonoBehaviour
         Interact.interactEvent -= interaction;
         StopAllCoroutines();
     }
-
-
-
-
-
-
 
 }

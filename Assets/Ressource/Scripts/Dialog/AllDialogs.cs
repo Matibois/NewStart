@@ -5,14 +5,25 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class AllDialogs 
+public class AllDialogs
 {
 
     public Dictionary<int, Dictionary<string, string>> intro;
     public Dictionary<int, Dictionary<string, string>> mairie;
-    public Dictionary<int, Dictionary<string, string>> kiosque;
-    public Dictionary<int, Dictionary<string, string>> commer�ant;
-    public Dictionary<int, Dictionary<string, string>> maire;
+    public Dictionary<int, Dictionary<string, string>> kiosk;
+    public Dictionary<int, Dictionary<string, string>> commercant;
+
+    public Dictionary<int, Dictionary<string, string>> kioskUtile;
+    public Dictionary<int, Dictionary<string, string>> kioskInutile1;
+    public Dictionary<int, Dictionary<string, string>> kioskInutile2;
+
+    public Dictionary<int, Dictionary<string, string>> mairieUtile;
+    public Dictionary<int, Dictionary<string, string>> mairieInutile1;
+    public Dictionary<int, Dictionary<string, string>> mairieInutile2;
+
+    public Dictionary<int, Dictionary<string, string>> dejaNote;
+
+
 
 
     public void InitIntro()
@@ -57,9 +68,9 @@ public class AllDialogs
             { 34, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Et enfin, avec le marque page rouge, j'ai repertori� tes <color=red>objectifs</color>." } } },
             { 35, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si jamais tu ne sais plus quoi faire, ou que tu veux savoir o� tu en es, n'h�site pas � consulter ces pages." } } },
             { 36, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur referme son carnet
-            { 37, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je vais maintenant commencer � faire mes sondages en ligne." } } }, 
+            { 37, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je vais maintenant commencer � faire mes sondages en ligne." } } },
             { 38, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "De ton c�t�, fais le tour de la ville et r�cup�re un maximum d'informations." } } },
-            { 39, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } }, 
+            { 39, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bonne recherche, partenaire !" } } },
             { 40, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } }, // Le joueur commence sa recherche
 
             //Kiosk Tuto
@@ -93,7 +104,6 @@ public class AllDialogs
             { 75, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "S�lectionne seulement celles qui te semblent utiles." } } },
             { 76, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
 
-
             //Note inutile
             { 78, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
             { 79, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi ces informations nous aideraient." } } },
@@ -108,20 +118,92 @@ public class AllDialogs
     {
         mairie = new Dictionary<int, Dictionary<string, string>>
         {
-            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "voici la mairie" } } },
-            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici,ekufhezriuhfuiehfuehfuhefhuefhuehfhefuheufhuehfuehfuheufhuehfuehufheufhuehfuehfuhefuhe'uhfu tu peux trouver des infos sur les gens" } } },
-            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "mais aussi allez te faire enculer sec" } } },
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Te voil� sur <color=yellow>l'ordinateur de la mairie</color>." } } },
+            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici tu peux consulter � volont� des documents pour te renseigner sur la ville et ses habitants." } } },
+            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmm. Je vois qu'il y a beaucoup de tableaux et de donn�es." } } },
+            { 3, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si tu veux prendre en note un document, <color=yellow>clique dessus</color> et je le consulterai en d�tail." } } },
+            { 4, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Si les informations que tu m'envoies sont utiles nous les ajouteront au carnet." } } },
+            { 5, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "S�lectionne seulement celles qui te semblent utiles." } } },
+            { 6, new Dictionary<string, string> { { "speaker", "" }, { "dialogue", "" } } },
         };
     }
 
-    public void InitMaire()
+    public void InitMairieUtile()
     {
-        maire = new Dictionary<int, Dictionary<string, string>>
+        kioskUtile = new Dictionary<int, Dictionary<string, string>>
         {
-            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je suis le maire" } } },
-            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "va te faire foutre" } } },
-            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "sale merde" } } },
+            { 59, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
+            { 60, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Oui, cette information peut servir !" } } },
+            { 61, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Elle est not�e dans ton <color=yellow>carnet</color>." } } },
+            
+            //{ 63, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information est d�j� dans ton carnet." } } },
+            
         };
     }
 
+    public void InitMairieInutile1()
+    {
+        kioskInutile1 = new Dictionary<int, Dictionary<string, string>>
+        {
+
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
+            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information n'est pas utile pour notre �tude de march�." } } },
+            
+            //{ 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
+            //{ 3, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi ces informations nous aideraient." } } },
+        };
+    }
+    public void InitMairieInutile2()
+    {
+        kioskInutile2 = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Je consulte le fichier..." } } },
+            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi ces informations nous aideraient." } } },
+        };
+    }
+
+
+
+    public void InitKiosque()
+    {
+        kiosk = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Ici, c'est le <color=yellow>kiosque</color>." } } },
+            { 1, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Comme tu peux le voir, il y a plein d'articles et d'autres annonces diverses affich�es." } } },
+            { 2, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Pour <color=yellow>prendre en note</color> une affiche dans ton carnet, il te suffit de <color=yellow>cliquer dessus</color>." } } },
+            { 3, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Mais fais attention ! Toutes les informations ne sont pas utiles pour notre �tude de march�." } } },
+            { 4, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "S�lectionne seulement celles qui te semblent utiles." } } },
+        };
+    }
+    public void InitKioskUtile()
+    {
+        kioskUtile = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Bite..." } } },
+        };
+    }
+
+    public void InitKioskInutile1()
+    {
+        kioskInutile1 = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Hmmm... Je ne vois pas en quoi cette information nous aiderait." } } },
+        };
+    }
+    public void InitKioskInutile2()
+    {
+        kioskInutile1 = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 0, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information n'est pas utile pour notre �tude de march�." } } },
+        };
+    }
+
+
+    public void DejaNote()
+    {
+        dejaNote = new Dictionary<int, Dictionary<string, string>>
+        {
+            { 63, new Dictionary<string, string> { { "speaker", "Bebot" }, { "dialogue", "Cette information est d�j� dans ton carnet." } } },
+        };
+    }
 }
