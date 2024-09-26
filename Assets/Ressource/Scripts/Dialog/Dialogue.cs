@@ -49,6 +49,7 @@ public class Dialogue : MonoBehaviour
     {
         AllDialog.InitIntro();
         AllDialog.InitMairie();
+        AllDialog.InitKiosque();
 
         activeDialog = AllDialog.intro;
 
@@ -88,7 +89,6 @@ public class Dialogue : MonoBehaviour
 
     private void interaction(Interact.ID id)
     {
-        print("interaction dialogue");
         switch (id)
         {
             case Interact.ID.Bebot:
@@ -99,9 +99,11 @@ public class Dialogue : MonoBehaviour
 
             case Interact.ID.Kiosque:
                 activeDialog = AllDialog.kiosk;
-                if (!tutoKiosk)
+                print("kiosk dialog");
+                if (tutoKiosk)
                 {
                     tutoKiosk = false;
+                    DialogIndex = 0;
                 }
                 else return;
                 break;
@@ -118,9 +120,9 @@ public class Dialogue : MonoBehaviour
                 break;
 
         }
-
+        print("enable");
         EnableDialog();
-        Dialog();
+        DialogTrigger();
     }
 
     public void DialogTrigger()
@@ -273,7 +275,6 @@ public class Dialogue : MonoBehaviour
 
     private void IntroDialog()
     {
-        print("intro");
         if (DialogIndex == 4) // Bebot demande notre blaze
         {
             nameInput.gameObject.SetActive(true);
@@ -357,14 +358,14 @@ public class Dialogue : MonoBehaviour
 
         }
 
-        /*
+        
         if (DialogIndex == AllDialog.intro.Count)
         {
             DisableDialog();
             DialogIndex = 0;
 
         }
-        */
+        
         else
         {
             var dictionnaryIndex = AllDialog.intro[DialogIndex];

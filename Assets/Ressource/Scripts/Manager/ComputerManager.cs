@@ -29,16 +29,6 @@ public class ComputerManager : MonoBehaviour
         Interact.interactEvent += OpenComputer;
     }
 
-    /*
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L) && Notebook.activeSelf == false && d.isIntro == false) // Consulter l'ordinateur de la mairie avec L
-        {
-            OpenComputer();
-        }
-    }
-    */
-
     public void OpenComputer(Interact.ID id) // Quand le joueur ouvre l'ordinateur
     {
         if (!Notebook.activeSelf && id == Interact.ID.Mairie)

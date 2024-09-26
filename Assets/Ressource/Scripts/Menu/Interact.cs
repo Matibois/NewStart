@@ -11,14 +11,17 @@ public class Interact : MonoBehaviour
     [SerializeField] GameObject menu;
     [SerializeField] Renderer parentObject;
 
-    private Material[] original;
+    /*private Material[] original;
     private Material[] outline;
-    private Material[] mats;
+    private Material[] mats;*/
 
     public static Action<bool> canInteractEvent = null;
     public static Action<ID> interactEvent;
 
     private bool canInteract = false;
+
+    public Outline outline;
+
 
     public enum ID
     {
@@ -32,10 +35,6 @@ public class Interact : MonoBehaviour
 
     private void Start()
     {
-        Material[] mats = parentObject.materials;
-        outline = mats;
-        original = new Material[] { outline[0], outline[0] };
-        parentObject.materials = original;
         ThirdPersonController.MyInteractEvent += Interaction;
     }
 
@@ -43,7 +42,8 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentObject.materials = outline;
+            outline.outlineWidth = 2f;
+            outline.UpdateMaterialProperties();
             canInteract = true;
             canInteractEvent?.Invoke(canInteract);
         }
@@ -53,7 +53,8 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentObject.materials = original;
+            outline.outlineWidth = 0;
+            outline.UpdateMaterialProperties();
             canInteract = false;
             canInteractEvent?.Invoke(canInteract);
         }
@@ -63,9 +64,7 @@ public class Interact : MonoBehaviour
     {
         if (canInteract)
         {
-            parentObject.GetComponent<Renderer>().materials = original;
             interactEvent?.Invoke(id);
-            canInteract = false;
         }
     }
     private void OnDestroy()

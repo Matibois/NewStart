@@ -37,6 +37,7 @@ public class KiosManager : MonoBehaviour
         if (Note_Agr.activeSelf == false)
         {
             Note_Agr.SetActive(true);
+
         }
         else d.DialogDejanote();
     }
