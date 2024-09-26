@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8ede9fad-b724-4f60-98d9-43dcb92ede9c}">
+		<property name="assetPath">
+			<value>Run_Concrete_2.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.31346938775510202</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{34788016-7ca4-400c-995d-9274e8c9e0c1}</destination>
+		</relationship>
+	</object>
+</objects>

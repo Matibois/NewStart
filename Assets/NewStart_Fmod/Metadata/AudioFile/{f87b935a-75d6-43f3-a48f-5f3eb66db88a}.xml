@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f87b935a-75d6-43f3-a48f-5f3eb66db88a}">
+		<property name="assetPath">
+			<value>PencilNote_2.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.65306122448979587</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{34788016-7ca4-400c-995d-9274e8c9e0c1}</destination>
+		</relationship>
+	</object>
+</objects>

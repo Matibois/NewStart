@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{23da3fdc-f57f-47de-85b1-a3c499a96c03}">
+		<property name="assetPath">
+			<value>Run_Grass_1.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.39183673469387753</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{34788016-7ca4-400c-995d-9274e8c9e0c1}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b0750c84-83e1-45ee-af04-8c620b641082}">
+		<property name="assetPath">
+			<value>Giling.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.966530612244898</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{34788016-7ca4-400c-995d-9274e8c9e0c1}</destination>
+		</relationship>
+	</object>
+</objects>
