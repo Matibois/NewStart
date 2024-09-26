@@ -25,27 +25,34 @@ public class KiosManager : MonoBehaviour
 
     public void OpenKiosk(Interact.ID id)
     {
-        if(!Notebook.activeSelf && id == Interact.ID.Kiosque)
+        if (!Notebook.activeSelf && id == Interact.ID.Kiosque)
         {
             isOpened = !isOpened;
             Board.SetActive(isOpened);
         }
     }
 
-    public void Note_Agriculture ()
+    public void Note_Agriculture()
     {
         if (Note_Agr.activeSelf == false)
         {
             Note_Agr.SetActive(true);
-
+            d.DialogInfoKiosk(true);
+            d.DialogTrigger();
+            print("false");
         }
-        else d.DialogDejanote();
+        else
+        {
+            d.DialogDejanote();
+            d.DialogTrigger();
+            print("true");
+        }
     }
 
     public void Note_Inutile()
     {
         d.DialogInfoKiosk(false);
-        d.EnableDialog();
+        //d.EnableDialog();
         d.DialogTrigger();
     }
 

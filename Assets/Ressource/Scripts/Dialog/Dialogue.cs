@@ -48,8 +48,17 @@ public class Dialogue : MonoBehaviour
     private void Start()
     {
         AllDialog.InitIntro();
-        AllDialog.InitMairie();
+        AllDialog.InitDejaNote();
+
         AllDialog.InitKiosque();
+        AllDialog.InitKioskUtile();
+        AllDialog.InitKioskInutile1();
+        AllDialog.InitKioskInutile2();
+
+        AllDialog.InitMairie();
+        AllDialog.InitMairieUtile();
+        AllDialog.InitMairieInutile1();
+        AllDialog.InitMairieInutile2();
 
         activeDialog = AllDialog.intro;
 
@@ -221,7 +230,6 @@ public class Dialogue : MonoBehaviour
         }
 
         EnableDialog();
-        Dialog();
     }
 
     public void DialogInfoKiosk(bool usefull)
@@ -229,6 +237,7 @@ public class Dialogue : MonoBehaviour
         if (usefull)
         {
             activeDialog = AllDialog.kioskUtile;
+            print(AllDialog.kioskUtile);
         }
         else
         {
@@ -238,7 +247,6 @@ public class Dialogue : MonoBehaviour
         }
 
         EnableDialog();
-        Dialog();
     }
 
     public void DialogDejanote()
@@ -246,7 +254,6 @@ public class Dialogue : MonoBehaviour
         activeDialog = AllDialog.dejaNote;
 
         EnableDialog();
-        Dialog();
     }
 
     public void Dialog()
@@ -254,6 +261,8 @@ public class Dialogue : MonoBehaviour
         if (activeDialog == AllDialog.intro) IntroDialog();
         else if (activeDialog == AllDialog.mairie) MairieDialog();
         else if (activeDialog == AllDialog.kiosk) KioskDialog();
+        else if (activeDialog == AllDialog.kioskUtile) KioskUtileDialog();
+        else DefaultDialog();
         
 
     }
@@ -341,7 +350,8 @@ public class Dialogue : MonoBehaviour
         {
             EnableDialog();
         }
-        else if (DialogIndex == 40)
+        
+        /*else if (DialogIndex == 40)
         {
             DisableDialog();
         }
@@ -356,7 +366,7 @@ public class Dialogue : MonoBehaviour
         {
             DisableDialog();
 
-        }
+        }*/
 
         
         if (DialogIndex == AllDialog.intro.Count)
@@ -409,7 +419,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    /*private void DefaultDialog()
+    private void DefaultDialog()
     {
         if (DialogIndex == activeDialog.Count)
         {
@@ -424,7 +434,24 @@ public class Dialogue : MonoBehaviour
             BoxSizeChoice(dictionnaryIndex["dialogue"]);
             StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
         }
-    }*/
+    }
+    
+    private void KioskUtileDialog()
+    {
+        if (DialogIndex == AllDialog.kioskUtile.Count)
+        {
+            DisableDialog();
+            DialogIndex = 0;
+            print("dialog end 0");
+
+        }
+        else
+        {
+            var dictionnaryIndex = AllDialog.kioskUtile[DialogIndex];
+            BoxSizeChoice(dictionnaryIndex["dialogue"]);
+            StartCoroutine(ShowText(dictionnaryIndex["dialogue"]));
+        }
+    }
 
     private void OnDestroy()
     {

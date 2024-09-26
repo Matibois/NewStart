@@ -199,7 +199,7 @@ public class AllDialogs
     }
 
 
-    public void DejaNote()
+    public void InitDejaNote()
     {
         dejaNote = new Dictionary<int, Dictionary<string, string>>
         {
